@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<SP:Stream xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SP="https:/streaming-platform.com" title="Playing league of legends" viewCount="3" description="Stream description" streamID="dde89b4c-9c96-42bc-a60e-32f9b3b15021" isLive="true">
+  <tags>gaming</tags>
+  <tags>spanish</tags>
+  <tags>funny</tags>
+  <tags>League of Legends</tags>
+  <resolutions>HD</resolutions>
+  <resolutions>FullHD</resolutions>
+  <viewers href="admin.xmi#a59872b6-70b9-421b-8815-f0159540e355"/>
+  <viewers href="otherlude.xmi#29f8cb55-5c55-4b2b-81b0-87ffaa0fea23"/>
+</SP:Stream>

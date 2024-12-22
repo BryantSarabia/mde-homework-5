@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Plugin
+Bundle-SymbolicName: it.univaq.mde.streamingplatform.plugin;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Export-Package: it.univaq.mde.streamingplatform.plugin;uses:="StreamingPlatform,org.eclipse.emf.common.util,org.eclipse.emf.ecore.resource"
+Require-Bundle: it.univaq.mde.streamingplatform;bundle-version="1.0.0"
+Automatic-Module-Name: it.univaq.mde.streamingplatform.plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Import-Package: org.eclipse.emf.ecore.xmi.impl;version="[2.38.0,3.0.0)"

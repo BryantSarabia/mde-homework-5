@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<SP:Platform xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SP="https:/streaming-platform.com" createdAt="2024-12-22T15:21:15.117+0100" name="Twitch" platformID="5fc6d77f-433f-443a-a531-64709fa99010" revenue="10000.0" version="1.0" description="This is a famous streaming platform">
+  <supportedRegions>America</supportedRegions>
+  <supportedRegions>Europe</supportedRegions>
+  <supportedLanguages>English</supportedLanguages>
+  <supportedLanguages>Spanish</supportedLanguages>
+  <supportedDevices>Android</supportedDevices>
+  <supportedDevices>iOS</supportedDevices>
+  <supportedDevices>Web</supportedDevices>
+  <supportedResolutions>HD</supportedResolutions>
+  <supportedResolutions>FullHD</supportedResolutions>
+</SP:Platform>

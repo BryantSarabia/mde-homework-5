@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<SP:Channel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SP="https:/streaming-platform.com" createdAt="2024-12-22T15:21:15.112+0100" name="Ibai channel" channelID="f2c75753-15ac-406d-ac8d-ad7e3085fdd5" description="Ibai's channel">
+  <moderators href="ibai.xmi#e38cde6c-d777-406e-8e3b-275fa9d23a63"/>
+  <followers href="otherlude.xmi#29f8cb55-5c55-4b2b-81b0-87ffaa0fea23"/>
+  <followers href="gomita13.xmi#bea88941-c692-4afa-9580-8993e6c62db3"/>
+  <owner href="ibai.xmi#e38cde6c-d777-406e-8e3b-275fa9d23a63"/>
+</SP:Channel>

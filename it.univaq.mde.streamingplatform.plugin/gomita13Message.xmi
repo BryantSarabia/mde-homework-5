@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<SP:Message xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SP="https:/streaming-platform.com" timestamp="2024-12-22 15:21:15.107" messageID="64f0ca25-3552-4bc2-ba0a-d71acd765abf" content="Hello, I'm Gomita13">
+  <User href="gomita13.xmi#bea88941-c692-4afa-9580-8993e6c62db3"/>
+</SP:Message>

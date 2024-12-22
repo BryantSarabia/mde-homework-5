@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="StreamingPlatform" nsURI="https:/streaming-platform.com" nsPrefix="SP">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Platform" eSuperTypes="#//Auditable #//NamedElement">
+    <eOperations name="activeUsersCount" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="body" value="users->select(u | u.isOnline = true)->size()"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="findChannelByName" eType="#//Channel">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="body" value="channels->any(c | c.name = name)"/>
+      </eAnnotations>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="platformID" lowerBound="1"
+        eType="#//UUID" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revenue" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="supportedRegions" upperBound="-1"
+        eType="#//Region"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="supportedLanguages" upperBound="-1"
+        eType="#//Language"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="supportedDevices" upperBound="-1"
+        eType="#//Device"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="supportedResolutions" upperBound="-1"
+        eType="#//Resolution"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="users" upperBound="-1"
+        eType="#//User" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="channels" upperBound="-1"
+        eType="#//Channel" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalRevenue" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" volatile="true"
+        derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="channels->collect(c | &#xA;&#x9;&#x9;                    c.donations->collect(d | d.amount)->sum() + c.subscriptions->collect(s | s.price)->sum())&#xA;&#x9;&#x9;                    ->sum()"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Channel" eSuperTypes="#//Auditable #//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="channelID" eType="#//UUID"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="streams" upperBound="-1"
+        eType="#//Stream" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clips" upperBound="-1"
+        eType="#//Clip" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="moderators" upperBound="-1"
+        eType="#//User"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="followers" upperBound="-1"
+        eType="#//User" eOpposite="#//User/followedChannels"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="donations" upperBound="-1"
+        eType="#//Donation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subscriptions" upperBound="-1"
+        eType="#//Subscription" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="emotes" upperBound="-1"
+        eType="#//Emote" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="badges" upperBound="-1"
+        eType="#//Badge" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//User"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalDonations" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat" volatile="true"
+        derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="donations->collect(d | d.amount)->sum()"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalFollowers" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" volatile="true"
+        derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="followers->size()"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalViews" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" volatile="true"
+        derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="streams->collect(s | s.viewCount)->sum()"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="User" eSuperTypes="#//Auditable #//NamedElement">
+    <eOperations name="totalDonations" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="body" value="donations->collect(d | d.amount)->sum()"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isFollowing" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="body" value="followedChannels->includes(channel)"/>
+      </eAnnotations>
+      <eParameters name="channel" lowerBound="1" eType="#//Channel"/>
+    </eOperations>
+    <eOperations name="totalSpending" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="body" value="subscriptions->collect(s | s.amount)->sum() +&#xA;          &#x9;&#x9;&#x9;donations->collect(d | d.amount)->sum()"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="userID" lowerBound="1"
+        eType="#//UUID" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="role" lowerBound="1" eType="#//Role"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="avatar" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOnline" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nickname" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subscriptions" upperBound="-1"
+        eType="#//Subscription" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="donations" upperBound="-1"
+        eType="#//Donation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="followedChannels" upperBound="-1"
+        eType="#//Channel" eOpposite="#//Channel/followers"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Badge" eSuperTypes="#//Feature">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="badgeID" eType="#//UUID"
+        iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Emote" eSuperTypes="#//Feature">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="emoteID" eType="#//UUID"
+        iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Stream" eSuperTypes="#//MediaContent">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="liveCondition"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="liveCondition" value="isLive = true implies viewers->notEmpty()"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="streamID" lowerBound="1"
+        eType="#//UUID" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isLive" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="viewers" upperBound="-1"
+        eType="#//User"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="activeViewers" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" volatile="true"
+        derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="viewers->select(v | v.isOnline = true)->size()"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Clip" eSuperTypes="#//MediaContent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipID" lowerBound="1"
+        eType="#//UUID" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="createdBy" lowerBound="1"
+        eType="#//User"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Donation" eSuperTypes="#//Monetization">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="donationID" lowerBound="1"
+        eType="#//UUID" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Subscription" eSuperTypes="#//Monetization">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="startDateLessThanEndDate transactionDateLessThanStartDate"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="startDateLessThanEndDate" value="startDate &lt;= endDate"/>
+      <details key="transactionDateLessThanStartDate" value="transactionDate &lt;= startDate"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="subscriptionID" lowerBound="1"
+        eType="#//UUID" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tier" lowerBound="1" eType="#//Tier"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="price" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" lowerBound="1"
+        eType="#//SubscriptionDuration"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoRenewal" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startDate" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endDate" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="emotes" upperBound="-1"
+        eType="#//Emote"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="badge" lowerBound="1" eType="#//Badge"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Message" eSuperTypes="#//UserInteraction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageID" lowerBound="1"
+        eType="#//UUID" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Reaction" eSuperTypes="#//UserInteraction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reactionID" lowerBound="1"
+        eType="#//UUID" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reactionType" lowerBound="1"
+        eType="#//ReactionType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Auditable" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="createdAt" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="updatedAt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Feature" abstract="true" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tenure" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="donationAmount" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unlockCondition" lowerBound="1"
+        eType="#//UnlockCondition"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eligibilityDescription"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        volatile="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="&#xA;&#x9;&#x9;        if unlockCondition = UnlockCondition::DonationAmount then&#xA;&#x9;&#x9;            'Requires a donation of at least ' + donationAmount.toString() + ' currency units'&#xA;&#x9;&#x9;        else&#xA;&#x9;&#x9;            'Requires a tenure of ' + tenure.toString() + ' months'&#xA;&#x9;&#x9;        endif"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MediaContent" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" lowerBound="1"
+        eType="#//Category"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tags" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="viewCount" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resolutions" lowerBound="1"
+        upperBound="-1" eType="#//Resolution"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messages" upperBound="-1"
+        eType="#//Message" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reactions" upperBound="-1"
+        eType="#//Reaction" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UserInteraction" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" lowerBound="1"
+        eType="#//Timestamp"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="User" lowerBound="1" eType="#//User"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Monetization" abstract="true" eSuperTypes="#//NamedElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="positiveAmount"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="positiveAmount" value="amount >= 0.0"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currency" lowerBound="1"
+        eType="#//Currency"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transactionDate" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="paymentStatus" lowerBound="1"
+        eType="#//PaymentStatus"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="paymentMethod" lowerBound="1"
+        eType="#//PaymentMethod"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SubscriptionDuration">
+    <eLiterals name="Monthly"/>
+    <eLiterals name="Annual" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Category">
+    <eLiterals name="Videogames"/>
+    <eLiterals name="JustChatting" value="1"/>
+    <eLiterals name="Esports" value="2"/>
+    <eLiterals name="Sports" value="3"/>
+    <eLiterals name="TalkShowsAndPodscasts" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Currency">
+    <eLiterals name="EUR"/>
+    <eLiterals name="USD" value="1"/>
+    <eLiterals name="GBP" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Device">
+    <eLiterals name="iOS"/>
+    <eLiterals name="Android" value="1"/>
+    <eLiterals name="Web" value="2"/>
+    <eLiterals name="TV" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Language">
+    <eLiterals name="Italian"/>
+    <eLiterals name="Spanish" value="1"/>
+    <eLiterals name="English" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Region">
+    <eLiterals name="Europe"/>
+    <eLiterals name="America" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Resolution">
+    <eLiterals name="SD"/>
+    <eLiterals name="HD" value="1"/>
+    <eLiterals name="UltraHD" value="2"/>
+    <eLiterals name="QuadHD" value="3"/>
+    <eLiterals name="FullHD" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PaymentMethod">
+    <eLiterals name="Paypal"/>
+    <eLiterals name="CreditCard" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PaymentStatus">
+    <eLiterals name="Pending"/>
+    <eLiterals name="Completed" value="1"/>
+    <eLiterals name="Rejected" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ReactionType">
+    <eLiterals name="Love"/>
+    <eLiterals name="ThumbsUp" value="1"/>
+    <eLiterals name="ThumbsDown" value="2"/>
+    <eLiterals name="Funny" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Role">
+    <eLiterals name="Administrator"/>
+    <eLiterals name="Streamer" value="1"/>
+    <eLiterals name="Viewer" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Tier">
+    <eLiterals name="Basic"/>
+    <eLiterals name="Premium" value="1"/>
+    <eLiterals name="VIP" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="UnlockCondition">
+    <eLiterals name="DonationAmount"/>
+    <eLiterals name="Tenure" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="UUID" instanceClassName="java.util.UUID"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Timestamp" instanceClassName="java.sql.Timestamp"/>
+</ecore:EPackage>

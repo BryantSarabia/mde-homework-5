@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<SP:Message xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SP="https:/streaming-platform.com" timestamp="2024-12-22 15:21:15.107" messageID="29473309-6757-4a83-b477-3b129b3f028d" content="Hello, I'm Otherlude">
+  <User href="otherlude.xmi#29f8cb55-5c55-4b2b-81b0-87ffaa0fea23"/>
+</SP:Message>

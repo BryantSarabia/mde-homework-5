@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated StreamingPlatform -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="StreamingPlatform.presentation.StreamingPlatformModelWizardID"
+            name="%_UI_StreamingPlatformModelWizard_label"
+            class="StreamingPlatform.presentation.StreamingPlatformModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/StreamingPlatformModelFile.gif">
+         <description>%_UI_StreamingPlatformModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated StreamingPlatform -->
+      <editor
+            id="StreamingPlatform.presentation.StreamingPlatformEditorID"
+            name="%_UI_StreamingPlatformEditor_label"
+            icon="icons/full/obj16/StreamingPlatformModelFile.gif"
+            extensions="streamingplatform"
+            class="StreamingPlatform.presentation.StreamingPlatformEditor"
+            contributorClass="StreamingPlatform.presentation.StreamingPlatformActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
