@@ -4,3 +4,248 @@
 module trafo;
 create OUT : RSP from IN : SP;
 
+helper def: id : Integer = 0;
+
+helper context Integer def : inc() : Integer = self + 1;
+
+helper context SP!Feature def : getEligibilityDescription() : String =
+    if self.unlockCondition = #DonationAmount then
+        'Requires a donation of at least ' + self.donationAmount.toString() + ' currency units'
+    else
+        'Requires a tenure of ' + self.tenure.toString() + ' months'
+    endif;
+
+helper context SP!UserInteraction def : timestampToDate() : String = 
+		thisModule.timestampToDateString(self.timestamp);
+
+helper def : timestampToDateString(timestamp : Integer) : String = 
+	new java.text.SimpleDateFormat('yyyy-MM-dd HH:mm:ss').format(new java.util.Date(timestamp));
+
+abstract rule NamedElement2NamedElement {
+	from
+		s: SP!NamedElement
+	to
+		t: RSP!NamedElement(
+			name <- s.name
+		)
+}
+
+abstract rule Auditable2Auditable extends NamedElement2NamedElement {
+	from
+		s: SP!Auditable
+	to
+		t: RSP!Auditable(
+			createdAt <- s.createdAt,
+			updatedAt <- s.updatedAt
+		)
+}
+
+rule Platform2Platform extends Auditable2Auditable {
+	from
+		s: SP!Platform
+	to
+		t: RSP!Platform(
+			revenue <- s.revenue,
+			version <- s.version,
+			supportedRegios <- s.supportedRegions,
+			supportedLanguages <- s.supportedLanguages,
+			supportedDevices <- s.supportedDevices,
+			supportedVideoQualities <- s.supportedResolutions,
+			users <- s.users,
+			channels <- s.channels,
+			totalRevenue <- s.totalRevenue
+		)
+	do {
+		thisModule.id <- thisModule.id.inc();
+		t.platformID <- thisModule.id;
+	}
+}
+
+rule Channel2Channel extends Auditable2Auditable {
+    from
+        s : SP!Channel
+    to
+        t : RSP!Channel (
+            streams <- s.streams,
+            clips <- s.clips,
+            playlists <- Sequence{},
+			tags <- Sequence{},
+            moderators <- s.moderators,
+            followers <- s.followers,
+            tips <- s.donations,
+            subscriptions <- s.subscriptions,
+            features <- s.features,
+            owner <- s.owner,
+            totalTips <- s.totalDonations,
+            totalFollowers <- s.totalFollowers,
+            totalViews <- s.totalViews
+        )
+	do {
+		thisModule.id <- thisModule.id.inc();
+		t.channelID <- thisModule.id;
+	}
+}
+
+rule User2User extends Auditable2Auditable {
+	from
+		s: SP!User
+	to
+		t: RSP!User(
+			role <- s.role,
+			avatar <- s.avatar,
+			isOnline <- s.isOnline,
+			nickname <- s.nickname,
+			subscriptions <- s.subscriptions,
+			followedChannels <- s.followedChannels,
+		)
+	do {
+		thisModule.id <- thisModule.id.inc();
+		t.userID <- thisModule.id;
+	}
+}
+
+abstract rule Feature2Feature {
+	from
+		s: SP!Feature
+	to
+		t: RSP!Feature(
+			tenure <- s.tenure,
+			donationAmount <- s.donationAmount,
+			unlockCondition <- s.unlockCondition,
+			elegibilityDescription <- s.getEligibilityDescription()
+		)
+	do {
+		thisModule.id <- thisModule.id.inc();
+		t.featureID <- thisModule.id;
+	}
+}
+
+rule Badge2Feature extends Feature2Feature {
+	from
+		s: SP!Badge
+	to
+		t: RSP!Feature(
+			type <- #Badge,
+		)
+}
+	
+rule Emote2Feature extends Feature2Feature {
+	from
+		s: SP!Emote
+	to
+		t: RSP!Feature(
+			type <- #Emote,
+		)
+}
+	
+abstract rule MediaContent2MediaContent {
+	from
+		s: SP!MediaContent
+	to
+		t: RSP!MediaContent(
+			title <- s.title,
+			category <- s.category,
+			viewCount <- s.viewCount,
+			videoQualities <- s.resolutions,
+			messages <- s.messages,
+			reactions <- s.reactions,
+			tags <- s.tags,
+		)
+	do {
+		thisModule.id <- thisModule.id.inc();
+		t.mediaContentID <- thisModule.id;
+	}
+}
+
+rule Stream2Stream extends MediaContent2MediaContent {
+	from:
+		s: SP!Stream
+	to:
+		t: RSP!Stream(
+			isLive <- s.isLive,
+			viewers <- s.viewers,
+			activeViewers <- s.activeViewers,
+		)
+}
+
+rule Clip2Clip extends MediaContent2MediaContent {
+	from:
+		s: SP!Clip
+	to:
+		t: RSP!Clip(
+			createdBy <- s.createdBy
+		)
+}
+
+abstract rule Monetization2Monetization {
+	from
+		s: SP!Monetization
+	to
+		t: RSP!Monetization(
+			amount <- s.amount,
+			currency <- s.currency,
+			transactionDate <- s.transactionDate,
+			paymentMethod <- s.paymentMethod
+			paymentStatus <- s.paymentStatus
+		)
+	do {
+		thisModule.id <- thisModule.id.inc();
+		t.monetizationID <- thisModule.id;
+	}
+}
+
+rule Donation2Tip extends Monetization2Monetization{
+	from
+		s : SP!Donation
+	to
+		t : RSP!Tip (
+				message <- t.message
+		)
+}
+
+rule Subscription2Subscription extends Monetization2Monetization{
+	from
+		s : SP!Subscription
+	to
+		t : RSP!Subscription (
+				tier <- s.tier,
+				price <- s.price
+				duration <- s.duration
+				autoRenewal <- s.autoRenewal
+				startDate <- s.startDate
+				endDate <- s.endDate
+				features <- s.features
+		)
+}
+
+abstract rule UserInteraction {
+	from
+		s: SP!UserInteraction
+	to
+		t: RSP!UserInteraction(
+			date <- s.timestampToDate(),
+			author <- s.user
+		)
+	do {
+		thisModule.id <- thisModule.id.inc();
+		t.userInteractionID <- thisModule.id;
+	}
+}
+
+rule Message2Message extends UserInteraction {
+	from
+		s: SP!Message
+	to
+		t: RSP!Message(
+			content <- s.content
+		)
+}
+
+rule Reaction2Reaction extends UserInteraction {
+	from
+		s: SP!Reaction
+	to
+		t: RSP!Reaction(
+			reactionType <- s.reactionType
+		)
+}

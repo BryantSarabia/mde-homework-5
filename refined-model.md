@@ -61,8 +61,74 @@ New class introduced to manage collections of `MediaContent`.
 Added inheritance from `Taggable` class.
 
 - Attributes:
+  - Added:
+    - `mediaContentID` to store the unique identifier of the media content.
+  - Removed:
+    - `tags` (replaced by inheritance).
   - Changed:
     - `resolutions` ➡️ `videoQualities`.
+
+---
+
+## Stream
+
+- Attributes:
+  - Removed:
+    - `streamID` (replaced by `mediaContentID`).
+
+---
+
+## Clip
+
+- Attributes:
+  - Removed:
+    - `clipID` (replaced by `mediaContentID`).
+
+---
+
+## Monetization
+
+- Attributes:
+  - Added:
+    - `monetizationID` to store the unique identifier of the monetization event.
+
+## Donation
+
+This class has been renamed to`Tip`.
+
+- Attributes:
+  - Removed:
+    - `donationID` (replaced by `monetizationID`).
+
+---
+
+## Subscription
+
+- Attributes:
+  - Removed:
+    - `subscriptionID` (replaced by `monetizationID`).
+
+---
+
+## UserInteraction
+
+- Attributes:
+  - Added:
+    - `userInteractionID` to store the unique identifier of the user interaction event.
+
+## Message
+
+- Attributes:
+  - Removed:
+    - `messageID` (replaced by `userInteractionID`).
+
+---
+
+## Reaction
+
+- Attributes:
+  - Removed:
+    - `reactionID` (replaced by `userInteractionID`).
 
 ---
 
