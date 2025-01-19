@@ -5,16 +5,18 @@ package StreamingPlatform.impl;
 import StreamingPlatform.Badge;
 import StreamingPlatform.Emote;
 import StreamingPlatform.StreamingPlatformPackage;
+import StreamingPlatform.StreamingPlatformTables;
 import StreamingPlatform.Subscription;
 import StreamingPlatform.SubscriptionDuration;
 import StreamingPlatform.Tier;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Date;
-import java.util.UUID;
-
+import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -23,6 +25,14 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.ocl.pivot.evaluation.Executor;
+import org.eclipse.ocl.pivot.ids.TypeId;
+import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
+import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
+import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
+import org.eclipse.ocl.pivot.utilities.PivotUtil;
+import org.eclipse.ocl.pivot.utilities.ValueUtil;
+import org.eclipse.ocl.pivot.values.IntegerValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -54,7 +64,7 @@ public class SubscriptionImpl extends MonetizationImpl implements Subscription {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final UUID SUBSCRIPTION_ID_EDEFAULT = null;
+	protected static final String SUBSCRIPTION_ID_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getSubscriptionID() <em>Subscription ID</em>}' attribute.
@@ -64,7 +74,7 @@ public class SubscriptionImpl extends MonetizationImpl implements Subscription {
 	 * @generated
 	 * @ordered
 	 */
-	protected UUID subscriptionID = SUBSCRIPTION_ID_EDEFAULT;
+	protected String subscriptionID = SUBSCRIPTION_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTier() <em>Tier</em>}' attribute.
@@ -231,7 +241,7 @@ public class SubscriptionImpl extends MonetizationImpl implements Subscription {
 	 * @generated
 	 */
 	@Override
-	public UUID getSubscriptionID() {
+	public String getSubscriptionID() {
 		return subscriptionID;
 	}
 
@@ -241,8 +251,8 @@ public class SubscriptionImpl extends MonetizationImpl implements Subscription {
 	 * @generated
 	 */
 	@Override
-	public void setSubscriptionID(UUID newSubscriptionID) {
-		UUID oldSubscriptionID = subscriptionID;
+	public void setSubscriptionID(String newSubscriptionID) {
+		String oldSubscriptionID = subscriptionID;
 		subscriptionID = newSubscriptionID;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StreamingPlatformPackage.SUBSCRIPTION__SUBSCRIPTION_ID, oldSubscriptionID, subscriptionID));
@@ -445,6 +455,92 @@ public class SubscriptionImpl extends MonetizationImpl implements Subscription {
 	 * @generated
 	 */
 	@Override
+	public boolean startDateLessThanEndDate(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Subscription::startDateLessThanEndDate";
+		try {
+			/**
+			 *
+			 * inv startDateLessThanEndDate:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let result : Boolean[1] = startDate <= endDate
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, StreamingPlatformPackage.Literals.SUBSCRIPTION___START_DATE_LESS_THAN_END_DATE__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, StreamingPlatformTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			}
+			else {
+				final /*@NonInvalid*/ Date startDate = this.getStartDate();
+				final /*@NonInvalid*/ Date endDate = this.getEndDate();
+				final /*@NonInvalid*/ boolean result = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, startDate, endDate).booleanValue();
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, result, StreamingPlatformTables.INT_0).booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean transactionDateLessThanStartDate(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Subscription::transactionDateLessThanStartDate";
+		try {
+			/**
+			 *
+			 * inv transactionDateLessThanStartDate:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let result : Boolean[1] = transactionDate <= startDate
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, StreamingPlatformPackage.Literals.SUBSCRIPTION___TRANSACTION_DATE_LESS_THAN_START_DATE__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, StreamingPlatformTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			}
+			else {
+				final /*@NonInvalid*/ Date transactionDate = this.getTransactionDate();
+				final /*@NonInvalid*/ Date startDate = this.getStartDate();
+				final /*@NonInvalid*/ boolean result = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, transactionDate, startDate).booleanValue();
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, result, StreamingPlatformTables.INT_0).booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case StreamingPlatformPackage.SUBSCRIPTION__SUBSCRIPTION_ID:
@@ -480,7 +576,7 @@ public class SubscriptionImpl extends MonetizationImpl implements Subscription {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case StreamingPlatformPackage.SUBSCRIPTION__SUBSCRIPTION_ID:
-				setSubscriptionID((UUID)newValue);
+				setSubscriptionID((String)newValue);
 				return;
 			case StreamingPlatformPackage.SUBSCRIPTION__TIER:
 				setTier((Tier)newValue);
@@ -578,6 +674,23 @@ public class SubscriptionImpl extends MonetizationImpl implements Subscription {
 				return badge != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case StreamingPlatformPackage.SUBSCRIPTION___START_DATE_LESS_THAN_END_DATE__DIAGNOSTICCHAIN_MAP:
+				return startDateLessThanEndDate((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case StreamingPlatformPackage.SUBSCRIPTION___TRANSACTION_DATE_LESS_THAN_START_DATE__DIAGNOSTICCHAIN_MAP:
+				return transactionDateLessThanStartDate((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

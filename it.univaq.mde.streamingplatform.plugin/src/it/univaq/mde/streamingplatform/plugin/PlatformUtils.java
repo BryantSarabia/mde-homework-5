@@ -19,7 +19,7 @@ public class PlatformUtils {
          Region[] supportedRegions, Language[] supportedLanguages, Device[] supportedDevices,
           Resolution[] supportedResolutions) {
         Platform platform = StreamingPlatformFactory.eINSTANCE.createPlatform();
-        platform.setPlatformID(UUID.randomUUID());
+        platform.setPlatformID(UUID.randomUUID().toString());
         platform.setCreatedAt(new Date());
         platform.setName(name);
         platform.setVersion(version);

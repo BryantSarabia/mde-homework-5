@@ -10,12 +10,13 @@ import StreamingPlatform.Emote;
 import StreamingPlatform.NamedElement;
 import StreamingPlatform.Stream;
 import StreamingPlatform.StreamingPlatformPackage;
+import StreamingPlatform.StreamingPlatformTables;
 import StreamingPlatform.Subscription;
 import StreamingPlatform.User;
 
 import java.util.Collection;
-import java.util.UUID;
-
+import java.util.Iterator;
+import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -30,6 +31,17 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.ocl.pivot.evaluation.Executor;
+import org.eclipse.ocl.pivot.ids.IdResolver;
+import org.eclipse.ocl.pivot.library.collection.CollectionSizeOperation;
+import org.eclipse.ocl.pivot.library.collection.CollectionSumOperation;
+import org.eclipse.ocl.pivot.utilities.PivotUtil;
+import org.eclipse.ocl.pivot.utilities.ValueUtil;
+import org.eclipse.ocl.pivot.values.IntegerValue;
+import org.eclipse.ocl.pivot.values.OrderedSetValue;
+import org.eclipse.ocl.pivot.values.RealValue;
+import org.eclipse.ocl.pivot.values.SequenceValue;
+import org.eclipse.ocl.pivot.values.SequenceValue.Accumulator;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,6 +63,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link StreamingPlatform.impl.ChannelImpl#getEmotes <em>Emotes</em>}</li>
  *   <li>{@link StreamingPlatform.impl.ChannelImpl#getBadges <em>Badges</em>}</li>
  *   <li>{@link StreamingPlatform.impl.ChannelImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link StreamingPlatform.impl.ChannelImpl#getTotalDonations <em>Total Donations</em>}</li>
+ *   <li>{@link StreamingPlatform.impl.ChannelImpl#getTotalFollowers <em>Total Followers</em>}</li>
+ *   <li>{@link StreamingPlatform.impl.ChannelImpl#getTotalViews <em>Total Views</em>}</li>
  * </ul>
  *
  * @generated
@@ -84,7 +99,7 @@ public class ChannelImpl extends AuditableImpl implements Channel {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final UUID CHANNEL_ID_EDEFAULT = null;
+	protected static final String CHANNEL_ID_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getChannelID() <em>Channel ID</em>}' attribute.
@@ -94,7 +109,7 @@ public class ChannelImpl extends AuditableImpl implements Channel {
 	 * @generated
 	 * @ordered
 	 */
-	protected UUID channelID = CHANNEL_ID_EDEFAULT;
+	protected String channelID = CHANNEL_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
@@ -207,6 +222,36 @@ public class ChannelImpl extends AuditableImpl implements Channel {
 	protected User owner;
 
 	/**
+	 * The default value of the '{@link #getTotalDonations() <em>Total Donations</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTotalDonations()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final float TOTAL_DONATIONS_EDEFAULT = 0.0F;
+
+	/**
+	 * The default value of the '{@link #getTotalFollowers() <em>Total Followers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTotalFollowers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int TOTAL_FOLLOWERS_EDEFAULT = 0;
+
+	/**
+	 * The default value of the '{@link #getTotalViews() <em>Total Views</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTotalViews()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int TOTAL_VIEWS_EDEFAULT = 0;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -254,7 +299,7 @@ public class ChannelImpl extends AuditableImpl implements Channel {
 	 * @generated
 	 */
 	@Override
-	public UUID getChannelID() {
+	public String getChannelID() {
 		return channelID;
 	}
 
@@ -264,8 +309,8 @@ public class ChannelImpl extends AuditableImpl implements Channel {
 	 * @generated
 	 */
 	@Override
-	public void setChannelID(UUID newChannelID) {
-		UUID oldChannelID = channelID;
+	public void setChannelID(String newChannelID) {
+		String oldChannelID = channelID;
 		channelID = newChannelID;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StreamingPlatformPackage.CHANNEL__CHANNEL_ID, oldChannelID, channelID));
@@ -443,6 +488,133 @@ public class ChannelImpl extends AuditableImpl implements Channel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public float getTotalDonations() {
+		/**
+		 * donations->collect(d | d.amount)->sum()
+		 */
+		final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ List<Donation> donations = this.getDonations();
+		final /*@NonInvalid*/ OrderedSetValue BOXED_donations = idResolver.createOrderedSetOfAll(StreamingPlatformTables.ORD_CLSSid_Donation, donations);
+		/*@Thrown*/ Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(StreamingPlatformTables.SEQ_DATAid_EFloat);
+		Iterator<Object> ITERATOR_d = BOXED_donations.iterator();
+		/*@NonInvalid*/ SequenceValue collect;
+		while (true) {
+			if (!ITERATOR_d.hasNext()) {
+				collect = accumulator;
+				break;
+			}
+			/*@NonInvalid*/ Donation d = (Donation)ITERATOR_d.next();
+			/**
+			 * d.amount
+			 */
+			final /*@NonInvalid*/ float amount = d.getAmount();
+			final /*@NonInvalid*/ RealValue BOXED_amount = ValueUtil.realValueOf(amount);
+			//
+			accumulator.add(BOXED_amount);
+		}
+		final /*@NonInvalid*/ RealValue sum = (RealValue)CollectionSumOperation.INSTANCE.evaluate(executor, StreamingPlatformTables.DATAid_EFloat, collect);
+		final /*@NonInvalid*/ float ECORE_sum = ValueUtil.floatValueOf(sum);
+		return ECORE_sum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setTotalDonations(float newTotalDonations) {
+		// TODO: implement this method to set the 'Total Donations' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getTotalFollowers() {
+		/**
+		 * followers->size()
+		 */
+		final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ List<User> followers = this.getFollowers();
+		final /*@NonInvalid*/ OrderedSetValue BOXED_followers = idResolver.createOrderedSetOfAll(StreamingPlatformTables.ORD_CLSSid_User, followers);
+		final /*@NonInvalid*/ IntegerValue size = CollectionSizeOperation.INSTANCE.evaluate(BOXED_followers);
+		final /*@NonInvalid*/ int ECORE_size = ValueUtil.intValueOf(size);
+		return ECORE_size;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setTotalFollowers(int newTotalFollowers) {
+		// TODO: implement this method to set the 'Total Followers' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getTotalViews() {
+		/**
+		 * streams->collect(s | s.viewCount)->sum()
+		 */
+		final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ List<Stream> streams = this.getStreams();
+		final /*@NonInvalid*/ OrderedSetValue BOXED_streams = idResolver.createOrderedSetOfAll(StreamingPlatformTables.ORD_CLSSid_Stream, streams);
+		/*@Thrown*/ Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(StreamingPlatformTables.SEQ_DATAid_EInt);
+		Iterator<Object> ITERATOR_s = BOXED_streams.iterator();
+		/*@NonInvalid*/ SequenceValue collect;
+		while (true) {
+			if (!ITERATOR_s.hasNext()) {
+				collect = accumulator;
+				break;
+			}
+			/*@NonInvalid*/ Stream s = (Stream)ITERATOR_s.next();
+			/**
+			 * s.viewCount
+			 */
+			final /*@NonInvalid*/ int viewCount = s.getViewCount();
+			final /*@NonInvalid*/ IntegerValue BOXED_viewCount = ValueUtil.integerValueOf(viewCount);
+			//
+			accumulator.add(BOXED_viewCount);
+		}
+		final /*@NonInvalid*/ IntegerValue sum = (IntegerValue)CollectionSumOperation.INSTANCE.evaluate(executor, StreamingPlatformTables.DATAid_EInt, collect);
+		final /*@NonInvalid*/ int ECORE_sum = ValueUtil.intValueOf(sum);
+		return ECORE_sum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setTotalViews(int newTotalViews) {
+		// TODO: implement this method to set the 'Total Views' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -512,6 +684,12 @@ public class ChannelImpl extends AuditableImpl implements Channel {
 			case StreamingPlatformPackage.CHANNEL__OWNER:
 				if (resolve) return getOwner();
 				return basicGetOwner();
+			case StreamingPlatformPackage.CHANNEL__TOTAL_DONATIONS:
+				return getTotalDonations();
+			case StreamingPlatformPackage.CHANNEL__TOTAL_FOLLOWERS:
+				return getTotalFollowers();
+			case StreamingPlatformPackage.CHANNEL__TOTAL_VIEWS:
+				return getTotalViews();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -529,7 +707,7 @@ public class ChannelImpl extends AuditableImpl implements Channel {
 				setName((String)newValue);
 				return;
 			case StreamingPlatformPackage.CHANNEL__CHANNEL_ID:
-				setChannelID((UUID)newValue);
+				setChannelID((String)newValue);
 				return;
 			case StreamingPlatformPackage.CHANNEL__DESCRIPTION:
 				setDescription((String)newValue);
@@ -568,6 +746,15 @@ public class ChannelImpl extends AuditableImpl implements Channel {
 				return;
 			case StreamingPlatformPackage.CHANNEL__OWNER:
 				setOwner((User)newValue);
+				return;
+			case StreamingPlatformPackage.CHANNEL__TOTAL_DONATIONS:
+				setTotalDonations((Float)newValue);
+				return;
+			case StreamingPlatformPackage.CHANNEL__TOTAL_FOLLOWERS:
+				setTotalFollowers((Integer)newValue);
+				return;
+			case StreamingPlatformPackage.CHANNEL__TOTAL_VIEWS:
+				setTotalViews((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -617,6 +804,15 @@ public class ChannelImpl extends AuditableImpl implements Channel {
 			case StreamingPlatformPackage.CHANNEL__OWNER:
 				setOwner((User)null);
 				return;
+			case StreamingPlatformPackage.CHANNEL__TOTAL_DONATIONS:
+				setTotalDonations(TOTAL_DONATIONS_EDEFAULT);
+				return;
+			case StreamingPlatformPackage.CHANNEL__TOTAL_FOLLOWERS:
+				setTotalFollowers(TOTAL_FOLLOWERS_EDEFAULT);
+				return;
+			case StreamingPlatformPackage.CHANNEL__TOTAL_VIEWS:
+				setTotalViews(TOTAL_VIEWS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -653,6 +849,12 @@ public class ChannelImpl extends AuditableImpl implements Channel {
 				return badges != null && !badges.isEmpty();
 			case StreamingPlatformPackage.CHANNEL__OWNER:
 				return owner != null;
+			case StreamingPlatformPackage.CHANNEL__TOTAL_DONATIONS:
+				return getTotalDonations() != TOTAL_DONATIONS_EDEFAULT;
+			case StreamingPlatformPackage.CHANNEL__TOTAL_FOLLOWERS:
+				return getTotalFollowers() != TOTAL_FOLLOWERS_EDEFAULT;
+			case StreamingPlatformPackage.CHANNEL__TOTAL_VIEWS:
+				return getTotalViews() != TOTAL_VIEWS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

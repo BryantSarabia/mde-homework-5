@@ -4,9 +4,6 @@ package StreamingPlatform.impl;
 
 import StreamingPlatform.Badge;
 import StreamingPlatform.StreamingPlatformPackage;
-
-import java.util.UUID;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -33,7 +30,7 @@ public class BadgeImpl extends FeatureImpl implements Badge {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final UUID BADGE_ID_EDEFAULT = null;
+	protected static final String BADGE_ID_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getBadgeID() <em>Badge ID</em>}' attribute.
@@ -43,7 +40,7 @@ public class BadgeImpl extends FeatureImpl implements Badge {
 	 * @generated
 	 * @ordered
 	 */
-	protected UUID badgeID = BADGE_ID_EDEFAULT;
+	protected String badgeID = BADGE_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -70,7 +67,7 @@ public class BadgeImpl extends FeatureImpl implements Badge {
 	 * @generated
 	 */
 	@Override
-	public UUID getBadgeID() {
+	public String getBadgeID() {
 		return badgeID;
 	}
 
@@ -80,8 +77,8 @@ public class BadgeImpl extends FeatureImpl implements Badge {
 	 * @generated
 	 */
 	@Override
-	public void setBadgeID(UUID newBadgeID) {
-		UUID oldBadgeID = badgeID;
+	public void setBadgeID(String newBadgeID) {
+		String oldBadgeID = badgeID;
 		badgeID = newBadgeID;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StreamingPlatformPackage.BADGE__BADGE_ID, oldBadgeID, badgeID));
@@ -110,7 +107,7 @@ public class BadgeImpl extends FeatureImpl implements Badge {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case StreamingPlatformPackage.BADGE__BADGE_ID:
-				setBadgeID((UUID)newValue);
+				setBadgeID((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

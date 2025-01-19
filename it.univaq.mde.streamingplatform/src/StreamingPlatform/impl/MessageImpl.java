@@ -4,9 +4,6 @@ package StreamingPlatform.impl;
 
 import StreamingPlatform.Message;
 import StreamingPlatform.StreamingPlatformPackage;
-
-import java.util.UUID;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -34,7 +31,7 @@ public class MessageImpl extends UserInteractionImpl implements Message {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final UUID MESSAGE_ID_EDEFAULT = null;
+	protected static final String MESSAGE_ID_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getMessageID() <em>Message ID</em>}' attribute.
@@ -44,7 +41,7 @@ public class MessageImpl extends UserInteractionImpl implements Message {
 	 * @generated
 	 * @ordered
 	 */
-	protected UUID messageID = MESSAGE_ID_EDEFAULT;
+	protected String messageID = MESSAGE_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getContent() <em>Content</em>}' attribute.
@@ -91,7 +88,7 @@ public class MessageImpl extends UserInteractionImpl implements Message {
 	 * @generated
 	 */
 	@Override
-	public UUID getMessageID() {
+	public String getMessageID() {
 		return messageID;
 	}
 
@@ -101,8 +98,8 @@ public class MessageImpl extends UserInteractionImpl implements Message {
 	 * @generated
 	 */
 	@Override
-	public void setMessageID(UUID newMessageID) {
-		UUID oldMessageID = messageID;
+	public void setMessageID(String newMessageID) {
+		String oldMessageID = messageID;
 		messageID = newMessageID;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StreamingPlatformPackage.MESSAGE__MESSAGE_ID, oldMessageID, messageID));
@@ -156,7 +153,7 @@ public class MessageImpl extends UserInteractionImpl implements Message {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case StreamingPlatformPackage.MESSAGE__MESSAGE_ID:
-				setMessageID((UUID)newValue);
+				setMessageID((String)newValue);
 				return;
 			case StreamingPlatformPackage.MESSAGE__CONTENT:
 				setContent((String)newValue);

@@ -16,6 +16,7 @@ package StreamingPlatform;
  *   <li>{@link StreamingPlatform.Feature#getDonationAmount <em>Donation Amount</em>}</li>
  *   <li>{@link StreamingPlatform.Feature#getDescription <em>Description</em>}</li>
  *   <li>{@link StreamingPlatform.Feature#getUnlockCondition <em>Unlock Condition</em>}</li>
+ *   <li>{@link StreamingPlatform.Feature#getEligibilityDescription <em>Eligibility Description</em>}</li>
  * </ul>
  *
  * @see StreamingPlatform.StreamingPlatformPackage#getFeature()
@@ -30,7 +31,7 @@ public interface Feature extends NamedElement {
 	 * @return the value of the '<em>Tenure</em>' attribute.
 	 * @see #setTenure(short)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getFeature_Tenure()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	short getTenure();
@@ -52,7 +53,7 @@ public interface Feature extends NamedElement {
 	 * @return the value of the '<em>Donation Amount</em>' attribute.
 	 * @see #setDonationAmount(float)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getFeature_DonationAmount()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	float getDonationAmount();
@@ -113,5 +114,27 @@ public interface Feature extends NamedElement {
 	 * @generated
 	 */
 	void setUnlockCondition(UnlockCondition value);
+
+	/**
+	 * Returns the value of the '<em><b>Eligibility Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Eligibility Description</em>' attribute.
+	 * @see #setEligibilityDescription(String)
+	 * @see StreamingPlatform.StreamingPlatformPackage#getFeature_EligibilityDescription()
+	 * @model required="true" volatile="true" derived="true"
+	 * @generated
+	 */
+	String getEligibilityDescription();
+
+	/**
+	 * Sets the value of the '{@link StreamingPlatform.Feature#getEligibilityDescription <em>Eligibility Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Eligibility Description</em>' attribute.
+	 * @see #getEligibilityDescription()
+	 * @generated
+	 */
+	void setEligibilityDescription(String value);
 
 } // Feature

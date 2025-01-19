@@ -19,7 +19,7 @@ public class SubscriptionUtils {
     public static Subscription create(String name, Tier tier, float price, SubscriptionDuration subscriptionDuration, boolean autoRenewal,Currency currency, PaymentStatus paymentStatus, PaymentMethod paymentMethod, String description) {
         Subscription subscription = StreamingPlatformFactory.eINSTANCE.createSubscription();
         
-        subscription.setSubscriptionID(UUID.randomUUID());
+        subscription.setSubscriptionID(UUID.randomUUID().toString());
         subscription.setName(name);
         subscription.setTier(tier);
         subscription.setPrice(price);

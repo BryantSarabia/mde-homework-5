@@ -5,9 +5,6 @@ package StreamingPlatform.impl;
 import StreamingPlatform.Reaction;
 import StreamingPlatform.ReactionType;
 import StreamingPlatform.StreamingPlatformPackage;
-
-import java.util.UUID;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -37,7 +34,7 @@ public class ReactionImpl extends UserInteractionImpl implements Reaction {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final UUID REACTION_ID_EDEFAULT = null;
+	protected static final String REACTION_ID_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getReactionID() <em>Reaction ID</em>}' attribute.
@@ -47,7 +44,7 @@ public class ReactionImpl extends UserInteractionImpl implements Reaction {
 	 * @generated
 	 * @ordered
 	 */
-	protected UUID reactionID = REACTION_ID_EDEFAULT;
+	protected String reactionID = REACTION_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getReactionType() <em>Reaction Type</em>}' attribute.
@@ -94,7 +91,7 @@ public class ReactionImpl extends UserInteractionImpl implements Reaction {
 	 * @generated
 	 */
 	@Override
-	public UUID getReactionID() {
+	public String getReactionID() {
 		return reactionID;
 	}
 
@@ -104,8 +101,8 @@ public class ReactionImpl extends UserInteractionImpl implements Reaction {
 	 * @generated
 	 */
 	@Override
-	public void setReactionID(UUID newReactionID) {
-		UUID oldReactionID = reactionID;
+	public void setReactionID(String newReactionID) {
+		String oldReactionID = reactionID;
 		reactionID = newReactionID;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StreamingPlatformPackage.REACTION__REACTION_ID, oldReactionID, reactionID));
@@ -159,7 +156,7 @@ public class ReactionImpl extends UserInteractionImpl implements Reaction {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case StreamingPlatformPackage.REACTION__REACTION_ID:
-				setReactionID((UUID)newValue);
+				setReactionID((String)newValue);
 				return;
 			case StreamingPlatformPackage.REACTION__REACTION_TYPE:
 				setReactionType((ReactionType)newValue);

@@ -13,7 +13,7 @@ public class BadgeUtils {
 	
     public static Badge create(String name, short tenure ,String description ) {
         Badge badge = StreamingPlatformFactory.eINSTANCE.createBadge();
-        badge.setBadgeID(UUID.randomUUID());
+        badge.setBadgeID(UUID.randomUUID().toString());
         badge.setName(name);
         badge.setUnlockCondition(UnlockCondition.TENURE);
         badge.setTenure(tenure);
@@ -23,7 +23,7 @@ public class BadgeUtils {
     
     public static Badge create(String name, float donationAmount ,String description ) {
         Badge badge = StreamingPlatformFactory.eINSTANCE.createBadge();
-        badge.setBadgeID(UUID.randomUUID());
+        badge.setBadgeID(UUID.randomUUID().toString());
         badge.setName(name);
         badge.setUnlockCondition(UnlockCondition.DONATION_AMOUNT);
         badge.setDonationAmount(donationAmount);

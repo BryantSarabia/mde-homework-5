@@ -5,8 +5,6 @@ package StreamingPlatform.impl;
 import StreamingPlatform.*;
 
 import java.sql.Timestamp;
-import java.util.UUID;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -548,8 +546,8 @@ public class StreamingPlatformFactoryImpl extends EFactoryImpl implements Stream
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UUID createUUIDFromString(EDataType eDataType, String initialValue) {
-		return (UUID)super.createFromString(eDataType, initialValue);
+	public String createUUIDFromString(EDataType eDataType, String initialValue) {
+		return (String)super.createFromString(eDataType, initialValue);
 	}
 
 	/**

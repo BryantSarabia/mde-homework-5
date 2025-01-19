@@ -4,17 +4,21 @@ package StreamingPlatform.impl;
 
 import StreamingPlatform.Channel;
 import StreamingPlatform.Device;
+import StreamingPlatform.Donation;
 import StreamingPlatform.Language;
 import StreamingPlatform.NamedElement;
 import StreamingPlatform.Platform;
 import StreamingPlatform.Region;
 import StreamingPlatform.Resolution;
 import StreamingPlatform.StreamingPlatformPackage;
+import StreamingPlatform.StreamingPlatformTables;
+import StreamingPlatform.Subscription;
 import StreamingPlatform.User;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
-import java.util.UUID;
-
+import java.util.Iterator;
+import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -28,6 +32,20 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.ocl.pivot.evaluation.Executor;
+import org.eclipse.ocl.pivot.ids.IdResolver;
+import org.eclipse.ocl.pivot.ids.TypeId;
+import org.eclipse.ocl.pivot.library.collection.CollectionSizeOperation;
+import org.eclipse.ocl.pivot.library.collection.CollectionSumOperation;
+import org.eclipse.ocl.pivot.library.numeric.NumericPlusOperation;
+import org.eclipse.ocl.pivot.utilities.PivotUtil;
+import org.eclipse.ocl.pivot.utilities.ValueUtil;
+import org.eclipse.ocl.pivot.values.IntegerValue;
+import org.eclipse.ocl.pivot.values.InvalidValueException;
+import org.eclipse.ocl.pivot.values.OrderedSetValue;
+import org.eclipse.ocl.pivot.values.RealValue;
+import org.eclipse.ocl.pivot.values.SequenceValue;
+import org.eclipse.ocl.pivot.values.SequenceValue.Accumulator;
 
 /**
  * <!-- begin-user-doc -->
@@ -48,6 +66,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link StreamingPlatform.impl.PlatformImpl#getSupportedResolutions <em>Supported Resolutions</em>}</li>
  *   <li>{@link StreamingPlatform.impl.PlatformImpl#getUsers <em>Users</em>}</li>
  *   <li>{@link StreamingPlatform.impl.PlatformImpl#getChannels <em>Channels</em>}</li>
+ *   <li>{@link StreamingPlatform.impl.PlatformImpl#getTotalRevenue <em>Total Revenue</em>}</li>
  * </ul>
  *
  * @generated
@@ -81,7 +100,7 @@ public class PlatformImpl extends AuditableImpl implements Platform {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final UUID PLATFORM_ID_EDEFAULT = null;
+	protected static final String PLATFORM_ID_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getPlatformID() <em>Platform ID</em>}' attribute.
@@ -91,7 +110,7 @@ public class PlatformImpl extends AuditableImpl implements Platform {
 	 * @generated
 	 * @ordered
 	 */
-	protected UUID platformID = PLATFORM_ID_EDEFAULT;
+	protected String platformID = PLATFORM_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getRevenue() <em>Revenue</em>}' attribute.
@@ -214,6 +233,16 @@ public class PlatformImpl extends AuditableImpl implements Platform {
 	protected EList<Channel> channels;
 
 	/**
+	 * The default value of the '{@link #getTotalRevenue() <em>Total Revenue</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTotalRevenue()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double TOTAL_REVENUE_EDEFAULT = 0.0;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -261,7 +290,7 @@ public class PlatformImpl extends AuditableImpl implements Platform {
 	 * @generated
 	 */
 	@Override
-	public UUID getPlatformID() {
+	public String getPlatformID() {
 		return platformID;
 	}
 
@@ -271,8 +300,8 @@ public class PlatformImpl extends AuditableImpl implements Platform {
 	 * @generated
 	 */
 	@Override
-	public void setPlatformID(UUID newPlatformID) {
-		UUID oldPlatformID = platformID;
+	public void setPlatformID(String newPlatformID) {
+		String oldPlatformID = platformID;
 		platformID = newPlatformID;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StreamingPlatformPackage.PLATFORM__PLATFORM_ID, oldPlatformID, platformID));
@@ -431,6 +460,173 @@ public class PlatformImpl extends AuditableImpl implements Platform {
 	 * @generated
 	 */
 	@Override
+	public double getTotalRevenue() {
+		/**
+		 * channels->collect(c |
+		 *   c.donations->collect(d | d.amount)
+		 *   ->sum() +
+		 *   c.subscriptions->collect(s | s.price)
+		 *   ->sum())->sum()
+		 */
+		final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ List<Channel> channels = this.getChannels();
+		final /*@NonInvalid*/ OrderedSetValue BOXED_channels = idResolver.createOrderedSetOfAll(StreamingPlatformTables.ORD_CLSSid_Channel, channels);
+		/*@Thrown*/ Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(StreamingPlatformTables.SEQ_PRIMid_Real);
+		Iterator<Object> ITERATOR_c = BOXED_channels.iterator();
+		/*@NonInvalid*/ SequenceValue collect;
+		while (true) {
+			if (!ITERATOR_c.hasNext()) {
+				collect = accumulator;
+				break;
+			}
+			/*@NonInvalid*/ Channel c = (Channel)ITERATOR_c.next();
+			/**
+			 *
+			 * c.donations->collect(d | d.amount)
+			 * ->sum() +
+			 * c.subscriptions->collect(s | s.price)
+			 * ->sum()
+			 */
+			final /*@NonInvalid*/ List<Donation> donations = c.getDonations();
+			final /*@NonInvalid*/ OrderedSetValue BOXED_donations = idResolver.createOrderedSetOfAll(StreamingPlatformTables.ORD_CLSSid_Donation, donations);
+			/*@Thrown*/ Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(StreamingPlatformTables.SEQ_DATAid_EFloat);
+			Iterator<Object> ITERATOR_d = BOXED_donations.iterator();
+			/*@NonInvalid*/ SequenceValue collect_0;
+			while (true) {
+				if (!ITERATOR_d.hasNext()) {
+					collect_0 = accumulator_0;
+					break;
+				}
+				/*@NonInvalid*/ Donation d = (Donation)ITERATOR_d.next();
+				/**
+				 * d.amount
+				 */
+				final /*@NonInvalid*/ float amount = d.getAmount();
+				final /*@NonInvalid*/ RealValue BOXED_amount = ValueUtil.realValueOf(amount);
+				//
+				accumulator_0.add(BOXED_amount);
+			}
+			final /*@NonInvalid*/ RealValue sum = (RealValue)CollectionSumOperation.INSTANCE.evaluate(executor, StreamingPlatformTables.DATAid_EFloat, collect_0);
+			final /*@NonInvalid*/ List<Subscription> subscriptions = c.getSubscriptions();
+			final /*@NonInvalid*/ OrderedSetValue BOXED_subscriptions = idResolver.createOrderedSetOfAll(StreamingPlatformTables.ORD_CLSSid_Subscription, subscriptions);
+			/*@Thrown*/ Accumulator accumulator_1 = ValueUtil.createSequenceAccumulatorValue(StreamingPlatformTables.SEQ_DATAid_EFloat);
+			Iterator<Object> ITERATOR_s = BOXED_subscriptions.iterator();
+			/*@NonInvalid*/ SequenceValue collect_1;
+			while (true) {
+				if (!ITERATOR_s.hasNext()) {
+					collect_1 = accumulator_1;
+					break;
+				}
+				/*@NonInvalid*/ Subscription s = (Subscription)ITERATOR_s.next();
+				/**
+				 * s.price
+				 */
+				final /*@NonInvalid*/ float price = s.getPrice();
+				final /*@NonInvalid*/ RealValue BOXED_price = ValueUtil.realValueOf(price);
+				//
+				accumulator_1.add(BOXED_price);
+			}
+			final /*@NonInvalid*/ RealValue sum_0 = (RealValue)CollectionSumOperation.INSTANCE.evaluate(executor, StreamingPlatformTables.DATAid_EFloat, collect_1);
+			final /*@NonInvalid*/ RealValue sum_1 = NumericPlusOperation.INSTANCE.evaluate(sum, sum_0);
+			//
+			accumulator.add(sum_1);
+		}
+		final /*@NonInvalid*/ RealValue sum_2 = (RealValue)CollectionSumOperation.INSTANCE.evaluate(executor, TypeId.REAL, collect);
+		final /*@NonInvalid*/ double ECORE_sum_2 = ValueUtil.doubleValueOf(sum_2);
+		return ECORE_sum_2;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setTotalRevenue(double newTotalRevenue) {
+		// TODO: implement this method to set the 'Total Revenue' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int activeUsersCount() {
+		/**
+		 * users->select(u | u.isOnline = true)->size()
+		 */
+		final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ List<User> users = this.getUsers();
+		final /*@NonInvalid*/ OrderedSetValue BOXED_users = idResolver.createOrderedSetOfAll(StreamingPlatformTables.ORD_CLSSid_User, users);
+		/*@Thrown*/ org.eclipse.ocl.pivot.values.OrderedSetValue.Accumulator accumulator = ValueUtil.createOrderedSetAccumulatorValue(StreamingPlatformTables.ORD_CLSSid_User);
+		Iterator<Object> ITERATOR_u = BOXED_users.iterator();
+		/*@NonInvalid*/ OrderedSetValue select;
+		while (true) {
+			if (!ITERATOR_u.hasNext()) {
+				select = accumulator;
+				break;
+			}
+			/*@NonInvalid*/ User u = (User)ITERATOR_u.next();
+			/**
+			 * u.isOnline
+			 */
+			final /*@NonInvalid*/ boolean isOnline = u.isIsOnline();
+			//
+			if (isOnline) {
+				accumulator.add(u);
+			}
+		}
+		final /*@NonInvalid*/ IntegerValue size = CollectionSizeOperation.INSTANCE.evaluate(select);
+		final /*@NonInvalid*/ int ECORE_size = ValueUtil.intValueOf(size);
+		return ECORE_size;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Channel findChannelByName(final String name) {
+		/**
+		 * channels->any(c | c.name = name)
+		 */
+		final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ List<Channel> channels = this.getChannels();
+		final /*@NonInvalid*/ OrderedSetValue BOXED_channels = idResolver.createOrderedSetOfAll(StreamingPlatformTables.ORD_CLSSid_Channel, channels);
+		Iterator<Object> ITERATOR_c = BOXED_channels.iterator();
+		/*@NonInvalid*/ Channel any;
+		while (true) {
+			if (!ITERATOR_c.hasNext()) {
+				throw new InvalidValueException("Nothing to return for ''any''");
+			}
+			/*@NonInvalid*/ Channel c = (Channel)ITERATOR_c.next();
+			/**
+			 * c.name = name
+			 */
+			final /*@NonInvalid*/ String name_0 = c.getName();
+			final /*@NonInvalid*/ boolean eq = name_0.equals(name);
+			//
+			if (eq) {			// Carry on till something found
+				any = c;
+				break;
+			}
+		}
+		return any;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case StreamingPlatformPackage.PLATFORM__USERS:
@@ -471,6 +667,8 @@ public class PlatformImpl extends AuditableImpl implements Platform {
 				return getUsers();
 			case StreamingPlatformPackage.PLATFORM__CHANNELS:
 				return getChannels();
+			case StreamingPlatformPackage.PLATFORM__TOTAL_REVENUE:
+				return getTotalRevenue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -488,7 +686,7 @@ public class PlatformImpl extends AuditableImpl implements Platform {
 				setName((String)newValue);
 				return;
 			case StreamingPlatformPackage.PLATFORM__PLATFORM_ID:
-				setPlatformID((UUID)newValue);
+				setPlatformID((String)newValue);
 				return;
 			case StreamingPlatformPackage.PLATFORM__REVENUE:
 				setRevenue((Double)newValue);
@@ -522,6 +720,9 @@ public class PlatformImpl extends AuditableImpl implements Platform {
 			case StreamingPlatformPackage.PLATFORM__CHANNELS:
 				getChannels().clear();
 				getChannels().addAll((Collection<? extends Channel>)newValue);
+				return;
+			case StreamingPlatformPackage.PLATFORM__TOTAL_REVENUE:
+				setTotalRevenue((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -568,6 +769,9 @@ public class PlatformImpl extends AuditableImpl implements Platform {
 			case StreamingPlatformPackage.PLATFORM__CHANNELS:
 				getChannels().clear();
 				return;
+			case StreamingPlatformPackage.PLATFORM__TOTAL_REVENUE:
+				setTotalRevenue(TOTAL_REVENUE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -602,6 +806,8 @@ public class PlatformImpl extends AuditableImpl implements Platform {
 				return users != null && !users.isEmpty();
 			case StreamingPlatformPackage.PLATFORM__CHANNELS:
 				return channels != null && !channels.isEmpty();
+			case StreamingPlatformPackage.PLATFORM__TOTAL_REVENUE:
+				return getTotalRevenue() != TOTAL_REVENUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -636,6 +842,22 @@ public class PlatformImpl extends AuditableImpl implements Platform {
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case StreamingPlatformPackage.PLATFORM___ACTIVE_USERS_COUNT:
+				return activeUsersCount();
+			case StreamingPlatformPackage.PLATFORM___FIND_CHANNEL_BY_NAME__STRING:
+				return findChannelByName((String)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

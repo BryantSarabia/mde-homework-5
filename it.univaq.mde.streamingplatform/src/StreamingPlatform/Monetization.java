@@ -3,6 +3,8 @@
 package StreamingPlatform;
 
 import java.util.Date;
+import java.util.Map;
+import org.eclipse.emf.common.util.DiagnosticChain;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +25,7 @@ import java.util.Date;
  *
  * @see StreamingPlatform.StreamingPlatformPackage#getMonetization()
  * @model abstract="true"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='positiveAmount'"
  * @generated
  */
 public interface Monetization extends NamedElement {
@@ -166,5 +169,13 @@ public interface Monetization extends NamedElement {
 	 * @generated
 	 */
 	void setDescription(String value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='amount &gt;= 0.0'"
+	 * @generated
+	 */
+	boolean positiveAmount(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // Monetization

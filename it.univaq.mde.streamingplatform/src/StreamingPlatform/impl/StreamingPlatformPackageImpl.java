@@ -35,14 +35,18 @@ import StreamingPlatform.UnlockCondition;
 import StreamingPlatform.User;
 import StreamingPlatform.UserInteraction;
 
+import StreamingPlatform.util.StreamingPlatformValidator;
 import java.sql.Timestamp;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EGenericType;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -328,6 +332,16 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 		// Initialize created meta-data
 		theStreamingPlatformPackage.initializePackageContents();
 
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theStreamingPlatformPackage,
+			 new EValidator.Descriptor() {
+				 @Override
+				 public EValidator getEValidator() {
+					 return StreamingPlatformValidator.INSTANCE;
+				 }
+			 });
+
 		// Mark meta-data to indicate it can't be changed
 		theStreamingPlatformPackage.freeze();
 
@@ -472,6 +486,36 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 	 * @generated
 	 */
 	@Override
+	public EAttribute getPlatform_TotalRevenue() {
+		return (EAttribute)platformEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getPlatform__ActiveUsersCount() {
+		return platformEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getPlatform__FindChannelByName__String() {
+		return platformEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getChannel() {
 		return channelEClass;
 	}
@@ -592,6 +636,36 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 	 * @generated
 	 */
 	@Override
+	public EAttribute getChannel_TotalDonations() {
+		return (EAttribute)channelEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getChannel_TotalFollowers() {
+		return (EAttribute)channelEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getChannel_TotalViews() {
+		return (EAttribute)channelEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getUser() {
 		return userEClass;
 	}
@@ -692,6 +766,36 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 	 * @generated
 	 */
 	@Override
+	public EOperation getUser__TotalDonations() {
+		return userEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getUser__IsFollowing__Channel() {
+		return userEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getUser__TotalSpending() {
+		return userEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getBadge() {
 		return badgeEClass;
 	}
@@ -764,6 +868,26 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 	@Override
 	public EReference getStream_Viewers() {
 		return (EReference)streamEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStream_ActiveViewers() {
+		return (EAttribute)streamEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getStream__LiveCondition__DiagnosticChain_Map() {
+		return streamEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -932,6 +1056,26 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 	 * @generated
 	 */
 	@Override
+	public EOperation getSubscription__StartDateLessThanEndDate__DiagnosticChain_Map() {
+		return subscriptionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getSubscription__TransactionDateLessThanStartDate__DiagnosticChain_Map() {
+		return subscriptionEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getMessage() {
 		return messageEClass;
 	}
@@ -1064,6 +1208,16 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 	@Override
 	public EAttribute getFeature_UnlockCondition() {
 		return (EAttribute)featureEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFeature_EligibilityDescription() {
+		return (EAttribute)featureEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1272,6 +1426,16 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 	 * @generated
 	 */
 	@Override
+	public EOperation getMonetization__PositiveAmount__DiagnosticChain_Map() {
+		return monetizationEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getSubscriptionDuration() {
 		return subscriptionDurationEEnum;
 	}
@@ -1459,6 +1623,9 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 		createEAttribute(platformEClass, PLATFORM__SUPPORTED_RESOLUTIONS);
 		createEReference(platformEClass, PLATFORM__USERS);
 		createEReference(platformEClass, PLATFORM__CHANNELS);
+		createEAttribute(platformEClass, PLATFORM__TOTAL_REVENUE);
+		createEOperation(platformEClass, PLATFORM___ACTIVE_USERS_COUNT);
+		createEOperation(platformEClass, PLATFORM___FIND_CHANNEL_BY_NAME__STRING);
 
 		channelEClass = createEClass(CHANNEL);
 		createEAttribute(channelEClass, CHANNEL__CHANNEL_ID);
@@ -1472,6 +1639,9 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 		createEReference(channelEClass, CHANNEL__EMOTES);
 		createEReference(channelEClass, CHANNEL__BADGES);
 		createEReference(channelEClass, CHANNEL__OWNER);
+		createEAttribute(channelEClass, CHANNEL__TOTAL_DONATIONS);
+		createEAttribute(channelEClass, CHANNEL__TOTAL_FOLLOWERS);
+		createEAttribute(channelEClass, CHANNEL__TOTAL_VIEWS);
 
 		userEClass = createEClass(USER);
 		createEAttribute(userEClass, USER__USER_ID);
@@ -1483,6 +1653,9 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 		createEReference(userEClass, USER__SUBSCRIPTIONS);
 		createEReference(userEClass, USER__DONATIONS);
 		createEReference(userEClass, USER__FOLLOWED_CHANNELS);
+		createEOperation(userEClass, USER___TOTAL_DONATIONS);
+		createEOperation(userEClass, USER___IS_FOLLOWING__CHANNEL);
+		createEOperation(userEClass, USER___TOTAL_SPENDING);
 
 		badgeEClass = createEClass(BADGE);
 		createEAttribute(badgeEClass, BADGE__BADGE_ID);
@@ -1494,6 +1667,8 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 		createEAttribute(streamEClass, STREAM__STREAM_ID);
 		createEAttribute(streamEClass, STREAM__IS_LIVE);
 		createEReference(streamEClass, STREAM__VIEWERS);
+		createEAttribute(streamEClass, STREAM__ACTIVE_VIEWERS);
+		createEOperation(streamEClass, STREAM___LIVE_CONDITION__DIAGNOSTICCHAIN_MAP);
 
 		clipEClass = createEClass(CLIP);
 		createEAttribute(clipEClass, CLIP__CLIP_ID);
@@ -1513,6 +1688,8 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 		createEAttribute(subscriptionEClass, SUBSCRIPTION__END_DATE);
 		createEReference(subscriptionEClass, SUBSCRIPTION__EMOTES);
 		createEReference(subscriptionEClass, SUBSCRIPTION__BADGE);
+		createEOperation(subscriptionEClass, SUBSCRIPTION___START_DATE_LESS_THAN_END_DATE__DIAGNOSTICCHAIN_MAP);
+		createEOperation(subscriptionEClass, SUBSCRIPTION___TRANSACTION_DATE_LESS_THAN_START_DATE__DIAGNOSTICCHAIN_MAP);
 
 		messageEClass = createEClass(MESSAGE);
 		createEAttribute(messageEClass, MESSAGE__MESSAGE_ID);
@@ -1531,6 +1708,7 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 		createEAttribute(featureEClass, FEATURE__DONATION_AMOUNT);
 		createEAttribute(featureEClass, FEATURE__DESCRIPTION);
 		createEAttribute(featureEClass, FEATURE__UNLOCK_CONDITION);
+		createEAttribute(featureEClass, FEATURE__ELIGIBILITY_DESCRIPTION);
 
 		mediaContentEClass = createEClass(MEDIA_CONTENT);
 		createEAttribute(mediaContentEClass, MEDIA_CONTENT__TITLE);
@@ -1554,6 +1732,7 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 		createEAttribute(monetizationEClass, MONETIZATION__PAYMENT_STATUS);
 		createEAttribute(monetizationEClass, MONETIZATION__PAYMENT_METHOD);
 		createEAttribute(monetizationEClass, MONETIZATION__DESCRIPTION);
+		createEOperation(monetizationEClass, MONETIZATION___POSITIVE_AMOUNT__DIAGNOSTICCHAIN_MAP);
 
 		// Create enums
 		subscriptionDurationEEnum = createEEnum(SUBSCRIPTION_DURATION);
@@ -1635,6 +1814,12 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 		initEAttribute(getPlatform_SupportedResolutions(), this.getResolution(), "supportedResolutions", null, 0, -1, Platform.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlatform_Users(), this.getUser(), null, "users", null, 0, -1, Platform.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlatform_Channels(), this.getChannel(), null, "channels", null, 0, -1, Platform.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlatform_TotalRevenue(), ecorePackage.getEDouble(), "totalRevenue", null, 1, 1, Platform.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getPlatform__ActiveUsersCount(), ecorePackage.getEInt(), "activeUsersCount", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		EOperation op = initEOperation(getPlatform__FindChannelByName__String(), this.getChannel(), "findChannelByName", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(channelEClass, Channel.class, "Channel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getChannel_ChannelID(), this.getUUID(), "channelID", null, 0, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1648,6 +1833,9 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 		initEReference(getChannel_Emotes(), this.getEmote(), null, "emotes", null, 0, -1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChannel_Badges(), this.getBadge(), null, "badges", null, 0, -1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChannel_Owner(), this.getUser(), null, "owner", null, 1, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getChannel_TotalDonations(), ecorePackage.getEFloat(), "totalDonations", null, 1, 1, Channel.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getChannel_TotalFollowers(), ecorePackage.getEInt(), "totalFollowers", null, 1, 1, Channel.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getChannel_TotalViews(), ecorePackage.getEInt(), "totalViews", null, 1, 1, Channel.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(userEClass, User.class, "User", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUser_UserID(), this.getUUID(), "userID", null, 1, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1660,6 +1848,13 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 		initEReference(getUser_Donations(), this.getDonation(), null, "donations", null, 0, -1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUser_FollowedChannels(), this.getChannel(), this.getChannel_Followers(), "followedChannels", null, 0, -1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEOperation(getUser__TotalDonations(), ecorePackage.getEFloat(), "totalDonations", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getUser__IsFollowing__Channel(), ecorePackage.getEBoolean(), "isFollowing", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getChannel(), "channel", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getUser__TotalSpending(), ecorePackage.getEFloat(), "totalSpending", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(badgeEClass, Badge.class, "Badge", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBadge_BadgeID(), this.getUUID(), "badgeID", null, 0, 1, Badge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1670,6 +1865,16 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 		initEAttribute(getStream_StreamID(), this.getUUID(), "streamID", null, 1, 1, Stream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStream_IsLive(), ecorePackage.getEBoolean(), "isLive", "false", 1, 1, Stream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStream_Viewers(), this.getUser(), null, "viewers", null, 0, -1, Stream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStream_ActiveViewers(), ecorePackage.getEInt(), "activeViewers", null, 1, 1, Stream.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getStream__LiveCondition__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "liveCondition", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
+		EGenericType g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(clipEClass, Clip.class, "Clip", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getClip_ClipID(), this.getUUID(), "clipID", null, 1, 1, Clip.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1690,6 +1895,24 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 		initEReference(getSubscription_Emotes(), this.getEmote(), null, "emotes", null, 0, -1, Subscription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSubscription_Badge(), this.getBadge(), null, "badge", null, 1, 1, Subscription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		op = initEOperation(getSubscription__StartDateLessThanEndDate__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "startDateLessThanEndDate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getSubscription__TransactionDateLessThanStartDate__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "transactionDateLessThanStartDate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(messageEClass, Message.class, "Message", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMessage_MessageID(), this.getUUID(), "messageID", null, 1, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessage_Content(), ecorePackage.getEString(), "content", null, 1, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1703,10 +1926,11 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 		initEAttribute(getAuditable_UpdatedAt(), ecorePackage.getEDate(), "updatedAt", null, 0, 1, Auditable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(featureEClass, Feature.class, "Feature", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFeature_Tenure(), ecorePackage.getEShort(), "tenure", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFeature_DonationAmount(), ecorePackage.getEFloat(), "donationAmount", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFeature_Tenure(), ecorePackage.getEShort(), "tenure", null, 1, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFeature_DonationAmount(), ecorePackage.getEFloat(), "donationAmount", null, 1, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFeature_Description(), ecorePackage.getEString(), "description", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFeature_UnlockCondition(), this.getUnlockCondition(), "unlockCondition", null, 1, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFeature_EligibilityDescription(), ecorePackage.getEString(), "eligibilityDescription", null, 1, 1, Feature.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(mediaContentEClass, MediaContent.class, "MediaContent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMediaContent_Title(), ecorePackage.getEString(), "title", null, 1, 1, MediaContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1730,6 +1954,15 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 		initEAttribute(getMonetization_PaymentStatus(), this.getPaymentStatus(), "paymentStatus", null, 1, 1, Monetization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMonetization_PaymentMethod(), this.getPaymentMethod(), "paymentMethod", null, 1, 1, Monetization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMonetization_Description(), ecorePackage.getEString(), "description", null, 0, 1, Monetization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getMonetization__PositiveAmount__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "positiveAmount", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(subscriptionDurationEEnum, SubscriptionDuration.class, "SubscriptionDuration");
@@ -1800,11 +2033,114 @@ public class StreamingPlatformPackageImpl extends EPackageImpl implements Stream
 		addEEnumLiteral(unlockConditionEEnum, UnlockCondition.TENURE);
 
 		// Initialize data types
-		initEDataType(uuidEDataType, java.util.UUID.class, "UUID", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(uuidEDataType, String.class, "UUID", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(timestampEDataType, Timestamp.class, "Timestamp", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+		createPivotAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
+		addAnnotation
+		  (this,
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (streamEClass,
+		   source,
+		   new String[] {
+			   "constraints", "liveCondition"
+		   });
+		addAnnotation
+		  (subscriptionEClass,
+		   source,
+		   new String[] {
+			   "constraints", "transactionDateLessThanStartDate"
+		   });
+		addAnnotation
+		  (monetizationEClass,
+		   source,
+		   new String[] {
+			   "constraints", "positiveAmount"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createPivotAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
+		addAnnotation
+		  (getPlatform__ActiveUsersCount(),
+		   source,
+		   new String[] {
+			   "body", "users->select(u | u.isOnline = true)->size()"
+		   });
+		addAnnotation
+		  (getPlatform__FindChannelByName__String(),
+		   source,
+		   new String[] {
+			   "body", "channels->any(c | c.name = name)"
+		   });
+		addAnnotation
+		  (getUser__TotalDonations(),
+		   source,
+		   new String[] {
+			   "body", "donations->collect(d | d.amount)->sum()"
+		   });
+		addAnnotation
+		  (getUser__IsFollowing__Channel(),
+		   source,
+		   new String[] {
+			   "body", "followedChannels->includes(channel)"
+		   });
+		addAnnotation
+		  (getUser__TotalSpending(),
+		   source,
+		   new String[] {
+			   "body", "subscriptions->collect(s | s.amount)->sum() +\n          \t\t\tdonations->collect(d | d.amount)->sum()"
+		   });
+		addAnnotation
+		  (getStream__LiveCondition__DiagnosticChain_Map(),
+		   source,
+		   new String[] {
+			   "body", "isLive = true implies viewers->notEmpty()"
+		   });
+		addAnnotation
+		  (getSubscription__StartDateLessThanEndDate__DiagnosticChain_Map(),
+		   source,
+		   new String[] {
+			   "body", "startDate <= endDate"
+		   });
+		addAnnotation
+		  (getSubscription__TransactionDateLessThanStartDate__DiagnosticChain_Map(),
+		   source,
+		   new String[] {
+			   "body", "transactionDate <= startDate"
+		   });
+		addAnnotation
+		  (getMonetization__PositiveAmount__DiagnosticChain_Map(),
+		   source,
+		   new String[] {
+			   "body", "amount >= 0.0"
+		   });
 	}
 
 } //StreamingPlatformPackageImpl

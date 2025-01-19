@@ -4,9 +4,6 @@ package StreamingPlatform.impl;
 
 import StreamingPlatform.Emote;
 import StreamingPlatform.StreamingPlatformPackage;
-
-import java.util.UUID;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -33,7 +30,7 @@ public class EmoteImpl extends FeatureImpl implements Emote {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final UUID EMOTE_ID_EDEFAULT = null;
+	protected static final String EMOTE_ID_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getEmoteID() <em>Emote ID</em>}' attribute.
@@ -43,7 +40,7 @@ public class EmoteImpl extends FeatureImpl implements Emote {
 	 * @generated
 	 * @ordered
 	 */
-	protected UUID emoteID = EMOTE_ID_EDEFAULT;
+	protected String emoteID = EMOTE_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -70,7 +67,7 @@ public class EmoteImpl extends FeatureImpl implements Emote {
 	 * @generated
 	 */
 	@Override
-	public UUID getEmoteID() {
+	public String getEmoteID() {
 		return emoteID;
 	}
 
@@ -80,8 +77,8 @@ public class EmoteImpl extends FeatureImpl implements Emote {
 	 * @generated
 	 */
 	@Override
-	public void setEmoteID(UUID newEmoteID) {
-		UUID oldEmoteID = emoteID;
+	public void setEmoteID(String newEmoteID) {
+		String oldEmoteID = emoteID;
 		emoteID = newEmoteID;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StreamingPlatformPackage.EMOTE__EMOTE_ID, oldEmoteID, emoteID));
@@ -110,7 +107,7 @@ public class EmoteImpl extends FeatureImpl implements Emote {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case StreamingPlatformPackage.EMOTE__EMOTE_ID:
-				setEmoteID((UUID)newValue);
+				setEmoteID((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

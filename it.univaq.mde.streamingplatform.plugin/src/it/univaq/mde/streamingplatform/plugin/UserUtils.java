@@ -14,7 +14,7 @@ public class UserUtils {
     public static User create(String name, Role role, String avatar, boolean isOnline, String nickname,
             String description) {
         User user = StreamingPlatformFactory.eINSTANCE.createUser();
-        user.setUserID(UUID.randomUUID());
+        user.setUserID(UUID.randomUUID().toString());
         user.setName(name);
         user.setRole(role);
         user.setAvatar(avatar);

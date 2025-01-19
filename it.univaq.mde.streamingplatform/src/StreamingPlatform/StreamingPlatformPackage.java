@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -23,6 +24,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see StreamingPlatform.StreamingPlatformFactory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore"
  * @generated
  */
 public interface StreamingPlatformPackage extends EPackage {
@@ -269,13 +271,40 @@ public interface StreamingPlatformPackage extends EPackage {
 	int PLATFORM__CHANNELS = AUDITABLE_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Total Revenue</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLATFORM__TOTAL_REVENUE = AUDITABLE_FEATURE_COUNT + 11;
+
+	/**
 	 * The number of structural features of the '<em>Platform</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLATFORM_FEATURE_COUNT = AUDITABLE_FEATURE_COUNT + 11;
+	int PLATFORM_FEATURE_COUNT = AUDITABLE_FEATURE_COUNT + 12;
+
+	/**
+	 * The operation id for the '<em>Active Users Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLATFORM___ACTIVE_USERS_COUNT = AUDITABLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Find Channel By Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLATFORM___FIND_CHANNEL_BY_NAME__STRING = AUDITABLE_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Platform</em>' class.
@@ -284,7 +313,7 @@ public interface StreamingPlatformPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLATFORM_OPERATION_COUNT = AUDITABLE_OPERATION_COUNT + 0;
+	int PLATFORM_OPERATION_COUNT = AUDITABLE_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link StreamingPlatform.impl.ChannelImpl <em>Channel</em>}' class.
@@ -423,13 +452,40 @@ public interface StreamingPlatformPackage extends EPackage {
 	int CHANNEL__OWNER = AUDITABLE_FEATURE_COUNT + 11;
 
 	/**
+	 * The feature id for the '<em><b>Total Donations</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL__TOTAL_DONATIONS = AUDITABLE_FEATURE_COUNT + 12;
+
+	/**
+	 * The feature id for the '<em><b>Total Followers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL__TOTAL_FOLLOWERS = AUDITABLE_FEATURE_COUNT + 13;
+
+	/**
+	 * The feature id for the '<em><b>Total Views</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL__TOTAL_VIEWS = AUDITABLE_FEATURE_COUNT + 14;
+
+	/**
 	 * The number of structural features of the '<em>Channel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_FEATURE_COUNT = AUDITABLE_FEATURE_COUNT + 12;
+	int CHANNEL_FEATURE_COUNT = AUDITABLE_FEATURE_COUNT + 15;
 
 	/**
 	 * The number of operations of the '<em>Channel</em>' class.
@@ -568,13 +624,40 @@ public interface StreamingPlatformPackage extends EPackage {
 	int USER_FEATURE_COUNT = AUDITABLE_FEATURE_COUNT + 10;
 
 	/**
+	 * The operation id for the '<em>Total Donations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER___TOTAL_DONATIONS = AUDITABLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Is Following</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER___IS_FOLLOWING__CHANNEL = AUDITABLE_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Total Spending</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER___TOTAL_SPENDING = AUDITABLE_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>User</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USER_OPERATION_COUNT = AUDITABLE_OPERATION_COUNT + 0;
+	int USER_OPERATION_COUNT = AUDITABLE_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link StreamingPlatform.impl.FeatureImpl <em>Feature</em>}' class.
@@ -632,13 +715,22 @@ public interface StreamingPlatformPackage extends EPackage {
 	int FEATURE__UNLOCK_CONDITION = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Eligibility Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__ELIGIBILITY_DESCRIPTION = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Feature</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int FEATURE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Feature</em>' class.
@@ -703,6 +795,15 @@ public interface StreamingPlatformPackage extends EPackage {
 	 * @ordered
 	 */
 	int BADGE__UNLOCK_CONDITION = FEATURE__UNLOCK_CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Eligibility Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BADGE__ELIGIBILITY_DESCRIPTION = FEATURE__ELIGIBILITY_DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Badge ID</b></em>' attribute.
@@ -785,6 +886,15 @@ public interface StreamingPlatformPackage extends EPackage {
 	 * @ordered
 	 */
 	int EMOTE__UNLOCK_CONDITION = FEATURE__UNLOCK_CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Eligibility Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMOTE__ELIGIBILITY_DESCRIPTION = FEATURE__ELIGIBILITY_DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Emote ID</b></em>' attribute.
@@ -1023,13 +1133,31 @@ public interface StreamingPlatformPackage extends EPackage {
 	int STREAM__VIEWERS = MEDIA_CONTENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Active Viewers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STREAM__ACTIVE_VIEWERS = MEDIA_CONTENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Stream</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STREAM_FEATURE_COUNT = MEDIA_CONTENT_FEATURE_COUNT + 3;
+	int STREAM_FEATURE_COUNT = MEDIA_CONTENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Live Condition</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STREAM___LIVE_CONDITION__DIAGNOSTICCHAIN_MAP = MEDIA_CONTENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Stream</em>' class.
@@ -1038,7 +1166,7 @@ public interface StreamingPlatformPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STREAM_OPERATION_COUNT = MEDIA_CONTENT_OPERATION_COUNT + 0;
+	int STREAM_OPERATION_COUNT = MEDIA_CONTENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link StreamingPlatform.impl.ClipImpl <em>Clip</em>}' class.
@@ -1241,13 +1369,22 @@ public interface StreamingPlatformPackage extends EPackage {
 	int MONETIZATION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
+	 * The operation id for the '<em>Positive Amount</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MONETIZATION___POSITIVE_AMOUNT__DIAGNOSTICCHAIN_MAP = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Monetization</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MONETIZATION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int MONETIZATION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link StreamingPlatform.impl.DonationImpl <em>Donation</em>}' class.
@@ -1348,6 +1485,15 @@ public interface StreamingPlatformPackage extends EPackage {
 	 * @ordered
 	 */
 	int DONATION_FEATURE_COUNT = MONETIZATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Positive Amount</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DONATION___POSITIVE_AMOUNT__DIAGNOSTICCHAIN_MAP = MONETIZATION___POSITIVE_AMOUNT__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Donation</em>' class.
@@ -1522,13 +1668,40 @@ public interface StreamingPlatformPackage extends EPackage {
 	int SUBSCRIPTION_FEATURE_COUNT = MONETIZATION_FEATURE_COUNT + 9;
 
 	/**
+	 * The operation id for the '<em>Positive Amount</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBSCRIPTION___POSITIVE_AMOUNT__DIAGNOSTICCHAIN_MAP = MONETIZATION___POSITIVE_AMOUNT__DIAGNOSTICCHAIN_MAP;
+
+	/**
+	 * The operation id for the '<em>Start Date Less Than End Date</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBSCRIPTION___START_DATE_LESS_THAN_END_DATE__DIAGNOSTICCHAIN_MAP = MONETIZATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Transaction Date Less Than Start Date</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBSCRIPTION___TRANSACTION_DATE_LESS_THAN_START_DATE__DIAGNOSTICCHAIN_MAP = MONETIZATION_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>Subscription</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SUBSCRIPTION_OPERATION_COUNT = MONETIZATION_OPERATION_COUNT + 0;
+	int SUBSCRIPTION_OPERATION_COUNT = MONETIZATION_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link StreamingPlatform.impl.UserInteractionImpl <em>User Interaction</em>}' class.
@@ -1865,7 +2038,7 @@ public interface StreamingPlatformPackage extends EPackage {
 	 * The meta object id for the '<em>UUID</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see java.util.UUID
+	 * @see java.lang.String
 	 * @see StreamingPlatform.impl.StreamingPlatformPackageImpl#getUUID()
 	 * @generated
 	 */
@@ -2025,6 +2198,37 @@ public interface StreamingPlatformPackage extends EPackage {
 	EReference getPlatform_Channels();
 
 	/**
+	 * Returns the meta object for the attribute '{@link StreamingPlatform.Platform#getTotalRevenue <em>Total Revenue</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Total Revenue</em>'.
+	 * @see StreamingPlatform.Platform#getTotalRevenue()
+	 * @see #getPlatform()
+	 * @generated
+	 */
+	EAttribute getPlatform_TotalRevenue();
+
+	/**
+	 * Returns the meta object for the '{@link StreamingPlatform.Platform#activeUsersCount() <em>Active Users Count</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Active Users Count</em>' operation.
+	 * @see StreamingPlatform.Platform#activeUsersCount()
+	 * @generated
+	 */
+	EOperation getPlatform__ActiveUsersCount();
+
+	/**
+	 * Returns the meta object for the '{@link StreamingPlatform.Platform#findChannelByName(java.lang.String) <em>Find Channel By Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Find Channel By Name</em>' operation.
+	 * @see StreamingPlatform.Platform#findChannelByName(java.lang.String)
+	 * @generated
+	 */
+	EOperation getPlatform__FindChannelByName__String();
+
+	/**
 	 * Returns the meta object for class '{@link StreamingPlatform.Channel <em>Channel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2156,6 +2360,39 @@ public interface StreamingPlatformPackage extends EPackage {
 	EReference getChannel_Owner();
 
 	/**
+	 * Returns the meta object for the attribute '{@link StreamingPlatform.Channel#getTotalDonations <em>Total Donations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Total Donations</em>'.
+	 * @see StreamingPlatform.Channel#getTotalDonations()
+	 * @see #getChannel()
+	 * @generated
+	 */
+	EAttribute getChannel_TotalDonations();
+
+	/**
+	 * Returns the meta object for the attribute '{@link StreamingPlatform.Channel#getTotalFollowers <em>Total Followers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Total Followers</em>'.
+	 * @see StreamingPlatform.Channel#getTotalFollowers()
+	 * @see #getChannel()
+	 * @generated
+	 */
+	EAttribute getChannel_TotalFollowers();
+
+	/**
+	 * Returns the meta object for the attribute '{@link StreamingPlatform.Channel#getTotalViews <em>Total Views</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Total Views</em>'.
+	 * @see StreamingPlatform.Channel#getTotalViews()
+	 * @see #getChannel()
+	 * @generated
+	 */
+	EAttribute getChannel_TotalViews();
+
+	/**
 	 * Returns the meta object for class '{@link StreamingPlatform.User <em>User</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2265,6 +2502,36 @@ public interface StreamingPlatformPackage extends EPackage {
 	EReference getUser_FollowedChannels();
 
 	/**
+	 * Returns the meta object for the '{@link StreamingPlatform.User#totalDonations() <em>Total Donations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Total Donations</em>' operation.
+	 * @see StreamingPlatform.User#totalDonations()
+	 * @generated
+	 */
+	EOperation getUser__TotalDonations();
+
+	/**
+	 * Returns the meta object for the '{@link StreamingPlatform.User#isFollowing(StreamingPlatform.Channel) <em>Is Following</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Following</em>' operation.
+	 * @see StreamingPlatform.User#isFollowing(StreamingPlatform.Channel)
+	 * @generated
+	 */
+	EOperation getUser__IsFollowing__Channel();
+
+	/**
+	 * Returns the meta object for the '{@link StreamingPlatform.User#totalSpending() <em>Total Spending</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Total Spending</em>' operation.
+	 * @see StreamingPlatform.User#totalSpending()
+	 * @generated
+	 */
+	EOperation getUser__TotalSpending();
+
+	/**
 	 * Returns the meta object for class '{@link StreamingPlatform.Badge <em>Badge</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2348,6 +2615,27 @@ public interface StreamingPlatformPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getStream_Viewers();
+
+	/**
+	 * Returns the meta object for the attribute '{@link StreamingPlatform.Stream#getActiveViewers <em>Active Viewers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Active Viewers</em>'.
+	 * @see StreamingPlatform.Stream#getActiveViewers()
+	 * @see #getStream()
+	 * @generated
+	 */
+	EAttribute getStream_ActiveViewers();
+
+	/**
+	 * Returns the meta object for the '{@link StreamingPlatform.Stream#liveCondition(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Live Condition</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Live Condition</em>' operation.
+	 * @see StreamingPlatform.Stream#liveCondition(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getStream__LiveCondition__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link StreamingPlatform.Clip <em>Clip</em>}'.
@@ -2523,6 +2811,26 @@ public interface StreamingPlatformPackage extends EPackage {
 	EReference getSubscription_Badge();
 
 	/**
+	 * Returns the meta object for the '{@link StreamingPlatform.Subscription#startDateLessThanEndDate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Start Date Less Than End Date</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Start Date Less Than End Date</em>' operation.
+	 * @see StreamingPlatform.Subscription#startDateLessThanEndDate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getSubscription__StartDateLessThanEndDate__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link StreamingPlatform.Subscription#transactionDateLessThanStartDate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Transaction Date Less Than Start Date</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Transaction Date Less Than Start Date</em>' operation.
+	 * @see StreamingPlatform.Subscription#transactionDateLessThanStartDate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getSubscription__TransactionDateLessThanStartDate__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for class '{@link StreamingPlatform.Message <em>Message</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2671,6 +2979,17 @@ public interface StreamingPlatformPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getFeature_UnlockCondition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link StreamingPlatform.Feature#getEligibilityDescription <em>Eligibility Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Eligibility Description</em>'.
+	 * @see StreamingPlatform.Feature#getEligibilityDescription()
+	 * @see #getFeature()
+	 * @generated
+	 */
+	EAttribute getFeature_EligibilityDescription();
 
 	/**
 	 * Returns the meta object for class '{@link StreamingPlatform.MediaContent <em>Media Content</em>}'.
@@ -2890,6 +3209,16 @@ public interface StreamingPlatformPackage extends EPackage {
 	EAttribute getMonetization_Description();
 
 	/**
+	 * Returns the meta object for the '{@link StreamingPlatform.Monetization#positiveAmount(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Positive Amount</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Positive Amount</em>' operation.
+	 * @see StreamingPlatform.Monetization#positiveAmount(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getMonetization__PositiveAmount__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for enum '{@link StreamingPlatform.SubscriptionDuration <em>Subscription Duration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3020,12 +3349,12 @@ public interface StreamingPlatformPackage extends EPackage {
 	EEnum getUnlockCondition();
 
 	/**
-	 * Returns the meta object for data type '{@link java.util.UUID <em>UUID</em>}'.
+	 * Returns the meta object for data type '{@link java.lang.String <em>UUID</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>UUID</em>'.
-	 * @see java.util.UUID
-	 * @model instanceClass="java.util.UUID"
+	 * @see java.lang.String
+	 * @model instanceClass="java.lang.String"
 	 * @generated
 	 */
 	EDataType getUUID();
@@ -3173,6 +3502,30 @@ public interface StreamingPlatformPackage extends EPackage {
 		EReference PLATFORM__CHANNELS = eINSTANCE.getPlatform_Channels();
 
 		/**
+		 * The meta object literal for the '<em><b>Total Revenue</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PLATFORM__TOTAL_REVENUE = eINSTANCE.getPlatform_TotalRevenue();
+
+		/**
+		 * The meta object literal for the '<em><b>Active Users Count</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PLATFORM___ACTIVE_USERS_COUNT = eINSTANCE.getPlatform__ActiveUsersCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Find Channel By Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PLATFORM___FIND_CHANNEL_BY_NAME__STRING = eINSTANCE.getPlatform__FindChannelByName__String();
+
+		/**
 		 * The meta object literal for the '{@link StreamingPlatform.impl.ChannelImpl <em>Channel</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3271,6 +3624,30 @@ public interface StreamingPlatformPackage extends EPackage {
 		EReference CHANNEL__OWNER = eINSTANCE.getChannel_Owner();
 
 		/**
+		 * The meta object literal for the '<em><b>Total Donations</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHANNEL__TOTAL_DONATIONS = eINSTANCE.getChannel_TotalDonations();
+
+		/**
+		 * The meta object literal for the '<em><b>Total Followers</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHANNEL__TOTAL_FOLLOWERS = eINSTANCE.getChannel_TotalFollowers();
+
+		/**
+		 * The meta object literal for the '<em><b>Total Views</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHANNEL__TOTAL_VIEWS = eINSTANCE.getChannel_TotalViews();
+
+		/**
 		 * The meta object literal for the '{@link StreamingPlatform.impl.UserImpl <em>User</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3353,6 +3730,30 @@ public interface StreamingPlatformPackage extends EPackage {
 		EReference USER__FOLLOWED_CHANNELS = eINSTANCE.getUser_FollowedChannels();
 
 		/**
+		 * The meta object literal for the '<em><b>Total Donations</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation USER___TOTAL_DONATIONS = eINSTANCE.getUser__TotalDonations();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Following</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation USER___IS_FOLLOWING__CHANNEL = eINSTANCE.getUser__IsFollowing__Channel();
+
+		/**
+		 * The meta object literal for the '<em><b>Total Spending</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation USER___TOTAL_SPENDING = eINSTANCE.getUser__TotalSpending();
+
+		/**
 		 * The meta object literal for the '{@link StreamingPlatform.impl.BadgeImpl <em>Badge</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3421,6 +3822,22 @@ public interface StreamingPlatformPackage extends EPackage {
 		 * @generated
 		 */
 		EReference STREAM__VIEWERS = eINSTANCE.getStream_Viewers();
+
+		/**
+		 * The meta object literal for the '<em><b>Active Viewers</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STREAM__ACTIVE_VIEWERS = eINSTANCE.getStream_ActiveViewers();
+
+		/**
+		 * The meta object literal for the '<em><b>Live Condition</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation STREAM___LIVE_CONDITION__DIAGNOSTICCHAIN_MAP = eINSTANCE.getStream__LiveCondition__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '{@link StreamingPlatform.impl.ClipImpl <em>Clip</em>}' class.
@@ -3557,6 +3974,22 @@ public interface StreamingPlatformPackage extends EPackage {
 		EReference SUBSCRIPTION__BADGE = eINSTANCE.getSubscription_Badge();
 
 		/**
+		 * The meta object literal for the '<em><b>Start Date Less Than End Date</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SUBSCRIPTION___START_DATE_LESS_THAN_END_DATE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getSubscription__StartDateLessThanEndDate__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Transaction Date Less Than Start Date</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SUBSCRIPTION___TRANSACTION_DATE_LESS_THAN_START_DATE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getSubscription__TransactionDateLessThanStartDate__DiagnosticChain_Map();
+
+		/**
 		 * The meta object literal for the '{@link StreamingPlatform.impl.MessageImpl <em>Message</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3675,6 +4108,14 @@ public interface StreamingPlatformPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute FEATURE__UNLOCK_CONDITION = eINSTANCE.getFeature_UnlockCondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Eligibility Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEATURE__ELIGIBILITY_DESCRIPTION = eINSTANCE.getFeature_EligibilityDescription();
 
 		/**
 		 * The meta object literal for the '{@link StreamingPlatform.impl.MediaContentImpl <em>Media Content</em>}' class.
@@ -3843,6 +4284,14 @@ public interface StreamingPlatformPackage extends EPackage {
 		EAttribute MONETIZATION__DESCRIPTION = eINSTANCE.getMonetization_Description();
 
 		/**
+		 * The meta object literal for the '<em><b>Positive Amount</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MONETIZATION___POSITIVE_AMOUNT__DIAGNOSTICCHAIN_MAP = eINSTANCE.getMonetization__PositiveAmount__DiagnosticChain_Map();
+
+		/**
 		 * The meta object literal for the '{@link StreamingPlatform.SubscriptionDuration <em>Subscription Duration</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3976,7 +4425,7 @@ public interface StreamingPlatformPackage extends EPackage {
 		 * The meta object literal for the '<em>UUID</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see java.util.UUID
+		 * @see java.lang.String
 		 * @see StreamingPlatform.impl.StreamingPlatformPackageImpl#getUUID()
 		 * @generated
 		 */

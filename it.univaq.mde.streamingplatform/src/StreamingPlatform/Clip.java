@@ -2,8 +2,6 @@
  */
 package StreamingPlatform;
 
-import java.util.UUID;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Clip</b></em>'.
@@ -27,12 +25,12 @@ public interface Clip extends MediaContent {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Clip ID</em>' attribute.
-	 * @see #setClipID(UUID)
+	 * @see #setClipID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getClip_ClipID()
 	 * @model id="true" dataType="StreamingPlatform.UUID" required="true"
 	 * @generated
 	 */
-	UUID getClipID();
+	String getClipID();
 
 	/**
 	 * Sets the value of the '{@link StreamingPlatform.Clip#getClipID <em>Clip ID</em>}' attribute.
@@ -42,7 +40,7 @@ public interface Clip extends MediaContent {
 	 * @see #getClipID()
 	 * @generated
 	 */
-	void setClipID(UUID value);
+	void setClipID(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Created By</b></em>' reference.

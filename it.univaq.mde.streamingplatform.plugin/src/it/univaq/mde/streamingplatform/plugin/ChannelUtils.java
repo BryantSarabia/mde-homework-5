@@ -16,7 +16,7 @@ import StreamingPlatform.StreamingPlatformFactory;
 public class ChannelUtils {
     public static Channel create(String name, String description) {
         Channel channel = StreamingPlatformFactory.eINSTANCE.createChannel();
-        channel.setChannelID(UUID.randomUUID());
+        channel.setChannelID(UUID.randomUUID().toString());
         channel.setName(name);
         channel.setDescription(description);
         channel.setCreatedAt(new Date());

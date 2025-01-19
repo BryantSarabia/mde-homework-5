@@ -2,8 +2,6 @@
  */
 package StreamingPlatform;
 
-import java.util.UUID;
-
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -36,12 +34,12 @@ public interface User extends Auditable, NamedElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>User ID</em>' attribute.
-	 * @see #setUserID(UUID)
+	 * @see #setUserID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getUser_UserID()
 	 * @model id="true" dataType="StreamingPlatform.UUID" required="true"
 	 * @generated
 	 */
-	UUID getUserID();
+	String getUserID();
 
 	/**
 	 * Sets the value of the '{@link StreamingPlatform.User#getUserID <em>User ID</em>}' attribute.
@@ -51,7 +49,7 @@ public interface User extends Auditable, NamedElement {
 	 * @see #getUserID()
 	 * @generated
 	 */
-	void setUserID(UUID value);
+	void setUserID(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Role</b></em>' attribute.
@@ -203,5 +201,32 @@ public interface User extends Auditable, NamedElement {
 	 * @generated
 	 */
 	EList<Channel> getFollowedChannels();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='donations-&gt;collect(d | d.amount)-&gt;sum()'"
+	 * @generated
+	 */
+	float totalDonations();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" channelRequired="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='followedChannels-&gt;includes(channel)'"
+	 * @generated
+	 */
+	boolean isFollowing(Channel channel);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='subscriptions-&gt;collect(s | s.amount)-&gt;sum() +\n          \t\t\tdonations-&gt;collect(d | d.amount)-&gt;sum()'"
+	 * @generated
+	 */
+	float totalSpending();
 
 } // User

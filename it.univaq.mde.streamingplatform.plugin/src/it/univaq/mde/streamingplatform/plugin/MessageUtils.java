@@ -14,7 +14,7 @@ import StreamingPlatform.StreamingPlatformFactory;
 public class MessageUtils {
     public static Message create(String content, String description) {
         Message message = StreamingPlatformFactory.eINSTANCE.createMessage();
-        message.setMessageID(UUID.randomUUID());
+        message.setMessageID(UUID.randomUUID().toString());
         message.setContent(content);
         Date date = new Date();
         Timestamp timestamp = new Timestamp(date.getTime());

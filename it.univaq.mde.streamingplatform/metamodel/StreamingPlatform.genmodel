@@ -89,6 +89,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//Platform/supportedResolutions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StreamingPlatform.ecore#//Platform/users"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StreamingPlatform.ecore#//Platform/channels"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//Platform/totalRevenue"/>
+      <genOperations ecoreOperation="StreamingPlatform.ecore#//Platform/activeUsersCount"/>
+      <genOperations ecoreOperation="StreamingPlatform.ecore#//Platform/findChannelByName">
+        <genParameters ecoreParameter="StreamingPlatform.ecore#//Platform/findChannelByName/name"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="StreamingPlatform.ecore#//Channel">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//Channel/channelID"/>
@@ -102,6 +107,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StreamingPlatform.ecore#//Channel/emotes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StreamingPlatform.ecore#//Channel/badges"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StreamingPlatform.ecore#//Channel/owner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//Channel/totalDonations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//Channel/totalFollowers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//Channel/totalViews"/>
     </genClasses>
     <genClasses ecoreClass="StreamingPlatform.ecore#//User">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//User/userID"/>
@@ -113,6 +121,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StreamingPlatform.ecore#//User/subscriptions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StreamingPlatform.ecore#//User/donations"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StreamingPlatform.ecore#//User/followedChannels"/>
+      <genOperations ecoreOperation="StreamingPlatform.ecore#//User/totalDonations"/>
+      <genOperations ecoreOperation="StreamingPlatform.ecore#//User/isFollowing">
+        <genParameters ecoreParameter="StreamingPlatform.ecore#//User/isFollowing/channel"/>
+      </genOperations>
+      <genOperations ecoreOperation="StreamingPlatform.ecore#//User/totalSpending"/>
     </genClasses>
     <genClasses ecoreClass="StreamingPlatform.ecore#//Badge">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//Badge/badgeID"/>
@@ -124,6 +137,7 @@
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//Stream/streamID"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//Stream/isLive"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StreamingPlatform.ecore#//Stream/viewers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//Stream/activeViewers"/>
     </genClasses>
     <genClasses ecoreClass="StreamingPlatform.ecore#//Clip">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//Clip/clipID"/>
@@ -161,6 +175,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//Feature/donationAmount"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//Feature/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//Feature/unlockCondition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//Feature/eligibilityDescription"/>
     </genClasses>
     <genClasses image="false" ecoreClass="StreamingPlatform.ecore#//MediaContent">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//MediaContent/title"/>

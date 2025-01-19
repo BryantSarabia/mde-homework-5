@@ -4,9 +4,6 @@ package StreamingPlatform.impl;
 
 import StreamingPlatform.Donation;
 import StreamingPlatform.StreamingPlatformPackage;
-
-import java.util.UUID;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -34,7 +31,7 @@ public class DonationImpl extends MonetizationImpl implements Donation {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final UUID DONATION_ID_EDEFAULT = null;
+	protected static final String DONATION_ID_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getDonationID() <em>Donation ID</em>}' attribute.
@@ -44,7 +41,7 @@ public class DonationImpl extends MonetizationImpl implements Donation {
 	 * @generated
 	 * @ordered
 	 */
-	protected UUID donationID = DONATION_ID_EDEFAULT;
+	protected String donationID = DONATION_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMessage() <em>Message</em>}' attribute.
@@ -91,7 +88,7 @@ public class DonationImpl extends MonetizationImpl implements Donation {
 	 * @generated
 	 */
 	@Override
-	public UUID getDonationID() {
+	public String getDonationID() {
 		return donationID;
 	}
 
@@ -101,8 +98,8 @@ public class DonationImpl extends MonetizationImpl implements Donation {
 	 * @generated
 	 */
 	@Override
-	public void setDonationID(UUID newDonationID) {
-		UUID oldDonationID = donationID;
+	public void setDonationID(String newDonationID) {
+		String oldDonationID = donationID;
 		donationID = newDonationID;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StreamingPlatformPackage.DONATION__DONATION_ID, oldDonationID, donationID));
@@ -156,7 +153,7 @@ public class DonationImpl extends MonetizationImpl implements Donation {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case StreamingPlatformPackage.DONATION__DONATION_ID:
-				setDonationID((UUID)newValue);
+				setDonationID((String)newValue);
 				return;
 			case StreamingPlatformPackage.DONATION__MESSAGE:
 				setMessage((String)newValue);

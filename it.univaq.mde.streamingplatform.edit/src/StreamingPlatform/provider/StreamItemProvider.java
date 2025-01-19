@@ -48,6 +48,7 @@ public class StreamItemProvider extends MediaContentItemProvider {
 			addStreamIDPropertyDescriptor(object);
 			addIsLivePropertyDescriptor(object);
 			addViewersPropertyDescriptor(object);
+			addActiveViewersPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -119,6 +120,28 @@ public class StreamItemProvider extends MediaContentItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Active Viewers feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addActiveViewersPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Stream_activeViewers_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Stream_activeViewers_feature", "_UI_Stream_type"),
+				 StreamingPlatformPackage.Literals.STREAM__ACTIVE_VIEWERS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Stream.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -158,6 +181,7 @@ public class StreamItemProvider extends MediaContentItemProvider {
 		switch (notification.getFeatureID(Stream.class)) {
 			case StreamingPlatformPackage.STREAM__STREAM_ID:
 			case StreamingPlatformPackage.STREAM__IS_LIVE:
+			case StreamingPlatformPackage.STREAM__ACTIVE_VIEWERS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

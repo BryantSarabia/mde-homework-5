@@ -4,6 +4,7 @@ package StreamingPlatform.impl;
 
 import StreamingPlatform.Feature;
 import StreamingPlatform.StreamingPlatformPackage;
+import StreamingPlatform.StreamingPlatformTables;
 import StreamingPlatform.UnlockCondition;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -11,6 +12,13 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.ocl.pivot.ids.EnumerationLiteralId;
+import org.eclipse.ocl.pivot.library.oclany.OclAnyToStringOperation;
+import org.eclipse.ocl.pivot.library.string.StringConcatOperation;
+import org.eclipse.ocl.pivot.utilities.ClassUtil;
+import org.eclipse.ocl.pivot.utilities.ValueUtil;
+import org.eclipse.ocl.pivot.values.IntegerValue;
+import org.eclipse.ocl.pivot.values.RealValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,6 +32,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link StreamingPlatform.impl.FeatureImpl#getDonationAmount <em>Donation Amount</em>}</li>
  *   <li>{@link StreamingPlatform.impl.FeatureImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link StreamingPlatform.impl.FeatureImpl#getUnlockCondition <em>Unlock Condition</em>}</li>
+ *   <li>{@link StreamingPlatform.impl.FeatureImpl#getEligibilityDescription <em>Eligibility Description</em>}</li>
  * </ul>
  *
  * @generated
@@ -108,6 +117,16 @@ public abstract class FeatureImpl extends NamedElementImpl implements Feature {
 	 * @ordered
 	 */
 	protected UnlockCondition unlockCondition = UNLOCK_CONDITION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getEligibilityDescription() <em>Eligibility Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEligibilityDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ELIGIBILITY_DESCRIPTION_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -226,6 +245,56 @@ public abstract class FeatureImpl extends NamedElementImpl implements Feature {
 	 * @generated
 	 */
 	@Override
+	public String getEligibilityDescription() {
+		/**
+		 *
+		 * if unlockCondition = UnlockCondition::DonationAmount
+		 * then 'Requires a donation of at least ' +
+		 *   donationAmount.toString() + ' currency units'
+		 * else 'Requires a tenure of ' + tenure.toString() + ' months'
+		 * endif
+		 */
+		final /*@NonInvalid*/ UnlockCondition unlockCondition = this.getUnlockCondition();
+		final /*@NonInvalid*/ EnumerationLiteralId BOXED_unlockCondition = StreamingPlatformTables.ENUMid_UnlockCondition.getEnumerationLiteralId(ClassUtil.nonNullState(unlockCondition.getName()));
+		final /*@NonInvalid*/ boolean eq = BOXED_unlockCondition == StreamingPlatformTables.ELITid_DonationAmount;
+		/*@NonInvalid*/ String IF_eq;
+		if (eq) {
+			final /*@NonInvalid*/ float donationAmount = this.getDonationAmount();
+			final /*@NonInvalid*/ RealValue BOXED_donationAmount = ValueUtil.realValueOf(donationAmount);
+			final /*@NonInvalid*/ String toString = OclAnyToStringOperation.INSTANCE.evaluate(BOXED_donationAmount);
+			final /*@NonInvalid*/ String sum = StringConcatOperation.INSTANCE.evaluate(StreamingPlatformTables.STR_Requires_32_a_32_donation_32_of_32_at_32_least_32, toString);
+			final /*@NonInvalid*/ String sum_0 = StringConcatOperation.INSTANCE.evaluate(sum, StreamingPlatformTables.STR__32_currency_32_units);
+			IF_eq = sum_0;
+		}
+		else {
+			final /*@NonInvalid*/ short tenure = this.getTenure();
+			final /*@NonInvalid*/ IntegerValue BOXED_tenure = ValueUtil.integerValueOf(tenure);
+			final /*@NonInvalid*/ String toString_0 = OclAnyToStringOperation.INSTANCE.evaluate(BOXED_tenure);
+			final /*@NonInvalid*/ String sum_1 = StringConcatOperation.INSTANCE.evaluate(StreamingPlatformTables.STR_Requires_32_a_32_tenure_32_of_32, toString_0);
+			final /*@NonInvalid*/ String sum_2 = StringConcatOperation.INSTANCE.evaluate(sum_1, StreamingPlatformTables.STR__32_months);
+			IF_eq = sum_2;
+		}
+		return IF_eq;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setEligibilityDescription(String newEligibilityDescription) {
+		// TODO: implement this method to set the 'Eligibility Description' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case StreamingPlatformPackage.FEATURE__TENURE:
@@ -236,6 +305,8 @@ public abstract class FeatureImpl extends NamedElementImpl implements Feature {
 				return getDescription();
 			case StreamingPlatformPackage.FEATURE__UNLOCK_CONDITION:
 				return getUnlockCondition();
+			case StreamingPlatformPackage.FEATURE__ELIGIBILITY_DESCRIPTION:
+				return getEligibilityDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -259,6 +330,9 @@ public abstract class FeatureImpl extends NamedElementImpl implements Feature {
 				return;
 			case StreamingPlatformPackage.FEATURE__UNLOCK_CONDITION:
 				setUnlockCondition((UnlockCondition)newValue);
+				return;
+			case StreamingPlatformPackage.FEATURE__ELIGIBILITY_DESCRIPTION:
+				setEligibilityDescription((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -284,6 +358,9 @@ public abstract class FeatureImpl extends NamedElementImpl implements Feature {
 			case StreamingPlatformPackage.FEATURE__UNLOCK_CONDITION:
 				setUnlockCondition(UNLOCK_CONDITION_EDEFAULT);
 				return;
+			case StreamingPlatformPackage.FEATURE__ELIGIBILITY_DESCRIPTION:
+				setEligibilityDescription(ELIGIBILITY_DESCRIPTION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -304,6 +381,8 @@ public abstract class FeatureImpl extends NamedElementImpl implements Feature {
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case StreamingPlatformPackage.FEATURE__UNLOCK_CONDITION:
 				return unlockCondition != UNLOCK_CONDITION_EDEFAULT;
+			case StreamingPlatformPackage.FEATURE__ELIGIBILITY_DESCRIPTION:
+				return ELIGIBILITY_DESCRIPTION_EDEFAULT == null ? getEligibilityDescription() != null : !ELIGIBILITY_DESCRIPTION_EDEFAULT.equals(getEligibilityDescription());
 		}
 		return super.eIsSet(featureID);
 	}

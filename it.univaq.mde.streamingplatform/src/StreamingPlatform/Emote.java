@@ -2,8 +2,6 @@
  */
 package StreamingPlatform;
 
-import java.util.UUID;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Emote</b></em>'.
@@ -26,12 +24,12 @@ public interface Emote extends Feature {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Emote ID</em>' attribute.
-	 * @see #setEmoteID(UUID)
+	 * @see #setEmoteID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getEmote_EmoteID()
 	 * @model id="true" dataType="StreamingPlatform.UUID"
 	 * @generated
 	 */
-	UUID getEmoteID();
+	String getEmoteID();
 
 	/**
 	 * Sets the value of the '{@link StreamingPlatform.Emote#getEmoteID <em>Emote ID</em>}' attribute.
@@ -41,6 +39,6 @@ public interface Emote extends Feature {
 	 * @see #getEmoteID()
 	 * @generated
 	 */
-	void setEmoteID(UUID value);
+	void setEmoteID(String value);
 
 } // Emote

@@ -2,8 +2,6 @@
  */
 package StreamingPlatform;
 
-import java.util.UUID;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Reaction</b></em>'.
@@ -27,12 +25,12 @@ public interface Reaction extends UserInteraction {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Reaction ID</em>' attribute.
-	 * @see #setReactionID(UUID)
+	 * @see #setReactionID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getReaction_ReactionID()
 	 * @model id="true" dataType="StreamingPlatform.UUID" required="true"
 	 * @generated
 	 */
-	UUID getReactionID();
+	String getReactionID();
 
 	/**
 	 * Sets the value of the '{@link StreamingPlatform.Reaction#getReactionID <em>Reaction ID</em>}' attribute.
@@ -42,7 +40,7 @@ public interface Reaction extends UserInteraction {
 	 * @see #getReactionID()
 	 * @generated
 	 */
-	void setReactionID(UUID value);
+	void setReactionID(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Reaction Type</b></em>' attribute.

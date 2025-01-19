@@ -21,7 +21,7 @@ public class DonationUtils {
             PaymentMethod paymentMethod, String description) {
         Donation donation = StreamingPlatformFactory.eINSTANCE.createDonation();
         donation.setName(name);
-        donation.setDonationID(UUID.randomUUID());
+        donation.setDonationID(UUID.randomUUID().toString());
         donation.setMessage(message);
         donation.setAmount(amount);
         donation.setCurrency(currency);

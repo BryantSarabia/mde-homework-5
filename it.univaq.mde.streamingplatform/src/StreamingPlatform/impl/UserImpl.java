@@ -7,12 +7,14 @@ import StreamingPlatform.Donation;
 import StreamingPlatform.NamedElement;
 import StreamingPlatform.Role;
 import StreamingPlatform.StreamingPlatformPackage;
+import StreamingPlatform.StreamingPlatformTables;
 import StreamingPlatform.Subscription;
 import StreamingPlatform.User;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
-import java.util.UUID;
-
+import java.util.Iterator;
+import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -26,6 +28,17 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.ocl.pivot.evaluation.Executor;
+import org.eclipse.ocl.pivot.ids.IdResolver;
+import org.eclipse.ocl.pivot.library.collection.CollectionIncludesOperation;
+import org.eclipse.ocl.pivot.library.collection.CollectionSumOperation;
+import org.eclipse.ocl.pivot.library.numeric.NumericPlusOperation;
+import org.eclipse.ocl.pivot.utilities.PivotUtil;
+import org.eclipse.ocl.pivot.utilities.ValueUtil;
+import org.eclipse.ocl.pivot.values.OrderedSetValue;
+import org.eclipse.ocl.pivot.values.RealValue;
+import org.eclipse.ocl.pivot.values.SequenceValue;
+import org.eclipse.ocl.pivot.values.SequenceValue.Accumulator;
 
 /**
  * <!-- begin-user-doc -->
@@ -78,7 +91,7 @@ public class UserImpl extends AuditableImpl implements User {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final UUID USER_ID_EDEFAULT = null;
+	protected static final String USER_ID_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getUserID() <em>User ID</em>}' attribute.
@@ -88,7 +101,7 @@ public class UserImpl extends AuditableImpl implements User {
 	 * @generated
 	 * @ordered
 	 */
-	protected UUID userID = USER_ID_EDEFAULT;
+	protected String userID = USER_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getRole() <em>Role</em>}' attribute.
@@ -268,7 +281,7 @@ public class UserImpl extends AuditableImpl implements User {
 	 * @generated
 	 */
 	@Override
-	public UUID getUserID() {
+	public String getUserID() {
 		return userID;
 	}
 
@@ -278,8 +291,8 @@ public class UserImpl extends AuditableImpl implements User {
 	 * @generated
 	 */
 	@Override
-	public void setUserID(UUID newUserID) {
-		UUID oldUserID = userID;
+	public void setUserID(String newUserID) {
+		String oldUserID = userID;
 		userID = newUserID;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StreamingPlatformPackage.USER__USER_ID, oldUserID, userID));
@@ -444,6 +457,121 @@ public class UserImpl extends AuditableImpl implements User {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public float totalDonations() {
+		/**
+		 * donations->collect(d | d.amount)->sum()
+		 */
+		final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ List<Donation> donations = this.getDonations();
+		final /*@NonInvalid*/ OrderedSetValue BOXED_donations = idResolver.createOrderedSetOfAll(StreamingPlatformTables.ORD_CLSSid_Donation, donations);
+		/*@Thrown*/ Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(StreamingPlatformTables.SEQ_DATAid_EFloat);
+		Iterator<Object> ITERATOR_d = BOXED_donations.iterator();
+		/*@NonInvalid*/ SequenceValue collect;
+		while (true) {
+			if (!ITERATOR_d.hasNext()) {
+				collect = accumulator;
+				break;
+			}
+			/*@NonInvalid*/ Donation d = (Donation)ITERATOR_d.next();
+			/**
+			 * d.amount
+			 */
+			final /*@NonInvalid*/ float amount = d.getAmount();
+			final /*@NonInvalid*/ RealValue BOXED_amount = ValueUtil.realValueOf(amount);
+			//
+			accumulator.add(BOXED_amount);
+		}
+		final /*@NonInvalid*/ RealValue sum = (RealValue)CollectionSumOperation.INSTANCE.evaluate(executor, StreamingPlatformTables.DATAid_EFloat, collect);
+		final /*@NonInvalid*/ float ECORE_sum = ValueUtil.floatValueOf(sum);
+		return ECORE_sum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isFollowing(final Channel channel) {
+		/**
+		 * followedChannels->includes(channel)
+		 */
+		final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ List<Channel> followedChannels = this.getFollowedChannels();
+		final /*@NonInvalid*/ OrderedSetValue BOXED_followedChannels = idResolver.createOrderedSetOfAll(StreamingPlatformTables.ORD_CLSSid_Channel, followedChannels);
+		final /*@NonInvalid*/ boolean includes = CollectionIncludesOperation.INSTANCE.evaluate(BOXED_followedChannels, channel).booleanValue();
+		return includes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public float totalSpending() {
+		/**
+		 *
+		 * subscriptions->collect(s | s.amount)
+		 * ->sum() +
+		 * donations->collect(d | d.amount)
+		 * ->sum()
+		 */
+		final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ List<Subscription> subscriptions = this.getSubscriptions();
+		final /*@NonInvalid*/ OrderedSetValue BOXED_subscriptions = idResolver.createOrderedSetOfAll(StreamingPlatformTables.ORD_CLSSid_Subscription, subscriptions);
+		/*@Thrown*/ Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(StreamingPlatformTables.SEQ_DATAid_EFloat);
+		Iterator<Object> ITERATOR_s = BOXED_subscriptions.iterator();
+		/*@NonInvalid*/ SequenceValue collect;
+		while (true) {
+			if (!ITERATOR_s.hasNext()) {
+				collect = accumulator;
+				break;
+			}
+			/*@NonInvalid*/ Subscription s = (Subscription)ITERATOR_s.next();
+			/**
+			 * s.amount
+			 */
+			final /*@NonInvalid*/ float amount = s.getAmount();
+			final /*@NonInvalid*/ RealValue BOXED_amount = ValueUtil.realValueOf(amount);
+			//
+			accumulator.add(BOXED_amount);
+		}
+		final /*@NonInvalid*/ RealValue sum = (RealValue)CollectionSumOperation.INSTANCE.evaluate(executor, StreamingPlatformTables.DATAid_EFloat, collect);
+		final /*@NonInvalid*/ List<Donation> donations = this.getDonations();
+		final /*@NonInvalid*/ OrderedSetValue BOXED_donations = idResolver.createOrderedSetOfAll(StreamingPlatformTables.ORD_CLSSid_Donation, donations);
+		/*@Thrown*/ Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(StreamingPlatformTables.SEQ_DATAid_EFloat);
+		Iterator<Object> ITERATOR_d = BOXED_donations.iterator();
+		/*@NonInvalid*/ SequenceValue collect_0;
+		while (true) {
+			if (!ITERATOR_d.hasNext()) {
+				collect_0 = accumulator_0;
+				break;
+			}
+			/*@NonInvalid*/ Donation d = (Donation)ITERATOR_d.next();
+			/**
+			 * d.amount
+			 */
+			final /*@NonInvalid*/ float amount_0 = d.getAmount();
+			final /*@NonInvalid*/ RealValue BOXED_amount_0 = ValueUtil.realValueOf(amount_0);
+			//
+			accumulator_0.add(BOXED_amount_0);
+		}
+		final /*@NonInvalid*/ RealValue sum_0 = (RealValue)CollectionSumOperation.INSTANCE.evaluate(executor, StreamingPlatformTables.DATAid_EFloat, collect_0);
+		final /*@NonInvalid*/ RealValue sum_1 = NumericPlusOperation.INSTANCE.evaluate(sum, sum_0);
+		final /*@NonInvalid*/ float ECORE_sum_1 = ValueUtil.floatValueOf(sum_1);
+		return ECORE_sum_1;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -517,7 +645,7 @@ public class UserImpl extends AuditableImpl implements User {
 				setName((String)newValue);
 				return;
 			case StreamingPlatformPackage.USER__USER_ID:
-				setUserID((UUID)newValue);
+				setUserID((String)newValue);
 				return;
 			case StreamingPlatformPackage.USER__ROLE:
 				setRole((Role)newValue);
@@ -654,6 +782,24 @@ public class UserImpl extends AuditableImpl implements User {
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case StreamingPlatformPackage.USER___TOTAL_DONATIONS:
+				return totalDonations();
+			case StreamingPlatformPackage.USER___IS_FOLLOWING__CHANNEL:
+				return isFollowing((Channel)arguments.get(0));
+			case StreamingPlatformPackage.USER___TOTAL_SPENDING:
+				return totalSpending();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SP:Platform
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:SP="https:/streaming-platform.com"
+    xsi:schemaLocation="https:/streaming-platform.com /it.univaq.mde.streamingplatform/metamodel/StreamingPlatform.ecore">
+  <users createdAt="2025-01-19T00:00:00.000+0100"
+      name="Otherlude"
+      userID="849e0a4a-45c0-47d9-9963-46458a59cb3b"
+      role="Viewer"
+      avatar="avatar.png"
+      isOnline="true"
+      nickname="Otherlude"/>
+  <users createdAt="2025-01-19T00:00:00.000+0100"
+      name="Gomita13"
+      role="Viewer"
+      avatar="gomita13.png"
+      isOnline="true"
+      nickname="Gomita13"/>
+  <users createdAt="2025-01-19T00:00:00.000+0100"
+      name="Ibai"
+      userID="2"
+      role="Streamer"
+      avatar="ibai.png"
+      isOnline="true"
+      nickname="Ibai"/>
+  <users createdAt="2025-01-19T00:00:00.000+0100"
+      name="admin"
+      userID="3"
+      avatar="admin.png"
+      isOnline="true"
+      nickname="admin"/>
+  <channels/>
+</SP:Platform>

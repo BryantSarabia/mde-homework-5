@@ -54,6 +54,9 @@ public class ChannelItemProvider extends AuditableItemProvider {
 			addModeratorsPropertyDescriptor(object);
 			addFollowersPropertyDescriptor(object);
 			addOwnerPropertyDescriptor(object);
+			addTotalDonationsPropertyDescriptor(object);
+			addTotalFollowersPropertyDescriptor(object);
+			addTotalViewsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -191,6 +194,72 @@ public class ChannelItemProvider extends AuditableItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Total Donations feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTotalDonationsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Channel_totalDonations_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Channel_totalDonations_feature", "_UI_Channel_type"),
+				 StreamingPlatformPackage.Literals.CHANNEL__TOTAL_DONATIONS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Total Followers feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTotalFollowersPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Channel_totalFollowers_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Channel_totalFollowers_feature", "_UI_Channel_type"),
+				 StreamingPlatformPackage.Literals.CHANNEL__TOTAL_FOLLOWERS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Total Views feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTotalViewsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Channel_totalViews_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Channel_totalViews_feature", "_UI_Channel_type"),
+				 StreamingPlatformPackage.Literals.CHANNEL__TOTAL_VIEWS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -266,6 +335,9 @@ public class ChannelItemProvider extends AuditableItemProvider {
 			case StreamingPlatformPackage.CHANNEL__NAME:
 			case StreamingPlatformPackage.CHANNEL__CHANNEL_ID:
 			case StreamingPlatformPackage.CHANNEL__DESCRIPTION:
+			case StreamingPlatformPackage.CHANNEL__TOTAL_DONATIONS:
+			case StreamingPlatformPackage.CHANNEL__TOTAL_FOLLOWERS:
+			case StreamingPlatformPackage.CHANNEL__TOTAL_VIEWS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case StreamingPlatformPackage.CHANNEL__STREAMS:

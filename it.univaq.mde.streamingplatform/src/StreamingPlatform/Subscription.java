@@ -3,8 +3,8 @@
 package StreamingPlatform;
 
 import java.util.Date;
-import java.util.UUID;
-
+import java.util.Map;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see StreamingPlatform.StreamingPlatformPackage#getSubscription()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='transactionDateLessThanStartDate'"
  * @generated
  */
 public interface Subscription extends Monetization {
@@ -37,12 +37,12 @@ public interface Subscription extends Monetization {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Subscription ID</em>' attribute.
-	 * @see #setSubscriptionID(UUID)
+	 * @see #setSubscriptionID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getSubscription_SubscriptionID()
 	 * @model id="true" dataType="StreamingPlatform.UUID" required="true"
 	 * @generated
 	 */
-	UUID getSubscriptionID();
+	String getSubscriptionID();
 
 	/**
 	 * Sets the value of the '{@link StreamingPlatform.Subscription#getSubscriptionID <em>Subscription ID</em>}' attribute.
@@ -52,7 +52,7 @@ public interface Subscription extends Monetization {
 	 * @see #getSubscriptionID()
 	 * @generated
 	 */
-	void setSubscriptionID(UUID value);
+	void setSubscriptionID(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Tier</b></em>' attribute.
@@ -225,5 +225,21 @@ public interface Subscription extends Monetization {
 	 * @generated
 	 */
 	void setBadge(Badge value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='startDate &lt;= endDate'"
+	 * @generated
+	 */
+	boolean startDateLessThanEndDate(DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='transactionDate &lt;= startDate'"
+	 * @generated
+	 */
+	boolean transactionDateLessThanStartDate(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // Subscription

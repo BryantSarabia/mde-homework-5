@@ -31,6 +31,7 @@ public class StreamingPlatformAllTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new StreamingPlatformAllTests("StreamingPlatform Tests");
+		suite.addTest(StreamingPlatformTests.suite());
 		return suite;
 	}
 

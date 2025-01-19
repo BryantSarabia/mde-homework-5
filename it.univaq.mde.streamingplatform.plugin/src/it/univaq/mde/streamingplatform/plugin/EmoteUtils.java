@@ -14,7 +14,7 @@ public class EmoteUtils {
 	
     public static Emote create(String name, short tenure ,String description ) {
         Emote emote = StreamingPlatformFactory.eINSTANCE.createEmote();
-        emote.setEmoteID(UUID.randomUUID());
+        emote.setEmoteID(UUID.randomUUID().toString());
         emote.setName(name);
         emote.setUnlockCondition(UnlockCondition.TENURE);
         emote.setTenure(tenure);
@@ -24,7 +24,7 @@ public class EmoteUtils {
     
     public static Emote create(String name, float donationAmount ,String description ) {
         Emote emote = StreamingPlatformFactory.eINSTANCE.createEmote();
-        emote.setEmoteID(UUID.randomUUID());
+        emote.setEmoteID(UUID.randomUUID().toString());
         emote.setName(name);
         emote.setUnlockCondition(UnlockCondition.DONATION_AMOUNT);
         emote.setDonationAmount(donationAmount);

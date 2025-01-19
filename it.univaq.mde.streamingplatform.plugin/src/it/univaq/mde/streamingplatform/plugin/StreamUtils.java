@@ -14,7 +14,7 @@ import StreamingPlatform.StreamingPlatformFactory;
 public class StreamUtils {
     public static Stream create(String title, boolean isLive,Category category, String[] tags, Resolution[] resolution, String description ) {
         Stream stream = StreamingPlatformFactory.eINSTANCE.createStream();
-        stream.setStreamID(UUID.randomUUID());
+        stream.setStreamID(UUID.randomUUID().toString());
         stream.setTitle(title);
         stream.setIsLive(isLive);
         stream.setCategory(category);

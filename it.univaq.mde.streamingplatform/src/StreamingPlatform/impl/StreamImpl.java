@@ -4,13 +4,17 @@ package StreamingPlatform.impl;
 
 import StreamingPlatform.Stream;
 import StreamingPlatform.StreamingPlatformPackage;
+import StreamingPlatform.StreamingPlatformTables;
 import StreamingPlatform.User;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
-import java.util.UUID;
-
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -18,6 +22,19 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.ocl.pivot.evaluation.Executor;
+import org.eclipse.ocl.pivot.ids.IdResolver;
+import org.eclipse.ocl.pivot.ids.TypeId;
+import org.eclipse.ocl.pivot.library.collection.CollectionNotEmptyOperation;
+import org.eclipse.ocl.pivot.library.collection.CollectionSizeOperation;
+import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
+import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
+import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
+import org.eclipse.ocl.pivot.utilities.PivotUtil;
+import org.eclipse.ocl.pivot.utilities.ValueUtil;
+import org.eclipse.ocl.pivot.values.IntegerValue;
+import org.eclipse.ocl.pivot.values.OrderedSetValue;
+import org.eclipse.ocl.pivot.values.OrderedSetValue.Accumulator;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,6 +47,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link StreamingPlatform.impl.StreamImpl#getStreamID <em>Stream ID</em>}</li>
  *   <li>{@link StreamingPlatform.impl.StreamImpl#isIsLive <em>Is Live</em>}</li>
  *   <li>{@link StreamingPlatform.impl.StreamImpl#getViewers <em>Viewers</em>}</li>
+ *   <li>{@link StreamingPlatform.impl.StreamImpl#getActiveViewers <em>Active Viewers</em>}</li>
  * </ul>
  *
  * @generated
@@ -43,7 +61,7 @@ public class StreamImpl extends MediaContentImpl implements Stream {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final UUID STREAM_ID_EDEFAULT = null;
+	protected static final String STREAM_ID_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getStreamID() <em>Stream ID</em>}' attribute.
@@ -53,7 +71,7 @@ public class StreamImpl extends MediaContentImpl implements Stream {
 	 * @generated
 	 * @ordered
 	 */
-	protected UUID streamID = STREAM_ID_EDEFAULT;
+	protected String streamID = STREAM_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isIsLive() <em>Is Live</em>}' attribute.
@@ -86,6 +104,16 @@ public class StreamImpl extends MediaContentImpl implements Stream {
 	protected EList<User> viewers;
 
 	/**
+	 * The default value of the '{@link #getActiveViewers() <em>Active Viewers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActiveViewers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int ACTIVE_VIEWERS_EDEFAULT = 0;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -110,7 +138,7 @@ public class StreamImpl extends MediaContentImpl implements Stream {
 	 * @generated
 	 */
 	@Override
-	public UUID getStreamID() {
+	public String getStreamID() {
 		return streamID;
 	}
 
@@ -120,8 +148,8 @@ public class StreamImpl extends MediaContentImpl implements Stream {
 	 * @generated
 	 */
 	@Override
-	public void setStreamID(UUID newStreamID) {
-		UUID oldStreamID = streamID;
+	public void setStreamID(String newStreamID) {
+		String oldStreamID = streamID;
 		streamID = newStreamID;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StreamingPlatformPackage.STREAM__STREAM_ID, oldStreamID, streamID));
@@ -169,6 +197,112 @@ public class StreamImpl extends MediaContentImpl implements Stream {
 	 * @generated
 	 */
 	@Override
+	public int getActiveViewers() {
+		/**
+		 * viewers->select(v | v.isOnline = true)->size()
+		 */
+		final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ List<User> viewers = this.getViewers();
+		final /*@NonInvalid*/ OrderedSetValue BOXED_viewers = idResolver.createOrderedSetOfAll(StreamingPlatformTables.ORD_CLSSid_User, viewers);
+		/*@Thrown*/ Accumulator accumulator = ValueUtil.createOrderedSetAccumulatorValue(StreamingPlatformTables.ORD_CLSSid_User);
+		Iterator<Object> ITERATOR_v = BOXED_viewers.iterator();
+		/*@NonInvalid*/ OrderedSetValue select;
+		while (true) {
+			if (!ITERATOR_v.hasNext()) {
+				select = accumulator;
+				break;
+			}
+			/*@NonInvalid*/ User v = (User)ITERATOR_v.next();
+			/**
+			 * v.isOnline
+			 */
+			final /*@NonInvalid*/ boolean isOnline = v.isIsOnline();
+			//
+			if (isOnline) {
+				accumulator.add(v);
+			}
+		}
+		final /*@NonInvalid*/ IntegerValue size = CollectionSizeOperation.INSTANCE.evaluate(select);
+		final /*@NonInvalid*/ int ECORE_size = ValueUtil.intValueOf(size);
+		return ECORE_size;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setActiveViewers(int newActiveViewers) {
+		// TODO: implement this method to set the 'Active Viewers' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean liveCondition(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Stream::liveCondition";
+		try {
+			/**
+			 *
+			 * inv liveCondition:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let result : Boolean[?] = isLive = true implies viewers->notEmpty()
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, StreamingPlatformPackage.Literals.STREAM___LIVE_CONDITION__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, StreamingPlatformTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			}
+			else {
+				final /*@NonInvalid*/ boolean isLive = this.isIsLive();
+				final /*@NonInvalid*/ Boolean result;
+				if (!isLive) {
+					result = ValueUtil.TRUE_VALUE;
+				}
+				else {
+					final /*@NonInvalid*/ List<User> viewers = this.getViewers();
+					final /*@NonInvalid*/ OrderedSetValue BOXED_viewers = idResolver.createOrderedSetOfAll(StreamingPlatformTables.ORD_CLSSid_User, viewers);
+					final /*@NonInvalid*/ boolean notEmpty = CollectionNotEmptyOperation.INSTANCE.evaluate(BOXED_viewers).booleanValue();
+					if (notEmpty) {
+						result = ValueUtil.TRUE_VALUE;
+					}
+					else {
+						result = ValueUtil.FALSE_VALUE;
+					}
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, result, StreamingPlatformTables.INT_0).booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case StreamingPlatformPackage.STREAM__STREAM_ID:
@@ -177,6 +311,8 @@ public class StreamImpl extends MediaContentImpl implements Stream {
 				return isIsLive();
 			case StreamingPlatformPackage.STREAM__VIEWERS:
 				return getViewers();
+			case StreamingPlatformPackage.STREAM__ACTIVE_VIEWERS:
+				return getActiveViewers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -191,7 +327,7 @@ public class StreamImpl extends MediaContentImpl implements Stream {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case StreamingPlatformPackage.STREAM__STREAM_ID:
-				setStreamID((UUID)newValue);
+				setStreamID((String)newValue);
 				return;
 			case StreamingPlatformPackage.STREAM__IS_LIVE:
 				setIsLive((Boolean)newValue);
@@ -199,6 +335,9 @@ public class StreamImpl extends MediaContentImpl implements Stream {
 			case StreamingPlatformPackage.STREAM__VIEWERS:
 				getViewers().clear();
 				getViewers().addAll((Collection<? extends User>)newValue);
+				return;
+			case StreamingPlatformPackage.STREAM__ACTIVE_VIEWERS:
+				setActiveViewers((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -221,6 +360,9 @@ public class StreamImpl extends MediaContentImpl implements Stream {
 			case StreamingPlatformPackage.STREAM__VIEWERS:
 				getViewers().clear();
 				return;
+			case StreamingPlatformPackage.STREAM__ACTIVE_VIEWERS:
+				setActiveViewers(ACTIVE_VIEWERS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -239,8 +381,25 @@ public class StreamImpl extends MediaContentImpl implements Stream {
 				return isLive != IS_LIVE_EDEFAULT;
 			case StreamingPlatformPackage.STREAM__VIEWERS:
 				return viewers != null && !viewers.isEmpty();
+			case StreamingPlatformPackage.STREAM__ACTIVE_VIEWERS:
+				return getActiveViewers() != ACTIVE_VIEWERS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case StreamingPlatformPackage.STREAM___LIVE_CONDITION__DIAGNOSTICCHAIN_MAP:
+				return liveCondition((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

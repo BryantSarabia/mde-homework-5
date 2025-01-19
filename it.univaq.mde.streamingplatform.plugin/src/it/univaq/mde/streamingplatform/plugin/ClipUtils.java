@@ -16,7 +16,7 @@ import StreamingPlatform.StreamingPlatformFactory;
 public class ClipUtils {
     public static Clip create(String title, Category category, String[] tags, Resolution[] resolutions, String description ) {
         Clip clip = StreamingPlatformFactory.eINSTANCE.createClip();
-        clip.setClipID(UUID.randomUUID());
+        clip.setClipID(UUID.randomUUID().toString());
         clip.setTitle(title);
         clip.setCategory(category);
         clip.setDescription(description);

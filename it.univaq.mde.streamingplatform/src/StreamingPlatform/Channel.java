@@ -2,8 +2,6 @@
  */
 package StreamingPlatform;
 
-import java.util.UUID;
-
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -26,6 +24,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link StreamingPlatform.Channel#getEmotes <em>Emotes</em>}</li>
  *   <li>{@link StreamingPlatform.Channel#getBadges <em>Badges</em>}</li>
  *   <li>{@link StreamingPlatform.Channel#getOwner <em>Owner</em>}</li>
+ *   <li>{@link StreamingPlatform.Channel#getTotalDonations <em>Total Donations</em>}</li>
+ *   <li>{@link StreamingPlatform.Channel#getTotalFollowers <em>Total Followers</em>}</li>
+ *   <li>{@link StreamingPlatform.Channel#getTotalViews <em>Total Views</em>}</li>
  * </ul>
  *
  * @see StreamingPlatform.StreamingPlatformPackage#getChannel()
@@ -38,12 +39,12 @@ public interface Channel extends Auditable, NamedElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Channel ID</em>' attribute.
-	 * @see #setChannelID(UUID)
+	 * @see #setChannelID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getChannel_ChannelID()
 	 * @model id="true" dataType="StreamingPlatform.UUID"
 	 * @generated
 	 */
-	UUID getChannelID();
+	String getChannelID();
 
 	/**
 	 * Sets the value of the '{@link StreamingPlatform.Channel#getChannelID <em>Channel ID</em>}' attribute.
@@ -53,7 +54,7 @@ public interface Channel extends Auditable, NamedElement {
 	 * @see #getChannelID()
 	 * @generated
 	 */
-	void setChannelID(UUID value);
+	void setChannelID(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.
@@ -196,5 +197,71 @@ public interface Channel extends Auditable, NamedElement {
 	 * @generated
 	 */
 	void setOwner(User value);
+
+	/**
+	 * Returns the value of the '<em><b>Total Donations</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Total Donations</em>' attribute.
+	 * @see #setTotalDonations(float)
+	 * @see StreamingPlatform.StreamingPlatformPackage#getChannel_TotalDonations()
+	 * @model required="true" volatile="true" derived="true"
+	 * @generated
+	 */
+	float getTotalDonations();
+
+	/**
+	 * Sets the value of the '{@link StreamingPlatform.Channel#getTotalDonations <em>Total Donations</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Total Donations</em>' attribute.
+	 * @see #getTotalDonations()
+	 * @generated
+	 */
+	void setTotalDonations(float value);
+
+	/**
+	 * Returns the value of the '<em><b>Total Followers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Total Followers</em>' attribute.
+	 * @see #setTotalFollowers(int)
+	 * @see StreamingPlatform.StreamingPlatformPackage#getChannel_TotalFollowers()
+	 * @model required="true" volatile="true" derived="true"
+	 * @generated
+	 */
+	int getTotalFollowers();
+
+	/**
+	 * Sets the value of the '{@link StreamingPlatform.Channel#getTotalFollowers <em>Total Followers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Total Followers</em>' attribute.
+	 * @see #getTotalFollowers()
+	 * @generated
+	 */
+	void setTotalFollowers(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Total Views</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Total Views</em>' attribute.
+	 * @see #setTotalViews(int)
+	 * @see StreamingPlatform.StreamingPlatformPackage#getChannel_TotalViews()
+	 * @model required="true" volatile="true" derived="true"
+	 * @generated
+	 */
+	int getTotalViews();
+
+	/**
+	 * Sets the value of the '{@link StreamingPlatform.Channel#getTotalViews <em>Total Views</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Total Views</em>' attribute.
+	 * @see #getTotalViews()
+	 * @generated
+	 */
+	void setTotalViews(int value);
 
 } // Channel

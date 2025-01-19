@@ -2,8 +2,6 @@
  */
 package StreamingPlatform;
 
-import java.util.UUID;
-
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -25,6 +23,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link StreamingPlatform.Platform#getSupportedResolutions <em>Supported Resolutions</em>}</li>
  *   <li>{@link StreamingPlatform.Platform#getUsers <em>Users</em>}</li>
  *   <li>{@link StreamingPlatform.Platform#getChannels <em>Channels</em>}</li>
+ *   <li>{@link StreamingPlatform.Platform#getTotalRevenue <em>Total Revenue</em>}</li>
  * </ul>
  *
  * @see StreamingPlatform.StreamingPlatformPackage#getPlatform()
@@ -37,12 +36,12 @@ public interface Platform extends Auditable, NamedElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Platform ID</em>' attribute.
-	 * @see #setPlatformID(UUID)
+	 * @see #setPlatformID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getPlatform_PlatformID()
 	 * @model id="true" dataType="StreamingPlatform.UUID" required="true"
 	 * @generated
 	 */
-	UUID getPlatformID();
+	String getPlatformID();
 
 	/**
 	 * Sets the value of the '{@link StreamingPlatform.Platform#getPlatformID <em>Platform ID</em>}' attribute.
@@ -52,7 +51,7 @@ public interface Platform extends Auditable, NamedElement {
 	 * @see #getPlatformID()
 	 * @generated
 	 */
-	void setPlatformID(UUID value);
+	void setPlatformID(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Revenue</b></em>' attribute.
@@ -199,5 +198,45 @@ public interface Platform extends Auditable, NamedElement {
 	 * @generated
 	 */
 	EList<Channel> getChannels();
+
+	/**
+	 * Returns the value of the '<em><b>Total Revenue</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Total Revenue</em>' attribute.
+	 * @see #setTotalRevenue(double)
+	 * @see StreamingPlatform.StreamingPlatformPackage#getPlatform_TotalRevenue()
+	 * @model required="true" volatile="true" derived="true"
+	 * @generated
+	 */
+	double getTotalRevenue();
+
+	/**
+	 * Sets the value of the '{@link StreamingPlatform.Platform#getTotalRevenue <em>Total Revenue</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Total Revenue</em>' attribute.
+	 * @see #getTotalRevenue()
+	 * @generated
+	 */
+	void setTotalRevenue(double value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='users-&gt;select(u | u.isOnline = true)-&gt;size()'"
+	 * @generated
+	 */
+	int activeUsersCount();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model nameRequired="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='channels-&gt;any(c | c.name = name)'"
+	 * @generated
+	 */
+	Channel findChannelByName(String name);
 
 } // Platform

@@ -2,8 +2,6 @@
  */
 package StreamingPlatform;
 
-import java.util.UUID;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Message</b></em>'.
@@ -27,12 +25,12 @@ public interface Message extends UserInteraction {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Message ID</em>' attribute.
-	 * @see #setMessageID(UUID)
+	 * @see #setMessageID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getMessage_MessageID()
 	 * @model id="true" dataType="StreamingPlatform.UUID" required="true"
 	 * @generated
 	 */
-	UUID getMessageID();
+	String getMessageID();
 
 	/**
 	 * Sets the value of the '{@link StreamingPlatform.Message#getMessageID <em>Message ID</em>}' attribute.
@@ -42,7 +40,7 @@ public interface Message extends UserInteraction {
 	 * @see #getMessageID()
 	 * @generated
 	 */
-	void setMessageID(UUID value);
+	void setMessageID(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Content</b></em>' attribute.

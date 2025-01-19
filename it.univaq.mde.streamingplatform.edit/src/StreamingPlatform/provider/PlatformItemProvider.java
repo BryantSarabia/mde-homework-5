@@ -57,6 +57,7 @@ public class PlatformItemProvider extends AuditableItemProvider {
 			addSupportedLanguagesPropertyDescriptor(object);
 			addSupportedDevicesPropertyDescriptor(object);
 			addSupportedResolutionsPropertyDescriptor(object);
+			addTotalRevenuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -260,6 +261,28 @@ public class PlatformItemProvider extends AuditableItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Total Revenue feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTotalRevenuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Platform_totalRevenue_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Platform_totalRevenue_feature", "_UI_Platform_type"),
+				 StreamingPlatformPackage.Literals.PLATFORM__TOTAL_REVENUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -337,6 +360,7 @@ public class PlatformItemProvider extends AuditableItemProvider {
 			case StreamingPlatformPackage.PLATFORM__SUPPORTED_LANGUAGES:
 			case StreamingPlatformPackage.PLATFORM__SUPPORTED_DEVICES:
 			case StreamingPlatformPackage.PLATFORM__SUPPORTED_RESOLUTIONS:
+			case StreamingPlatformPackage.PLATFORM__TOTAL_REVENUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case StreamingPlatformPackage.PLATFORM__USERS:

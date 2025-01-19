@@ -11,6 +11,13 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Subscription</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following operations are tested:
+ * <ul>
+ *   <li>{@link StreamingPlatform.Subscription#startDateLessThanEndDate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Start Date Less Than End Date</em>}</li>
+ *   <li>{@link StreamingPlatform.Subscription#transactionDateLessThanStartDate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Transaction Date Less Than Start Date</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class SubscriptionTest extends MonetizationTest {
@@ -65,6 +72,32 @@ public class SubscriptionTest extends MonetizationTest {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link StreamingPlatform.Subscription#startDateLessThanEndDate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Start Date Less Than End Date</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see StreamingPlatform.Subscription#startDateLessThanEndDate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testStartDateLessThanEndDate__DiagnosticChain_Map() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link StreamingPlatform.Subscription#transactionDateLessThanStartDate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Transaction Date Less Than Start Date</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see StreamingPlatform.Subscription#transactionDateLessThanStartDate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testTransactionDateLessThanStartDate__DiagnosticChain_Map() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 } //SubscriptionTest

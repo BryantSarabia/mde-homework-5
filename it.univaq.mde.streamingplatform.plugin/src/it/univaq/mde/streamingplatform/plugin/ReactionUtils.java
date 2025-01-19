@@ -15,7 +15,7 @@ import StreamingPlatform.StreamingPlatformFactory;
 public class ReactionUtils {
     public static Reaction create(ReactionType type, String description) {
         Reaction reaction = StreamingPlatformFactory.eINSTANCE.createReaction();
-        reaction.setReactionID(UUID.randomUUID());
+        reaction.setReactionID(UUID.randomUUID().toString());
         reaction.setReactionType(type);
         Date date = new Date();
         Timestamp timestamp = new Timestamp(date.getTime());

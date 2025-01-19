@@ -2,8 +2,6 @@
  */
 package StreamingPlatform;
 
-import java.util.UUID;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Donation</b></em>'.
@@ -27,12 +25,12 @@ public interface Donation extends Monetization {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Donation ID</em>' attribute.
-	 * @see #setDonationID(UUID)
+	 * @see #setDonationID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getDonation_DonationID()
 	 * @model id="true" dataType="StreamingPlatform.UUID" required="true"
 	 * @generated
 	 */
-	UUID getDonationID();
+	String getDonationID();
 
 	/**
 	 * Sets the value of the '{@link StreamingPlatform.Donation#getDonationID <em>Donation ID</em>}' attribute.
@@ -42,7 +40,7 @@ public interface Donation extends Monetization {
 	 * @see #getDonationID()
 	 * @generated
 	 */
-	void setDonationID(UUID value);
+	void setDonationID(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Message</b></em>' attribute.

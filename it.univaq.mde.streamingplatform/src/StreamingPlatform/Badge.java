@@ -2,8 +2,6 @@
  */
 package StreamingPlatform;
 
-import java.util.UUID;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Badge</b></em>'.
@@ -26,12 +24,12 @@ public interface Badge extends Feature {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Badge ID</em>' attribute.
-	 * @see #setBadgeID(UUID)
+	 * @see #setBadgeID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getBadge_BadgeID()
 	 * @model id="true" dataType="StreamingPlatform.UUID"
 	 * @generated
 	 */
-	UUID getBadgeID();
+	String getBadgeID();
 
 	/**
 	 * Sets the value of the '{@link StreamingPlatform.Badge#getBadgeID <em>Badge ID</em>}' attribute.
@@ -41,6 +39,6 @@ public interface Badge extends Feature {
 	 * @see #getBadgeID()
 	 * @generated
 	 */
-	void setBadgeID(UUID value);
+	void setBadgeID(String value);
 
 } // Badge

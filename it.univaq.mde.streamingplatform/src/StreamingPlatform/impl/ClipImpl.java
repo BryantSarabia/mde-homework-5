@@ -5,9 +5,6 @@ package StreamingPlatform.impl;
 import StreamingPlatform.Clip;
 import StreamingPlatform.StreamingPlatformPackage;
 import StreamingPlatform.User;
-
-import java.util.UUID;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -38,7 +35,7 @@ public class ClipImpl extends MediaContentImpl implements Clip {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final UUID CLIP_ID_EDEFAULT = null;
+	protected static final String CLIP_ID_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getClipID() <em>Clip ID</em>}' attribute.
@@ -48,7 +45,7 @@ public class ClipImpl extends MediaContentImpl implements Clip {
 	 * @generated
 	 * @ordered
 	 */
-	protected UUID clipID = CLIP_ID_EDEFAULT;
+	protected String clipID = CLIP_ID_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getCreatedBy() <em>Created By</em>}' reference.
@@ -85,7 +82,7 @@ public class ClipImpl extends MediaContentImpl implements Clip {
 	 * @generated
 	 */
 	@Override
-	public UUID getClipID() {
+	public String getClipID() {
 		return clipID;
 	}
 
@@ -95,8 +92,8 @@ public class ClipImpl extends MediaContentImpl implements Clip {
 	 * @generated
 	 */
 	@Override
-	public void setClipID(UUID newClipID) {
-		UUID oldClipID = clipID;
+	public void setClipID(String newClipID) {
+		String oldClipID = clipID;
 		clipID = newClipID;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StreamingPlatformPackage.CLIP__CLIP_ID, oldClipID, clipID));
@@ -168,7 +165,7 @@ public class ClipImpl extends MediaContentImpl implements Clip {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case StreamingPlatformPackage.CLIP__CLIP_ID:
-				setClipID((UUID)newValue);
+				setClipID((String)newValue);
 				return;
 			case StreamingPlatformPackage.CLIP__CREATED_BY:
 				setCreatedBy((User)newValue);
