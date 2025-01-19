@@ -82,7 +82,13 @@
                     <h2>Subscriptions</h2>
                     <ul>
                         [for (subscription : Subscription | user.subscriptions)]
-                            <li>Tier: [subscription.tier.toString()/], Price: [subscription.price/] [subscription.currency.toString()/]</li>
+                            <li>Tier: [subscription.tier.toString()/], Price: [subscription.price/] [subscription.currency.toString()/], Start Date: [subscription.startDate/], End Date: [subscription.endDate/]</li>
+                        [/for]
+                    </ul>
+					<h2>Donations</h2>
+                	<ul>
+                        [for (tip : Tip | user.tips)]
+                            <li>Price: [tip.amount/] [tip.currency.toString()/]: [tip.message/]</li>
                         [/for]
                     </ul>
                 </body>
