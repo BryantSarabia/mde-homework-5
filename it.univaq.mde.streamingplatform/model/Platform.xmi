@@ -28,12 +28,12 @@
       followedChannels="39f9a422-aad4-42c4-b212-4a74664d94e7">
     <subscriptions
         name="Sub1"
-        amount="8.99"
+        amount="107.88"
         transactionDate="2025-01-19T00:00:00.000+0100"
         paymentStatus="Completed"
         subscriptionID="b7e9866f-a4e1-436d-abae-8b90d59ec9ec"
         tier="Premium"
-        price="107.88"
+        price="8.99"
         duration="Annual"
         startDate="2025-01-19T00:00:00.000+0100"
         endDate="2026-01-19T00:00:00.000+0100"

@@ -47,7 +47,7 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" volatile="true"
         derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-        <details key="derivation" value="channels->collect(c | &#xA;&#x9;&#x9;                    c.donations->collect(d | d.amount)->sum() + c.subscriptions->collect(s | s.price)->sum())&#xA;&#x9;&#x9;                    ->sum()"/>
+        <details key="derivation" value="channels->collect(c | &#xA;&#x9;&#x9;                    c.donations->collect(d | d.amount)->sum() + c.subscriptions->collect(s | s.amount)->sum())&#xA;&#x9;&#x9;                    ->sum()"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

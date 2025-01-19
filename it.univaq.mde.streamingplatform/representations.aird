@@ -4,5 +4,4 @@
   <semanticResources>metamodel/StreamingPlatform.ecore</semanticResources>
   <semanticResources>metamodel/StreamingPlatform.genmodel</semanticResources>
   <semanticResources>model/Platform.xmi</semanticResources>
-  <semanticResources>model/RefinedPlatform.xmi</semanticResources>
 </viewpoint:DAnalysis>

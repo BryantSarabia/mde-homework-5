@@ -465,7 +465,7 @@ public class PlatformImpl extends AuditableImpl implements Platform {
 		 * channels->collect(c |
 		 *   c.donations->collect(d | d.amount)
 		 *   ->sum() +
-		 *   c.subscriptions->collect(s | s.price)
+		 *   c.subscriptions->collect(s | s.amount)
 		 *   ->sum())->sum()
 		 */
 		final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
@@ -485,7 +485,7 @@ public class PlatformImpl extends AuditableImpl implements Platform {
 			 *
 			 * c.donations->collect(d | d.amount)
 			 * ->sum() +
-			 * c.subscriptions->collect(s | s.price)
+			 * c.subscriptions->collect(s | s.amount)
 			 * ->sum()
 			 */
 			final /*@NonInvalid*/ List<Donation> donations = c.getDonations();
@@ -520,12 +520,12 @@ public class PlatformImpl extends AuditableImpl implements Platform {
 				}
 				/*@NonInvalid*/ Subscription s = (Subscription)ITERATOR_s.next();
 				/**
-				 * s.price
+				 * s.amount
 				 */
-				final /*@NonInvalid*/ float price = s.getPrice();
-				final /*@NonInvalid*/ RealValue BOXED_price = ValueUtil.realValueOf(price);
+				final /*@NonInvalid*/ float amount_0 = s.getAmount();
+				final /*@NonInvalid*/ RealValue BOXED_amount_0 = ValueUtil.realValueOf(amount_0);
 				//
-				accumulator_1.add(BOXED_price);
+				accumulator_1.add(BOXED_amount_0);
 			}
 			final /*@NonInvalid*/ RealValue sum_0 = (RealValue)CollectionSumOperation.INSTANCE.evaluate(executor, StreamingPlatformTables.DATAid_EFloat, collect_1);
 			final /*@NonInvalid*/ RealValue sum_1 = NumericPlusOperation.INSTANCE.evaluate(sum, sum_0);

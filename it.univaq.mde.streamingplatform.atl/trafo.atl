@@ -8,21 +8,6 @@ helper def: id : Integer = 0;
 
 helper context Integer def : inc() : Integer = self + 1;
 
-helper context SP!Platform def : getTotalRevenue() : Real =
-    self.channels->collect(c | c.getTotalRevenue())->sum();
-
-helper context SP!Channel def : getTotalRevenue() : Real =
-    self.donations->collect(d | d.amount)->sum() + self.subscriptions->collect(s | s.amount)->sum();
-
-helper context SP!Feature def : getEligibilityDescription() : String =
-	if self.unlockCondition = #DonationAmount then
-        'Requires a donation of at least ' + self.donationAmount.toString() + ' currency units'
-    else
-        'Requires a tenure of ' + self.tenure.toString() + ' months'
-    endif;
-
-helper context SP!Channel def : getTotalDonations() : Real =
-    self.donations->collect(d | d.amount)->sum();
 
 abstract rule NamedElement2NamedElement {
     from
@@ -60,7 +45,6 @@ rule Platform2Platform extends Auditable2Auditable {
     do {
         thisModule.id <- thisModule.id.inc();
         t.platformID <- thisModule.id;
-        -- t.totalRevenue <- s.getTotalRevenue();
     }
 }
 
@@ -83,9 +67,6 @@ rule Channel2Channel extends Auditable2Auditable {
     do {
         thisModule.id <- thisModule.id.inc();
         t.channelID <- thisModule.id;
-       --- t.totalTips <- s.getTotalDonations();
-       --- t.totalFollowers <- s.totalFollowers;
-        --- t.totalViews <- s.totalViews;
     }
 }
 
@@ -99,6 +80,7 @@ rule User2User extends Auditable2Auditable {
             isOnline <- s.isOnline,
             nickname <- s.nickname,
             subscriptions <- s.subscriptions,
+			tips <- s.donations,
             followedChannels <- s.followedChannels
         )
     do {
@@ -115,12 +97,7 @@ abstract rule Feature2Feature extends NamedElement2NamedElement {
             tenure <- s.tenure,
             donationAmount <- s.donationAmount,
             unlockCondition <- s.unlockCondition
-           --- eligibilityDescription <- s.getEligibilityDescription()
         )
-    do {
-        thisModule.id <- thisModule.id.inc();
-        t.featureID <- thisModule.id;
-    }
 }
 
 rule Badge2Feature extends Feature2Feature {
@@ -130,6 +107,10 @@ rule Badge2Feature extends Feature2Feature {
         t: RSP!Feature(
             type <- #Badge
         )
+    do {
+	    thisModule.id <- thisModule.id.inc();
+	    t.featureID <- thisModule.id;
+    }
 }
 
 rule Emote2Feature extends Feature2Feature {
@@ -139,6 +120,10 @@ rule Emote2Feature extends Feature2Feature {
         t: RSP!Feature(
             type <- #Emote
         )
+    do {
+        thisModule.id <- thisModule.id.inc();
+        t.featureID <- thisModule.id;
+    }
 }
 
 abstract rule MediaContent2MediaContent {
@@ -154,10 +139,6 @@ abstract rule MediaContent2MediaContent {
             reactions <- s.reactions,
             tags <- s.tags
         )
-    do {
-        thisModule.id <- thisModule.id.inc();
-        t.mediaContentID <- thisModule.id;
-    }
 }
 
 rule Stream2Stream extends MediaContent2MediaContent {
@@ -167,8 +148,11 @@ rule Stream2Stream extends MediaContent2MediaContent {
         t: RSP!Stream(
             isLive <- s.isLive,
             viewers <- s.viewers
-            --- activeViewers <- s.activeViewers
         )
+    do {
+        thisModule.id <- thisModule.id.inc();
+        t.mediaContentID <- thisModule.id;
+    }
 }
 
 rule Clip2Clip extends MediaContent2MediaContent {
@@ -178,6 +162,10 @@ rule Clip2Clip extends MediaContent2MediaContent {
         t: RSP!Clip(
             createdBy <- s.createdBy
         )
+    do {
+        thisModule.id <- thisModule.id.inc();
+        t.mediaContentID <- thisModule.id;
+    }
 }
 
 abstract rule Monetization2Monetization {
@@ -191,10 +179,6 @@ abstract rule Monetization2Monetization {
             paymentMethod <- s.paymentMethod,
             paymentStatus <- s.paymentStatus
         )
-    do {
-        thisModule.id <- thisModule.id.inc();
-        t.monetizationID <- thisModule.id;
-    }
 }
 
 rule Donation2Tip extends Monetization2Monetization {
@@ -204,6 +188,10 @@ rule Donation2Tip extends Monetization2Monetization {
         t: RSP!Tip(
             message <- s.message
         )
+    do {
+        thisModule.id <- thisModule.id.inc();
+        t.monetizationID <- thisModule.id;
+    }
 }
 
 rule Subscription2Subscription extends Monetization2Monetization {
@@ -219,6 +207,10 @@ rule Subscription2Subscription extends Monetization2Monetization {
             endDate <- s.endDate,
             features <- s.emotes->union(Sequence{s.badge})
         )
+    do {
+        thisModule.id <- thisModule.id.inc();
+        t.monetizationID <- thisModule.id;
+    }
 }
 
 abstract rule UserInteraction2UserInteraction {
@@ -229,10 +221,6 @@ abstract rule UserInteraction2UserInteraction {
             timestamp <- s.timestamp,
             author <- s.User
         )
-    do {
-        thisModule.id <- thisModule.id.inc();
-        t.userInteractionID <- thisModule.id;
-    }
 }
 
 rule Message2Message extends UserInteraction2UserInteraction {
@@ -242,6 +230,10 @@ rule Message2Message extends UserInteraction2UserInteraction {
         t: RSP!Message(
             content <- s.content
         )
+    do {
+        thisModule.id <- thisModule.id.inc();
+        t.userInteractionID <- thisModule.id;
+    }
 }
 
 rule Reaction2Reaction extends UserInteraction2UserInteraction {
@@ -251,4 +243,8 @@ rule Reaction2Reaction extends UserInteraction2UserInteraction {
         t: RSP!Reaction(
             reactionType <- s.reactionType
         )
+    do {
+        thisModule.id <- thisModule.id.inc();
+        t.userInteractionID <- thisModule.id;
+    }
 }
