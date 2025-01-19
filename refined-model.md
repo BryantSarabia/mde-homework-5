@@ -28,8 +28,13 @@ New class introduced to manage collections of `MediaContent`.
 
 ## 🎤 Channel
 
-- New reference:
-  - `playlists`: List of playlists available on the channel.
+- References:
+  - Added:
+    - `playlists`: List of playlists available on the channel.
+    - `features`: List of features (badges, emotes) available on the channel.
+  - Removed:
+    - `emotes`
+    - `badges`
 - Attributes:
   - Added:
     - Inherits `tags` from the new `Taggable` class.
@@ -66,6 +71,7 @@ Added inheritance from `Taggable` class.
 - Attributes:
   - Added:
     - `url` to store the icon URL of the feature (badge, emote).
+    - `type` to store the type of the feature (badge, emote).
 
 ---
 
@@ -79,8 +85,17 @@ Added inheritance from `Taggable` class.
 
 ---
 
+## Subscription
+
+- References:
+  - Removed:
+    - `emotes`
+    - `badges`
+
 ## 🔬 Enumerations
 
+- Added:
+  - `FeatureType`: Enumerates the types of features (badges, emotes).
 - Updated:
   - `Resolution` ➡️ renamed to `VideoQuality`.
   - `PaymentStatus`: Added new value `Refunded`.

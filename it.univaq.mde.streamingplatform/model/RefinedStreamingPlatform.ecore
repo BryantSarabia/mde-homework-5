@@ -75,10 +75,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subscriptions" upperBound="-1"
         eType="#//Subscription" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="emotes" upperBound="-1"
-        eType="#//Emote" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="badges" upperBound="-1"
-        eType="#//Badge" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//Feature" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//User"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalTips" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat" volatile="true"
@@ -135,6 +133,10 @@
         eType="#//Channel" eOpposite="#//Channel/followers"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Feature" abstract="true" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureID" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//FeatureType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tenure" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="donationAmount" lowerBound="1"
@@ -148,15 +150,6 @@
         <details key="derivation" value="&#xA;                if unlockCondition = UnlockCondition::DonationAmount then&#xA;                    'Requires a donation of at least ' + donationAmount.toString() + ' currency units'&#xA;                else&#xA;                    'Requires a tenure of ' + tenure.toString() + ' months'&#xA;                endif"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Badge" eSuperTypes="#//Feature">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="badgeID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        iD="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Emote" eSuperTypes="#//Feature">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="emoteID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        iD="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MediaContent" abstract="true" eSuperTypes="#//Taggable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -245,9 +238,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="endDate" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="emotes" upperBound="-1"
-        eType="#//Emote"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="badge" lowerBound="1" eType="#//Badge"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//Feature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UserInteraction" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
@@ -335,4 +327,8 @@
     <eLiterals name="Tenure" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Timestamp" instanceClassName="java.sql.Timestamp"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="FeatureType">
+    <eLiterals name="Badge"/>
+    <eLiterals name="Emote" value="1"/>
+  </eClassifiers>
 </ecore:EPackage>
