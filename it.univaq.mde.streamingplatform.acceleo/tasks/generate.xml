@@ -41,6 +41,7 @@
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.edit_2.22.0.v20240604-0832.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.ecore.change_2.17.0.v20240604-0832.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ocl.examples.codegen_2.22.0.v20240902-1518.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.apache.log4j_1.2.25.jar"/>
     </path>
 
     <path id="it.univaq.mde.streamingplatform.acceleo.classpath">

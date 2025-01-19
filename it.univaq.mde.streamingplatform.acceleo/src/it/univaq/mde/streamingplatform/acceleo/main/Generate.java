@@ -388,7 +388,6 @@ public class Generate extends AbstractAcceleoGenerator {
      */
     @Override
     public void registerResourceFactories(ResourceSet resourceSet) {
-        // super.registerResourceFactories(resourceSet);
     	EPackage.Registry.INSTANCE.put(RefinedStreamingPlatformPackage.eNS_URI, RefinedStreamingPlatformPackage.eINSTANCE);
         resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new XMIResourceFactoryImpl());
         /*

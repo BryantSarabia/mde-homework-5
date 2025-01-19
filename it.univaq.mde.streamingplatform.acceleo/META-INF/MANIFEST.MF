@@ -16,7 +16,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.acceleo.profiler;bundle-version="3.3.0",
  org.eclipse.acceleo.engine;bundle-version="3.3.0",
  com.google.guava,
- it.univaq.mde.streamingplatform;bundle-version="1.0.0"
+ it.univaq.mde.streamingplatform;bundle-version="1.0.0",
+ org.apache.log4j;bundle-version="1.2.25"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true

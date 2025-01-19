@@ -4,7 +4,89 @@
 
 [template public generateElement(aPlatform : Platform)]
 [comment @main/]
-[file (aPlatform.name, false, 'UTF-8')]
-	[aPlatform.name/]
-[/file]
+    [file ('index.html', false, 'UTF-8')]
+        <html>
+            <head>
+                <title>Refined Streaming Platform</title>
+            </head>
+            <body>
+                <h1>[aPlatform.name/]</h1>
+                <p>Welcome to the [aPlatform.name/] Platform documentation. Below are the core components of the platform:</p>
+                <h1>Platform: [aPlatform.name/]</h1>
+                <p>ID: [aPlatform.platformID/]</p>
+                <p>Revenue: [aPlatform.revenue/]</p>
+                <p>Version: [aPlatform.version/]</p>
+                <h2>Supported Regions</h2>
+                <ul>
+                    [for (region : Region | aPlatform.supportedRegions)]
+                        <li>[region.toString()/]</li>
+                    [/for]
+                </ul>
+                <h2>Channels</h2>
+                <ul>
+                    [for (channel : Channel | aPlatform.channels)]
+                        <li><a href="channel_[channel.channelID/].html">Channel: [channel.name/]</a></li>
+                    [/for]
+                    [for (user : User | aPlatform.users)]
+                        <li><a href="user_[user.userID/].html">User: [user.nickname/]</a></li>
+                    [/for]
+                </ul>
+            </body>
+        </html>
+    [/file]
+
+
+
+    [for (channel : Channel | aPlatform.channels)]
+        [file ('channel_' + channel.channelID + '.html', false, 'UTF-8')]
+            <html>
+                <head>
+                    <title>Channel: [channel.name/]</title>
+                </head>
+                <body>
+                    <h1>Channel: [channel.name/]</h1>
+                    <p>ID: [channel.channelID/]</p>
+                    <p>Total Tips: [channel.totalTips/]</p>
+                    <p>Total Followers: [channel.totalFollowers/]</p>
+                    <p>Total Views: [channel.totalViews/]</p>
+                    <h2>Owner</h2>
+                    <p><a href="user_[channel.owner.userID/].html">[channel.owner.nickname/]</a></p>
+                    <h2>Streams</h2>
+                    <ul>
+                        [for (stream : Stream | channel.streams)]
+                            <li>[stream.title/] - Views: [stream.viewCount/]</li>
+                        [/for]
+                    </ul>
+                </body>
+            </html>
+        [/file]
+    [/for]
+
+    [for (user : User | aPlatform.users)]
+        [file ('user_' + user.userID + '.html', false, 'UTF-8')]
+            <html>
+                <head>
+                    <title>User: [user.nickname/]</title>
+                </head>
+                <body>
+                    <h1>User: [user.nickname/]</h1>
+                    <p>ID: [user.userID/]</p>
+                    <p>Role: [user.role.toString()/]</p>
+                    <p>Online Status: [if user.isOnline]Online[else]Offline[/if]</p>
+                    <h2>Followed Channels</h2>
+                    <ul>
+                        [for (channel : Channel | user.followedChannels)]
+                            <li><a href="channel_[channel.channelID/].html">[channel.name/]</a></li>
+                        [/for]
+                    </ul>
+                    <h2>Subscriptions</h2>
+                    <ul>
+                        [for (subscription : Subscription | user.subscriptions)]
+                            <li>Tier: [subscription.tier.toString()/], Price: [subscription.price/] [subscription.currency.toString()/]</li>
+                        [/for]
+                    </ul>
+                </body>
+            </html>
+        [/file]
+    [/for]
 [/template]
