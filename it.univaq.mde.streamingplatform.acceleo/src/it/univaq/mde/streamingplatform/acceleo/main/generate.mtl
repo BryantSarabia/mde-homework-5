@@ -1,62 +1,180 @@
 [comment encoding = UTF-8 /]
 [module generate('https:/refined-streaming-platform.com')]
 
-
 [template public generateElement(aPlatform : Platform)]
 [comment @main/]
     [file ('index.html', false, 'UTF-8')]
         <html>
-            <head>
-                <title>Refined Streaming Platform</title>
-            </head>
-            <body>
-                <h1>[aPlatform.name/]</h1>
-                <p>Welcome to the [aPlatform.name/] Platform documentation. Below are the core components of the platform:</p>
-                <h1>Platform: [aPlatform.name/]</h1>
-                <p>ID: [aPlatform.platformID/]</p>
-                <p>Revenue: [aPlatform.revenue/]</p>
-                <p>Version: [aPlatform.version/]</p>
-                <h2>Supported Regions</h2>
-                <ul>
+          <head>
+            <title>Refined Streaming Platform</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script src="https://cdn.tailwindcss.com"></script>
+          </head>
+          <body>
+			      <div class="min-h-screen bg-white p-4 md:p-6 lg:p-8">
+              <div class="mx-auto max-w-6xl space-y-8">
+
+              [comment title /]
+                <div class="space-y-4">
+                  <h1 class="text-4xl font-bold tracking-tight">[aPlatform.name/]</h1>
+                  <p class="text-lg text-gray-600">
+                    Welcome to the [aPlatform.name/] Platform documentation. Below are the core components of the platform.
+                  </p>
+                </div>
+
+              [comment overview /]
+              <section class="space-y-4">
+                    <h2 class="text-2xl font-semibold">Platform Overview</h2>
+                    <div class="overflow-x-auto rounded-lg border border-gray-200">
+                      <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                          <tr>
+                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Platform ID</th>
+                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Name</th>
+                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Revenue</th>
+                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Version</th>
+                          </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 bg-white">
+                          <tr>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[aPlatform.platformID/]</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[aPlatform.name/]</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[aPlatform.revenue/]</td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[aPlatform.version/]</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                </section>
+			      
+	
+
+                <section class="space-y-4">
+                  <h2 class="text-2xl font-semibold">Supported Regions</h2>
+                  <div class="flex gap-2">
                     [for (region : Region | aPlatform.supportedRegions)]
-                        <li>[region.toString()/]</li>
+                    <span class="rounded-full bg-gray-100 px-3 py-1 text-sm font-medium text-gray-800">[region.toString()/]</span>
                     [/for]
-                </ul>
-                <h2>Channels</h2>
-                <ul>
-                    [for (channel : Channel | aPlatform.channels)]
-                        <li><a href="channel_[channel.channelID/].html">Channel: [channel.name/]</a></li>
-                    [/for]
-                    [for (user : User | aPlatform.users)]
-                        <li><a href="user_[user.userID/].html">User: [user.nickname/]</a></li>
-                    [/for]
-                </ul>
-            </body>
+                    <span class="rounded-full bg-gray-100 px-3 py-1 text-sm font-medium text-gray-800">Europe</span>
+                    <span class="rounded-full bg-gray-100 px-3 py-1 text-sm font-medium text-gray-800">America</span>
+                  </div>
+                </section>
+              
+
+                <section class="space-y-4">
+                  <h2 class="text-2xl font-semibold">Channels</h2>
+                  <div class="overflow-x-auto rounded-lg border border-gray-200">
+                    <table class="min-w-full divide-y divide-gray-200">
+                      <thead class="bg-gray-50">
+                        <tr>
+                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Channel ID</th>
+                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Name</th>
+                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Total Tips</th>
+                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Total Followers</th>
+                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Total Views</th>
+                        </tr>
+                      </thead>
+                      <tbody class="divide-y divide-gray-200 bg-white">
+                        [for (channel : Channel | aPlatform.channels)]
+                            <tr>
+                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900"><a href="channel_[channel.channelID/].html">[channel.channelID/]</a></td>
+                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[channel.name/]</td>
+                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[channel.totalTips/]</td>
+                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[channel.totalFollowers/]</td>
+                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[channel.totalViews/]</td>
+                            </tr>
+                        [/for]
+                      </tbody>
+                    </table>
+                  </div>
+                </section>  
+                
+                <section class="space-y-4">
+                  <h2 class="text-2xl font-semibold">Users</h2>
+                  <div class="overflow-x-auto rounded-lg border border-gray-200">
+                    <table class="min-w-full divide-y divide-gray-200">
+                      <thead class="bg-gray-50">
+                        <tr>
+                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">User ID</th>
+                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Nickname</th>
+                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Role</th>
+                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody class="divide-y divide-gray-200 bg-white">
+                        [for (user : User | aPlatform.users)]
+                            <tr>
+                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900"><a href="user_[user.userID/].html">[user.userID/]</a></td>
+                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[user.nickname/]</td>
+                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[user.role.toString()/]</td>
+                          <td class="whitespace-nowrap px-6 py-4 text-sm">
+                      [if user.isOnline]
+                              <span class="rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800">
+                                    Online
+                                  </span>
+                      [else]
+                        <span class="rounded-full bg-gray-100 px-3 py-1 text-sm font-medium text-gray-800">
+                                    Offline
+                                  </span>
+                      [/if]
+                    </td>
+                            </tr>
+                        [/for]
+                      </tbody>
+                    </table>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </body>
         </html>
     [/file]
-
-
 
     [for (channel : Channel | aPlatform.channels)]
         [file ('channel_' + channel.channelID + '.html', false, 'UTF-8')]
             <html>
                 <head>
                     <title>Channel: [channel.name/]</title>
+					<meta charset="UTF-8">
+					<meta name="viewport" content="width=device-width, initial-scale=1.0">
+					<script src="https://cdn.tailwindcss.com"></script>
                 </head>
                 <body>
                     <h1>Channel: [channel.name/]</h1>
-                    <p>ID: [channel.channelID/]</p>
-                    <p>Total Tips: [channel.totalTips/]</p>
-                    <p>Total Followers: [channel.totalFollowers/]</p>
-                    <p>Total Views: [channel.totalViews/]</p>
+                    <table border="1">
+                        <tr>
+                            <th>Channel ID</th>
+                            <th>Name</th>
+                            <th>Total Tips</th>
+                            <th>Total Followers</th>
+                            <th>Total Views</th>
+                        </tr>
+                        <tr>
+                            <td>[channel.channelID/]</td>
+                            <td>[channel.name/]</td>
+                            <td>[channel.totalTips/]</td>
+                            <td>[channel.totalFollowers/]</td>
+                            <td>[channel.totalViews/]</td>
+                        </tr>
+                    </table>
+                    
+                    <h2>Streams</h2>
+                    <table border="1">
+                        <tr>
+                            <th>Stream Title</th>
+                            <th>View Count</th>
+                        </tr>
+                        [for (stream : Stream | channel.streams)]
+                            <tr>
+                                <td>[stream.title/]</td>
+                                <td>[stream.viewCount/]</td>
+                            </tr>
+                        [/for]
+                    </table>
+                    
                     <h2>Owner</h2>
                     <p><a href="user_[channel.owner.userID/].html">[channel.owner.nickname/]</a></p>
-                    <h2>Streams</h2>
-                    <ul>
-                        [for (stream : Stream | channel.streams)]
-                            <li>[stream.title/] - Views: [stream.viewCount/]</li>
-                        [/for]
-                    </ul>
                 </body>
             </html>
         [/file]
@@ -64,33 +182,77 @@
 
     [for (user : User | aPlatform.users)]
         [file ('user_' + user.userID + '.html', false, 'UTF-8')]
-            <html>
-                <head>
-                    <title>User: [user.nickname/]</title>
-                </head>
+          <html>
+            <head>
+              <title>User: [user.nickname/]</title>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <script src="https://cdn.tailwindcss.com"></script>
+            </head>
                 <body>
                     <h1>User: [user.nickname/]</h1>
-                    <p>ID: [user.userID/]</p>
-                    <p>Role: [user.role.toString()/]</p>
-                    <p>Online Status: [if user.isOnline]Online[else]Offline[/if]</p>
+                    <table border="1">
+                        <tr>
+                            <th>User ID</th>
+                            <th>Nickname</th>
+                            <th>Role</th>
+                            <th>Online Status</th>
+                        </tr>
+                        <tr>
+                            <td>[user.userID/]</td>
+                            <td>[user.nickname/]</td>
+                            <td>[user.role.toString()/]</td>
+                            <td>[if user.isOnline]Online[else]Offline[/if]</td>
+                        </tr>
+                    </table>
+                    
                     <h2>Followed Channels</h2>
-                    <ul>
+                    <table border="1">
+                        <tr>
+                            <th>Channel</th>
+                        </tr>
                         [for (channel : Channel | user.followedChannels)]
-                            <li><a href="channel_[channel.channelID/].html">[channel.name/]</a></li>
+                            <tr>
+                                <td><a href="channel_[channel.channelID/].html">[channel.name/]</a></td>
+                            </tr>
                         [/for]
-                    </ul>
+                    </table>
+                    
                     <h2>Subscriptions</h2>
-                    <ul>
+                    <table border="1">
+                        <tr>
+                            <th>Tier</th>
+                            <th>Price</th>
+                            <th>Currency</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                        </tr>
                         [for (subscription : Subscription | user.subscriptions)]
-                            <li>Tier: [subscription.tier.toString()/], Price: [subscription.price/] [subscription.currency.toString()/], Start Date: [subscription.startDate/], End Date: [subscription.endDate/]</li>
+                            <tr>
+                                <td>[subscription.tier.toString()/]</td>
+                                <td>[subscription.price/]</td>
+                                <td>[subscription.currency.toString()/]</td>
+                                <td>[subscription.startDate/]</td>
+                                <td>[subscription.endDate/]</td>
+                            </tr>
                         [/for]
-                    </ul>
-					<h2>Donations</h2>
-                	<ul>
+                    </table>
+                    
+                    <h2>Donations</h2>
+                    <table border="1">
+                        <tr>
+                            <th>Amount</th>
+                            <th>Currency</th>
+                            <th>Message</th>
+                        </tr>
                         [for (tip : Tip | user.tips)]
-                            <li>Price: [tip.amount/] [tip.currency.toString()/]: [tip.message/]</li>
+                            <tr>
+                                <td>[tip.amount/]</td>
+                                <td>[tip.currency.toString()/]</td>
+                                <td>[tip.message/]</td>
+                            </tr>
                         [/for]
-                    </ul>
+                    </table>
                 </body>
             </html>
         [/file]

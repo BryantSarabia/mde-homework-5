@@ -385,6 +385,8 @@ public class Generate extends AbstractAcceleoGenerator {
      * @param resourceSet
      *            The resource set which registry has to be updated.
      * @generated
+     * EPackage.Registry.INSTANCE.put(RefinedStreamingPlatformPackage.eNS_URI, RefinedStreamingPlatformPackage.eINSTANCE);
+        resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new XMIResourceFactoryImpl());
      */
     @Override
     public void registerResourceFactories(ResourceSet resourceSet) {
