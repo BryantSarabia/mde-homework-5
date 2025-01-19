@@ -107,6 +107,10 @@ This class has been renamed to`Tip`.
 - Attributes:
   - Removed:
     - `subscriptionID` (replaced by `monetizationID`).
+- References:
+  - Removed:
+    - `emotes`
+    - `badges`
 
 ---
 
@@ -115,6 +119,8 @@ This class has been renamed to`Tip`.
 - Attributes:
   - Added:
     - `userInteractionID` to store the unique identifier of the user interaction event.
+- Changed reference:
+  - `user` ➡️ `author`.
 
 ## Message
 
@@ -140,23 +146,6 @@ This class has been renamed to`Tip`.
     - `type` to store the type of the feature (badge, emote).
 
 ---
-
-## UserInteraction
-
-- Changed reference:
-  - `user` ➡️ `author`.
-- Attributes:
-  - Changed:
-    - `timestamp` ➡️ renamed to `date` and its type is now `EDate`.
-
----
-
-## Subscription
-
-- References:
-  - Removed:
-    - `emotes`
-    - `badges`
 
 ## 🔬 Enumerations
 

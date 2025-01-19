@@ -8,12 +8,21 @@ helper def: id : Integer = 0;
 
 helper context Integer def : inc() : Integer = self + 1;
 
+helper context SP!Platform def : getTotalRevenue() : Real =
+    self.channels->collect(c | c.getTotalRevenue())->sum();
+
+helper context SP!Channel def : getTotalRevenue() : Real =
+    self.donations->collect(d | d.amount)->sum() + self.subscriptions->collect(s | s.amount)->sum();
+
 helper context SP!Feature def : getEligibilityDescription() : String =
 	if self.unlockCondition = #DonationAmount then
         'Requires a donation of at least ' + self.donationAmount.toString() + ' currency units'
     else
         'Requires a tenure of ' + self.tenure.toString() + ' months'
     endif;
+
+helper context SP!Channel def : getTotalDonations() : Real =
+    self.donations->collect(d | d.amount)->sum();
 
 abstract rule NamedElement2NamedElement {
     from
@@ -47,11 +56,11 @@ rule Platform2Platform extends Auditable2Auditable {
             supportedVideoQualities <- s.supportedResolutions,
             users <- s.users,
             channels <- s.channels
-           -- totalRevenue <- s.totalRevenue
         )
     do {
         thisModule.id <- thisModule.id.inc();
         t.platformID <- thisModule.id;
+        -- t.totalRevenue <- s.getTotalRevenue();
     }
 }
 
@@ -68,15 +77,15 @@ rule Channel2Channel extends Auditable2Auditable {
             followers <- s.followers,
             tips <- s.donations,
             subscriptions <- s.subscriptions,
-            features <- s.features,
-            owner <- s.owner,
-            totalTips <- s.totalDonations,
-            totalFollowers <- s.totalFollowers,
-            totalViews <- s.totalViews
+            features <- s.emotes->union(s.badges),
+            owner <- s.owner
         )
     do {
         thisModule.id <- thisModule.id.inc();
         t.channelID <- thisModule.id;
+       --- t.totalTips <- s.getTotalDonations();
+       --- t.totalFollowers <- s.totalFollowers;
+        --- t.totalViews <- s.totalViews;
     }
 }
 
@@ -98,15 +107,15 @@ rule User2User extends Auditable2Auditable {
     }
 }
 
-abstract rule Feature2Feature {
+abstract rule Feature2Feature extends NamedElement2NamedElement {
     from
         s: SP!Feature
     to
         t: RSP!Feature(
             tenure <- s.tenure,
             donationAmount <- s.donationAmount,
-            unlockCondition <- s.unlockCondition,
-            eligibilityDescription <- s.getEligibilityDescription()
+            unlockCondition <- s.unlockCondition
+           --- eligibilityDescription <- s.getEligibilityDescription()
         )
     do {
         thisModule.id <- thisModule.id.inc();
@@ -157,8 +166,8 @@ rule Stream2Stream extends MediaContent2MediaContent {
     to
         t: RSP!Stream(
             isLive <- s.isLive,
-            viewers <- s.viewers,
-            activeViewers <- s.activeViewers
+            viewers <- s.viewers
+            --- activeViewers <- s.activeViewers
         )
 }
 
@@ -208,7 +217,7 @@ rule Subscription2Subscription extends Monetization2Monetization {
             autoRenewal <- s.autoRenewal,
             startDate <- s.startDate,
             endDate <- s.endDate,
-            features <- s.features
+            features <- s.emotes->union(Sequence{s.badge})
         )
 }
 
@@ -218,7 +227,7 @@ abstract rule UserInteraction2UserInteraction {
     to
         t: RSP!UserInteraction(
             timestamp <- s.timestamp,
-            author <- s.user
+            author <- s.User
         )
     do {
         thisModule.id <- thisModule.id.inc();

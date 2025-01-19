@@ -18,7 +18,7 @@ public class MessageUtils {
         message.setContent(content);
         Date date = new Date();
         Timestamp timestamp = new Timestamp(date.getTime());
-        message.setTimestamp(timestamp);
+        message.setTimestamp(timestamp.getTime());
         return message;
     }
 

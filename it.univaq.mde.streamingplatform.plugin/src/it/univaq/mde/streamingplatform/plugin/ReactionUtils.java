@@ -19,7 +19,7 @@ public class ReactionUtils {
         reaction.setReactionType(type);
         Date date = new Date();
         Timestamp timestamp = new Timestamp(date.getTime());
-        reaction.setTimestamp(timestamp);
+        reaction.setTimestamp(timestamp.getTime());
         return reaction;
     }
 
