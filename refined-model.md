@@ -3,6 +3,8 @@
 ## 🔗 General Changes
 
 - Abstract Class `Taggable`: ➕ Introduced in the new model. Contains the tags attribute, allowing tagging for reusable components.
+- The type `UUID` has been replaced with an auto-incrementing integer for the `id` attribute in all classes.
+- The attribute `description` has been removed from all classes.
 
 ---
 
@@ -17,8 +19,6 @@ New class introduced to manage collections of `MediaContent`.
 - Attributes:
   - Added:
     - `supportedVideoQualities` (replacing `supportedResolutions`).
-  - Removed:
-    - `description`.
   - Changed:
     - `supportedResolutions` ➡️ `supportedVideoQualities`.
 - Property `totalRevenue`:
@@ -28,13 +28,11 @@ New class introduced to manage collections of `MediaContent`.
 
 ## 🎤 Channel
 
-- New properties:
+- New reference:
   - `playlists`: List of playlists available on the channel.
 - Attributes:
   - Added:
     - Inherits `tags` from the new `Taggable` class.
-  - Removed:
-    - `description`
   - Changed:
     - `donations` ➡️ `tips`.
 - Derived attributes:
@@ -47,8 +45,6 @@ New class introduced to manage collections of `MediaContent`.
 - Attributes:
   - Added:
     - `tips` property replaces `donations`.
-  - Removed:
-    - `description`.
 - Operations:
   - Changed:
     - `totalDonations()` ➡️ `totalTips()`.
@@ -62,6 +58,24 @@ Added inheritance from `Taggable` class.
 - Attributes:
   - Changed:
     - `resolutions` ➡️ `videoQualities`.
+
+---
+
+## Feature
+
+- Attributes:
+  - Added:
+    - `url` to store the icon URL of the feature (badge, emote).
+
+---
+
+## UserInteraction
+
+- Changed reference:
+  - `user` ➡️ `author`.
+- Attributes:
+  - Changed:
+    - `timestamp` ➡️ renamed to `date` and its type is now `EDate`.
 
 ---
 

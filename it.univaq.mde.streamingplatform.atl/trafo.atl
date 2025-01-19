@@ -1,0 +1,6 @@
+-- @path SP=/it.univaq.mde.streamingplatform/model/StreamingPlatform.ecore
+-- @path RSP=/it.univaq.mde.streamingplatform/model/RefinedStreamingPlatform.ecore
+
+module trafo;
+create OUT : RSP from IN : SP;
+
