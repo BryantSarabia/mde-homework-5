@@ -8,7 +8,8 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-21
-Export-Package: StreamingPlatform.tests
+Export-Package: StreamingPlatform.tests,
+ RefinedStreamingPlatform.tests
 Require-Bundle: org.eclipse.core.runtime,
  it.univaq.mde.streamingplatform;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,

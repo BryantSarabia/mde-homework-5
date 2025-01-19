@@ -14,4 +14,12 @@
             genModel="metamodel/StreamingPlatform.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated RefinedStreamingPlatform -->
+      <package
+            uri="https:/refined-streaming-platform.com"
+            class="RefinedStreamingPlatform.RefinedStreamingPlatformPackage"
+            genModel="metamodel/RefinedStreamingPlatform.genmodel"/>
+   </extension>
+
 </plugin>

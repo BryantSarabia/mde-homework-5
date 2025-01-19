@@ -34,4 +34,31 @@
       </editor>
    </extension>
 
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated RefinedStreamingPlatform -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="RefinedStreamingPlatform.presentation.RefinedStreamingPlatformModelWizardID"
+            name="%_UI_RefinedStreamingPlatformModelWizard_label"
+            class="RefinedStreamingPlatform.presentation.RefinedStreamingPlatformModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/RefinedStreamingPlatformModelFile.gif">
+         <description>%_UI_RefinedStreamingPlatformModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated RefinedStreamingPlatform -->
+      <editor
+            id="RefinedStreamingPlatform.presentation.RefinedStreamingPlatformEditorID"
+            name="%_UI_RefinedStreamingPlatformEditor_label"
+            icon="icons/full/obj16/RefinedStreamingPlatformModelFile.gif"
+            extensions="refinedstreamingplatform"
+            class="RefinedStreamingPlatform.presentation.RefinedStreamingPlatformEditor"
+            contributorClass="RefinedStreamingPlatform.presentation.RefinedStreamingPlatformActionBarContributor">
+      </editor>
+   </extension>
 </plugin>

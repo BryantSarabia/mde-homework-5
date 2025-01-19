@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/it.univaq.mde.streamingplatform/src" modelPluginID="it.univaq.mde.streamingplatform"
+    modelName="RefinedStreamingPlatform" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="21.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>RefinedStreamingPlatform.ecore</foreignModel>
+  <genPackages prefix="RefinedStreamingPlatform" disposableProviderFactory="true"
+      ecorePackage="RefinedStreamingPlatform.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RefinedStreamingPlatform.ecore#//SubscriptionDuration">
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//SubscriptionDuration/Monthly"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//SubscriptionDuration/Annual"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RefinedStreamingPlatform.ecore#//Category">
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Category/Videogames"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Category/JustChatting"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Category/Esports"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Category/Sports"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Category/TalkShowsAndPodscasts"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RefinedStreamingPlatform.ecore#//Currency">
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Currency/EUR"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Currency/USD"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Currency/GBP"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RefinedStreamingPlatform.ecore#//Device">
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Device/iOS"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Device/Android"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Device/Web"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Device/TV"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RefinedStreamingPlatform.ecore#//Language">
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Language/Italian"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Language/Spanish"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Language/English"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RefinedStreamingPlatform.ecore#//Region">
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Region/Europe"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Region/America"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RefinedStreamingPlatform.ecore#//VideoQuality">
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//VideoQuality/SD"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//VideoQuality/HD"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//VideoQuality/UltraHD"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//VideoQuality/QuadHD"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//VideoQuality/FullHD"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RefinedStreamingPlatform.ecore#//PaymentMethod">
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//PaymentMethod/Paypal"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//PaymentMethod/CreditCard"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RefinedStreamingPlatform.ecore#//PaymentStatus">
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//PaymentStatus/Pending"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//PaymentStatus/Completed"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//PaymentStatus/Rejected"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//PaymentStatus/Refunded"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RefinedStreamingPlatform.ecore#//ReactionType">
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//ReactionType/Love"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//ReactionType/ThumbsUp"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//ReactionType/ThumbsDown"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//ReactionType/Funny"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RefinedStreamingPlatform.ecore#//Role">
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Role/Administrator"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Role/Streamer"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Role/Viewer"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RefinedStreamingPlatform.ecore#//Tier">
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Tier/Basic"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Tier/Premium"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//Tier/VIP"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RefinedStreamingPlatform.ecore#//UnlockCondition">
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//UnlockCondition/DonationAmount"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//UnlockCondition/Tenure"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RefinedStreamingPlatform.ecore#//FeatureType">
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//FeatureType/Badge"/>
+      <genEnumLiterals ecoreEnumLiteral="RefinedStreamingPlatform.ecore#//FeatureType/Emote"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="RefinedStreamingPlatform.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RefinedStreamingPlatform.ecore#//Taggable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Taggable/tags"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RefinedStreamingPlatform.ecore#//Auditable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Auditable/createdAt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Auditable/updatedAt"/>
+    </genClasses>
+    <genClasses ecoreClass="RefinedStreamingPlatform.ecore#//Platform">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Platform/platformID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Platform/revenue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Platform/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Platform/supportedRegions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Platform/supportedLanguages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Platform/supportedDevices"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Platform/supportedVideoQualities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//Platform/users"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//Platform/channels"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Platform/totalRevenue"/>
+      <genOperations ecoreOperation="RefinedStreamingPlatform.ecore#//Platform/activeUsersCount"/>
+      <genOperations ecoreOperation="RefinedStreamingPlatform.ecore#//Platform/findChannelByName">
+        <genParameters ecoreParameter="RefinedStreamingPlatform.ecore#//Platform/findChannelByName/name"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="RefinedStreamingPlatform.ecore#//Channel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Channel/channelID"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//Channel/streams"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//Channel/clips"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//Channel/playlists"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//Channel/moderators"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//Channel/followers"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//Channel/tips"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//Channel/subscriptions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//Channel/features"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//Channel/owner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Channel/totalTips"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Channel/totalFollowers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Channel/totalViews"/>
+    </genClasses>
+    <genClasses ecoreClass="RefinedStreamingPlatform.ecore#//User">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//User/userID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//User/role"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//User/avatar"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//User/isOnline"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//User/nickname"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//User/subscriptions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//User/tips"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//User/followedChannels"/>
+      <genOperations ecoreOperation="RefinedStreamingPlatform.ecore#//User/totalTips"/>
+      <genOperations ecoreOperation="RefinedStreamingPlatform.ecore#//User/isFollowing">
+        <genParameters ecoreParameter="RefinedStreamingPlatform.ecore#//User/isFollowing/channel"/>
+      </genOperations>
+      <genOperations ecoreOperation="RefinedStreamingPlatform.ecore#//User/totalSpending"/>
+    </genClasses>
+    <genClasses ecoreClass="RefinedStreamingPlatform.ecore#//Feature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Feature/featureID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Feature/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Feature/url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Feature/tenure"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Feature/donationAmount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Feature/unlockCondition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Feature/eligibilityDescription"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RefinedStreamingPlatform.ecore#//MediaContent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//MediaContent/mediaContentID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//MediaContent/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//MediaContent/category"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//MediaContent/viewCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//MediaContent/videoQualities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//MediaContent/messages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//MediaContent/reactions"/>
+    </genClasses>
+    <genClasses ecoreClass="RefinedStreamingPlatform.ecore#//Stream">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Stream/isLive"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//Stream/viewers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Stream/activeViewers"/>
+    </genClasses>
+    <genClasses ecoreClass="RefinedStreamingPlatform.ecore#//Clip">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//Clip/createdBy"/>
+    </genClasses>
+    <genClasses ecoreClass="RefinedStreamingPlatform.ecore#//Playlist">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Playlist/playlistID"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//Playlist/media"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RefinedStreamingPlatform.ecore#//Monetization">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Monetization/monetizationID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Monetization/amount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Monetization/currency"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Monetization/transactionDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Monetization/paymentStatus"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Monetization/paymentMethod"/>
+    </genClasses>
+    <genClasses ecoreClass="RefinedStreamingPlatform.ecore#//Tip">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Tip/message"/>
+    </genClasses>
+    <genClasses ecoreClass="RefinedStreamingPlatform.ecore#//Subscription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Subscription/tier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Subscription/price"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Subscription/duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Subscription/autoRenewal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Subscription/startDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Subscription/endDate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//Subscription/features"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RefinedStreamingPlatform.ecore#//UserInteraction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//UserInteraction/userInteractionID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//UserInteraction/timestamp"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RefinedStreamingPlatform.ecore#//UserInteraction/author"/>
+    </genClasses>
+    <genClasses ecoreClass="RefinedStreamingPlatform.ecore#//Message">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Message/content"/>
+    </genClasses>
+    <genClasses ecoreClass="RefinedStreamingPlatform.ecore#//Reaction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RefinedStreamingPlatform.ecore#//Reaction/reactionType"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

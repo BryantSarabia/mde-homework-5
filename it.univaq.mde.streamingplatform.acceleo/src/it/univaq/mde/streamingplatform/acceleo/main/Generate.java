@@ -22,7 +22,12 @@ import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+
+import RefinedStreamingPlatform.RefinedStreamingPlatformPackage;
 
 /**
  * Entry point of the 'Generate' generation module.
@@ -383,7 +388,9 @@ public class Generate extends AbstractAcceleoGenerator {
      */
     @Override
     public void registerResourceFactories(ResourceSet resourceSet) {
-        super.registerResourceFactories(resourceSet);
+        // super.registerResourceFactories(resourceSet);
+    	EPackage.Registry.INSTANCE.put(RefinedStreamingPlatformPackage.eNS_URI, RefinedStreamingPlatformPackage.eINSTANCE);
+        resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new XMIResourceFactoryImpl());
         /*
          * If you want to change the content of this method, do NOT forget to change the "@generated"
          * tag in the Javadoc of this method to "@generated NOT". Without this new tag, any compilation

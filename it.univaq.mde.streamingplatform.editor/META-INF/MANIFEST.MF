@@ -5,11 +5,12 @@ Bundle-SymbolicName: it.univaq.mde.streamingplatform.editor;singleton:=true
 Automatic-Module-Name: it.univaq.mde.streamingplatform.editor
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: StreamingPlatform.presentation.StreamingPlatformEditorPlugin$Implementation
+Bundle-Activator: RefinedStreamingPlatform.presentation.RefinedStreamingPlatformEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-21
-Export-Package: StreamingPlatform.presentation
+Export-Package: StreamingPlatform.presentation,
+ RefinedStreamingPlatform.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  it.univaq.mde.streamingplatform.edit;visibility:=reexport,
