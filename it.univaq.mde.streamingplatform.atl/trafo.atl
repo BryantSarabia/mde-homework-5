@@ -46,8 +46,8 @@ rule Platform2Platform extends Auditable2Auditable {
             supportedDevices <- s.supportedDevices,
             supportedVideoQualities <- s.supportedResolutions,
             users <- s.users,
-            channels <- s.channels,
-            totalRevenue <- s.totalRevenue
+            channels <- s.channels
+           -- totalRevenue <- s.totalRevenue
         )
     do {
         thisModule.id <- thisModule.id.inc();

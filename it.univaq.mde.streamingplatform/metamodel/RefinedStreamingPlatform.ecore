@@ -131,7 +131,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="followedChannels" upperBound="-1"
         eType="#//Channel" eOpposite="#//Channel/followers"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Feature" abstract="true" eSuperTypes="#//NamedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureID" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//FeatureType"/>
