@@ -1,0 +1,10 @@
+[comment encoding = UTF-8 /]
+[module generate('https:/refined-streaming-platform.com')]
+
+
+[template public generateElement(aPlatform : Platform)]
+[comment @main/]
+[file (aPlatform.name, false, 'UTF-8')]
+
+[/file]
+[/template]
