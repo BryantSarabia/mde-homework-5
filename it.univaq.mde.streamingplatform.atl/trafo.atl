@@ -9,6 +9,14 @@ helper def: id : Integer = 0;
 helper context Integer def : inc() : Integer = self + 1;
 
 
+-- helper context SP!Channel def : createPlaylist(name: String) : RSP!Playlist =
+--    let p : RSP!Playlist = RSP!Playlist (
+--        playlistID <- thisModule.id.inc(),
+--        name <- name,
+--        content <- self.clips->union(self.streams)
+--    ) in p;
+
+
 abstract rule NamedElement2NamedElement {
     from
         s: SP!NamedElement
