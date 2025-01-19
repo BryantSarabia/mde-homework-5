@@ -27,7 +27,7 @@ public interface Reaction extends UserInteraction {
 	 * @return the value of the '<em>Reaction ID</em>' attribute.
 	 * @see #setReactionID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getReaction_ReactionID()
-	 * @model id="true" dataType="StreamingPlatform.UUID" required="true"
+	 * @model id="true" required="true"
 	 * @generated
 	 */
 	String getReactionID();

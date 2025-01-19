@@ -4,7 +4,6 @@ package StreamingPlatform;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
@@ -407,7 +406,7 @@ public interface StreamingPlatformPackage extends EPackage {
 	int CHANNEL__FOLLOWERS = AUDITABLE_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Donations</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Donations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -416,7 +415,7 @@ public interface StreamingPlatformPackage extends EPackage {
 	int CHANNEL__DONATIONS = AUDITABLE_FEATURE_COUNT + 7;
 
 	/**
-	 * The feature id for the '<em><b>Subscriptions</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Subscriptions</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2035,28 +2034,6 @@ public interface StreamingPlatformPackage extends EPackage {
 	int UNLOCK_CONDITION = 29;
 
 	/**
-	 * The meta object id for the '<em>UUID</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.String
-	 * @see StreamingPlatform.impl.StreamingPlatformPackageImpl#getUUID()
-	 * @generated
-	 */
-	int UUID = 30;
-
-
-	/**
-	 * The meta object id for the '<em>Timestamp</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.sql.Timestamp
-	 * @see StreamingPlatform.impl.StreamingPlatformPackageImpl#getTimestamp()
-	 * @generated
-	 */
-	int TIMESTAMP = 31;
-
-
-	/**
 	 * Returns the meta object for class '{@link StreamingPlatform.NamedElement <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2305,10 +2282,10 @@ public interface StreamingPlatformPackage extends EPackage {
 	EReference getChannel_Followers();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link StreamingPlatform.Channel#getDonations <em>Donations</em>}'.
+	 * Returns the meta object for the reference list '{@link StreamingPlatform.Channel#getDonations <em>Donations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Donations</em>'.
+	 * @return the meta object for the reference list '<em>Donations</em>'.
 	 * @see StreamingPlatform.Channel#getDonations()
 	 * @see #getChannel()
 	 * @generated
@@ -2316,10 +2293,10 @@ public interface StreamingPlatformPackage extends EPackage {
 	EReference getChannel_Donations();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link StreamingPlatform.Channel#getSubscriptions <em>Subscriptions</em>}'.
+	 * Returns the meta object for the reference list '{@link StreamingPlatform.Channel#getSubscriptions <em>Subscriptions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Subscriptions</em>'.
+	 * @return the meta object for the reference list '<em>Subscriptions</em>'.
 	 * @see StreamingPlatform.Channel#getSubscriptions()
 	 * @see #getChannel()
 	 * @generated
@@ -3349,28 +3326,6 @@ public interface StreamingPlatformPackage extends EPackage {
 	EEnum getUnlockCondition();
 
 	/**
-	 * Returns the meta object for data type '{@link java.lang.String <em>UUID</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>UUID</em>'.
-	 * @see java.lang.String
-	 * @model instanceClass="java.lang.String"
-	 * @generated
-	 */
-	EDataType getUUID();
-
-	/**
-	 * Returns the meta object for data type '{@link java.sql.Timestamp <em>Timestamp</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Timestamp</em>'.
-	 * @see java.sql.Timestamp
-	 * @model instanceClass="java.sql.Timestamp"
-	 * @generated
-	 */
-	EDataType getTimestamp();
-
-	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3584,7 +3539,7 @@ public interface StreamingPlatformPackage extends EPackage {
 		EReference CHANNEL__FOLLOWERS = eINSTANCE.getChannel_Followers();
 
 		/**
-		 * The meta object literal for the '<em><b>Donations</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Donations</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -3592,7 +3547,7 @@ public interface StreamingPlatformPackage extends EPackage {
 		EReference CHANNEL__DONATIONS = eINSTANCE.getChannel_Donations();
 
 		/**
-		 * The meta object literal for the '<em><b>Subscriptions</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Subscriptions</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4420,26 +4375,6 @@ public interface StreamingPlatformPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum UNLOCK_CONDITION = eINSTANCE.getUnlockCondition();
-
-		/**
-		 * The meta object literal for the '<em>UUID</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see java.lang.String
-		 * @see StreamingPlatform.impl.StreamingPlatformPackageImpl#getUUID()
-		 * @generated
-		 */
-		EDataType UUID = eINSTANCE.getUUID();
-
-		/**
-		 * The meta object literal for the '<em>Timestamp</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see java.sql.Timestamp
-		 * @see StreamingPlatform.impl.StreamingPlatformPackageImpl#getTimestamp()
-		 * @generated
-		 */
-		EDataType TIMESTAMP = eINSTANCE.getTimestamp();
 
 	}
 

@@ -38,7 +38,7 @@ public interface Platform extends Auditable, NamedElement {
 	 * @return the value of the '<em>Platform ID</em>' attribute.
 	 * @see #setPlatformID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getPlatform_PlatformID()
-	 * @model id="true" dataType="StreamingPlatform.UUID" required="true"
+	 * @model id="true" required="true"
 	 * @generated
 	 */
 	String getPlatformID();

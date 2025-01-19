@@ -39,7 +39,7 @@ public interface Subscription extends Monetization {
 	 * @return the value of the '<em>Subscription ID</em>' attribute.
 	 * @see #setSubscriptionID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getSubscription_SubscriptionID()
-	 * @model id="true" dataType="StreamingPlatform.UUID" required="true"
+	 * @model id="true" required="true"
 	 * @generated
 	 */
 	String getSubscriptionID();

@@ -25,7 +25,7 @@
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="platformID" lowerBound="1"
-        eType="#//UUID" iD="true"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="revenue" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
@@ -52,7 +52,7 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Channel" eSuperTypes="#//Auditable #//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="channelID" eType="#//UUID"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="channelID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="streams" upperBound="-1"
@@ -64,9 +64,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="followers" upperBound="-1"
         eType="#//User" eOpposite="#//User/followedChannels"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="donations" upperBound="-1"
-        eType="#//Donation" containment="true"/>
+        eType="#//Donation"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subscriptions" upperBound="-1"
-        eType="#//Subscription" containment="true"/>
+        eType="#//Subscription"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="emotes" upperBound="-1"
         eType="#//Emote" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="badges" upperBound="-1"
@@ -112,7 +112,7 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="userID" lowerBound="1"
-        eType="#//UUID" iD="true"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="role" lowerBound="1" eType="#//Role"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="avatar" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOnline" lowerBound="1"
@@ -128,11 +128,11 @@
         eType="#//Channel" eOpposite="#//Channel/followers"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Badge" eSuperTypes="#//Feature">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="badgeID" eType="#//UUID"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="badgeID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Emote" eSuperTypes="#//Feature">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="emoteID" eType="#//UUID"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="emoteID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Stream" eSuperTypes="#//MediaContent">
@@ -143,7 +143,7 @@
       <details key="liveCondition" value="isLive = true implies viewers->notEmpty()"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="streamID" lowerBound="1"
-        eType="#//UUID" iD="true"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isLive" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="viewers" upperBound="-1"
@@ -158,13 +158,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Clip" eSuperTypes="#//MediaContent">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="clipID" lowerBound="1"
-        eType="#//UUID" iD="true"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="createdBy" lowerBound="1"
         eType="#//User"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Donation" eSuperTypes="#//Monetization">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="donationID" lowerBound="1"
-        eType="#//UUID" iD="true"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Subscription" eSuperTypes="#//Monetization">
@@ -176,7 +176,7 @@
       <details key="transactionDateLessThanStartDate" value="transactionDate &lt;= startDate"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="subscriptionID" lowerBound="1"
-        eType="#//UUID" iD="true"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tier" lowerBound="1" eType="#//Tier"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="price" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" lowerBound="1"
@@ -193,13 +193,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Message" eSuperTypes="#//UserInteraction">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageID" lowerBound="1"
-        eType="#//UUID" iD="true"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Reaction" eSuperTypes="#//UserInteraction">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reactionID" lowerBound="1"
-        eType="#//UUID" iD="true"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reactionType" lowerBound="1"
         eType="#//ReactionType"/>
   </eClassifiers>
@@ -241,7 +241,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UserInteraction" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" lowerBound="1"
-        eType="#//Timestamp"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="User" lowerBound="1" eType="#//User"/>
   </eClassifiers>
@@ -331,6 +331,4 @@
     <eLiterals name="DonationAmount"/>
     <eLiterals name="Tenure" value="1"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="UUID" instanceClassName="java.lang.String"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="Timestamp" instanceClassName="java.sql.Timestamp"/>
 </ecore:EPackage>

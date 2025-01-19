@@ -41,7 +41,7 @@ public interface Channel extends Auditable, NamedElement {
 	 * @return the value of the '<em>Channel ID</em>' attribute.
 	 * @see #setChannelID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getChannel_ChannelID()
-	 * @model id="true" dataType="StreamingPlatform.UUID"
+	 * @model id="true"
 	 * @generated
 	 */
 	String getChannelID();
@@ -129,25 +129,25 @@ public interface Channel extends Auditable, NamedElement {
 	EList<User> getFollowers();
 
 	/**
-	 * Returns the value of the '<em><b>Donations</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Donations</b></em>' reference list.
 	 * The list contents are of type {@link StreamingPlatform.Donation}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Donations</em>' containment reference list.
+	 * @return the value of the '<em>Donations</em>' reference list.
 	 * @see StreamingPlatform.StreamingPlatformPackage#getChannel_Donations()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	EList<Donation> getDonations();
 
 	/**
-	 * Returns the value of the '<em><b>Subscriptions</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Subscriptions</b></em>' reference list.
 	 * The list contents are of type {@link StreamingPlatform.Subscription}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Subscriptions</em>' containment reference list.
+	 * @return the value of the '<em>Subscriptions</em>' reference list.
 	 * @see StreamingPlatform.StreamingPlatformPackage#getChannel_Subscriptions()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	EList<Subscription> getSubscriptions();

@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="ASCII"?>
-<SP:User xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SP="https:/streaming-platform.com" createdAt="2024-12-22T15:21:15.084+0100" name="Admin" userID="a59872b6-70b9-421b-8815-f0159540e355" avatar="admin.png" isOnline="true" nickname="Admin" description="An administrator"/>
+<SP:User xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SP="https:/streaming-platform.com" createdAt="2025-01-19T17:12:48.806+0100" name="Admin" userID="34be4384-301a-42d5-bb81-6e7b7fcb1dc3" avatar="admin.png" isOnline="true" nickname="Admin" description="An administrator"/>

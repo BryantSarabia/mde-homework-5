@@ -5,9 +5,6 @@ package StreamingPlatform.provider;
 
 import StreamingPlatform.Reaction;
 import StreamingPlatform.StreamingPlatformPackage;
-
-import java.sql.Timestamp;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -116,11 +113,8 @@ public class ReactionItemProvider extends UserInteractionItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		Timestamp labelValue = ((Reaction)object).getTimestamp();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Reaction_type") :
-			getString("_UI_Reaction_type") + " " + label;
+		Reaction reaction = (Reaction)object;
+		return getString("_UI_Reaction_type") + " " + reaction.getTimestamp();
 	}
 
 

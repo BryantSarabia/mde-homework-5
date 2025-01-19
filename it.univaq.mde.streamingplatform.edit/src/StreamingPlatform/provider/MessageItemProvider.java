@@ -5,9 +5,6 @@ package StreamingPlatform.provider;
 
 import StreamingPlatform.Message;
 import StreamingPlatform.StreamingPlatformPackage;
-
-import java.sql.Timestamp;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -116,11 +113,8 @@ public class MessageItemProvider extends UserInteractionItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		Timestamp labelValue = ((Message)object).getTimestamp();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Message_type") :
-			getString("_UI_Message_type") + " " + label;
+		Message message = (Message)object;
+		return getString("_UI_Message_type") + " " + message.getTimestamp();
 	}
 
 

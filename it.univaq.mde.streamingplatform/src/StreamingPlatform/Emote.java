@@ -26,7 +26,7 @@ public interface Emote extends Feature {
 	 * @return the value of the '<em>Emote ID</em>' attribute.
 	 * @see #setEmoteID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getEmote_EmoteID()
-	 * @model id="true" dataType="StreamingPlatform.UUID"
+	 * @model id="true"
 	 * @generated
 	 */
 	String getEmoteID();

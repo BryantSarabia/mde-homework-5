@@ -4,32 +4,135 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:SP="https:/streaming-platform.com"
-    xsi:schemaLocation="https:/streaming-platform.com /it.univaq.mde.streamingplatform/metamodel/StreamingPlatform.ecore">
+    xsi:schemaLocation="https:/streaming-platform.com /it.univaq.mde.streamingplatform/metamodel/StreamingPlatform.ecore"
+    createdAt="2025-01-19T00:00:00.000+0100"
+    name="Twitch"
+    platformID="991f97f6-484d-41d0-a864-e0094f4b6f6b"
+    revenue="157.87999725341797">
+  <supportedRegions>Europe</supportedRegions>
+  <supportedRegions>America</supportedRegions>
+  <supportedLanguages>Spanish</supportedLanguages>
+  <supportedLanguages>English</supportedLanguages>
+  <supportedDevices>iOS</supportedDevices>
+  <supportedDevices>Android</supportedDevices>
+  <supportedDevices>Web</supportedDevices>
+  <supportedResolutions>HD</supportedResolutions>
+  <supportedResolutions>FullHD</supportedResolutions>
   <users createdAt="2025-01-19T00:00:00.000+0100"
       name="Otherlude"
-      userID="849e0a4a-45c0-47d9-9963-46458a59cb3b"
+      userID="13631993-1f1e-4354-ab2f-23271e446594"
       role="Viewer"
-      avatar="avatar.png"
+      avatar="otherlude.png"
       isOnline="true"
-      nickname="Otherlude"/>
-  <users createdAt="2025-01-19T00:00:00.000+0100"
-      name="Gomita13"
-      role="Viewer"
-      avatar="gomita13.png"
-      isOnline="true"
-      nickname="Gomita13"/>
+      nickname="Otherlude"
+      followedChannels="39f9a422-aad4-42c4-b212-4a74664d94e7">
+    <subscriptions
+        name="Sub1"
+        amount="8.99"
+        transactionDate="2025-01-19T00:00:00.000+0100"
+        paymentStatus="Completed"
+        subscriptionID="b7e9866f-a4e1-436d-abae-8b90d59ec9ec"
+        tier="Premium"
+        price="107.88"
+        duration="Annual"
+        startDate="2025-01-19T00:00:00.000+0100"
+        endDate="2026-01-19T00:00:00.000+0100"
+        emotes="5371e369-dbfe-4dbd-af07-477b324ab4fe 52ba1ea1-703d-4f4c-9766-a991e71ac78d"
+        badge="9a5b8ca5-30b3-4d45-b94d-d1b239244dd6"/>
+    <donations
+        name="don1"
+        amount="50.0"
+        transactionDate="2025-01-19T00:00:00.000+0100"
+        paymentStatus="Completed"
+        donationID="a129482a-f037-4685-9665-264ffbbfa10b"
+        message="Keep up the good work"/>
+  </users>
   <users createdAt="2025-01-19T00:00:00.000+0100"
       name="Ibai"
-      userID="2"
+      userID="771c9bbb-c9b1-479e-bd64-bb9c3e303f58"
       role="Streamer"
       avatar="ibai.png"
       isOnline="true"
       nickname="Ibai"/>
   <users createdAt="2025-01-19T00:00:00.000+0100"
-      name="admin"
-      userID="3"
+      name="Admin"
+      userID="4245081d-3422-4218-8a1e-314a60693378"
       avatar="admin.png"
+      nickname="Admin"/>
+  <users createdAt="2025-01-19T00:00:00.000+0100"
+      name="Gomita13"
+      userID="579bc979-3155-42e2-a6f0-ff83445d3627"
+      avatar="Gomita13.png"
       isOnline="true"
-      nickname="admin"/>
-  <channels/>
+      nickname="Gomita13"
+      followedChannels="39f9a422-aad4-42c4-b212-4a74664d94e7"/>
+  <channels
+      createdAt="2025-01-19T00:00:00.000+0100"
+      name="Ibai channel"
+      channelID="39f9a422-aad4-42c4-b212-4a74664d94e7"
+      moderators="771c9bbb-c9b1-479e-bd64-bb9c3e303f58"
+      followers="13631993-1f1e-4354-ab2f-23271e446594 579bc979-3155-42e2-a6f0-ff83445d3627"
+      donations="a129482a-f037-4685-9665-264ffbbfa10b"
+      subscriptions="b7e9866f-a4e1-436d-abae-8b90d59ec9ec"
+      owner="771c9bbb-c9b1-479e-bd64-bb9c3e303f58">
+    <streams
+        title="Playing League of Legends"
+        viewCount="3"
+        streamID="0a456c96-3851-4338-b249-f7603a97d514"
+        isLive="true"
+        viewers="13631993-1f1e-4354-ab2f-23271e446594 771c9bbb-c9b1-479e-bd64-bb9c3e303f58 4245081d-3422-4218-8a1e-314a60693378 579bc979-3155-42e2-a6f0-ff83445d3627">
+      <tags>gaming</tags>
+      <tags>Spanish</tags>
+      <tags>Fun</tags>
+      <tags>league of legends</tags>
+      <resolutions>HD</resolutions>
+      <resolutions>FullHD</resolutions>
+      <messages
+          timestamp="1737305006183"
+          User="13631993-1f1e-4354-ab2f-23271e446594"
+          messageID="fbb08d9c-423b-4de4-aae6-c3795a3361e9"
+          content="Hello i'm otherlude"/>
+      <reactions
+          timestamp="1737305006183"
+          User="13631993-1f1e-4354-ab2f-23271e446594"
+          reactionID="53bf48f8-1f07-497e-8d81-e5cdbf50b3da"
+          reactionType="ThumbsUp"/>
+    </streams>
+    <streams
+        title="Playing valorant"
+        viewCount="1"
+        streamID="42b09394-3b77-404a-9c69-69a1460aa6d2">
+      <tags>valorant</tags>
+      <tags>spanish</tags>
+      <resolutions>HD</resolutions>
+    </streams>
+    <clips title="LMAO!"
+        clipID="afd0e0cc-8c10-401c-9032-e18fc8633a7a"
+        createdBy="579bc979-3155-42e2-a6f0-ff83445d3627">
+      <tags>gaming</tags>
+      <tags>league of legends</tags>
+      <resolutions>HD</resolutions>
+      <resolutions>FullHD</resolutions>
+    </clips>
+    <emotes
+        name="Kappa"
+        tenure="1"
+        unlockCondition="Tenure"
+        emoteID="5371e369-dbfe-4dbd-af07-477b324ab4fe"/>
+    <emotes
+        name="Tiger"
+        donationAmount="5.0"
+        unlockCondition="Tenure"
+        emoteID="52ba1ea1-703d-4f4c-9766-a991e71ac78d"/>
+    <badges
+        name="VIP"
+        donationAmount="50.0"
+        badgeID="9a5b8ca5-30b3-4d45-b94d-d1b239244dd6"/>
+    <badges
+        name="Founder"
+        tenure="1"
+        donationAmount="5.0"
+        unlockCondition="Tenure"
+        badgeID="56328767-b29a-4ef5-95ad-4f7152507f5a"/>
+  </channels>
 </SP:Platform>

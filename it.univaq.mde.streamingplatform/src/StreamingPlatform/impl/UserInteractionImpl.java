@@ -5,8 +5,6 @@ package StreamingPlatform.impl;
 import StreamingPlatform.StreamingPlatformPackage;
 import StreamingPlatform.User;
 import StreamingPlatform.UserInteraction;
-
-import java.sql.Timestamp;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -39,7 +37,7 @@ public abstract class UserInteractionImpl extends MinimalEObjectImpl.Container i
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Timestamp TIMESTAMP_EDEFAULT = null;
+	protected static final long TIMESTAMP_EDEFAULT = 0L;
 
 	/**
 	 * The cached value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
@@ -49,7 +47,7 @@ public abstract class UserInteractionImpl extends MinimalEObjectImpl.Container i
 	 * @generated
 	 * @ordered
 	 */
-	protected Timestamp timestamp = TIMESTAMP_EDEFAULT;
+	protected long timestamp = TIMESTAMP_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
@@ -106,7 +104,7 @@ public abstract class UserInteractionImpl extends MinimalEObjectImpl.Container i
 	 * @generated
 	 */
 	@Override
-	public Timestamp getTimestamp() {
+	public long getTimestamp() {
 		return timestamp;
 	}
 
@@ -116,8 +114,8 @@ public abstract class UserInteractionImpl extends MinimalEObjectImpl.Container i
 	 * @generated
 	 */
 	@Override
-	public void setTimestamp(Timestamp newTimestamp) {
-		Timestamp oldTimestamp = timestamp;
+	public void setTimestamp(long newTimestamp) {
+		long oldTimestamp = timestamp;
 		timestamp = newTimestamp;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StreamingPlatformPackage.USER_INTERACTION__TIMESTAMP, oldTimestamp, timestamp));
@@ -214,7 +212,7 @@ public abstract class UserInteractionImpl extends MinimalEObjectImpl.Container i
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case StreamingPlatformPackage.USER_INTERACTION__TIMESTAMP:
-				setTimestamp((Timestamp)newValue);
+				setTimestamp((Long)newValue);
 				return;
 			case StreamingPlatformPackage.USER_INTERACTION__DESCRIPTION:
 				setDescription((String)newValue);
@@ -256,7 +254,7 @@ public abstract class UserInteractionImpl extends MinimalEObjectImpl.Container i
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case StreamingPlatformPackage.USER_INTERACTION__TIMESTAMP:
-				return TIMESTAMP_EDEFAULT == null ? timestamp != null : !TIMESTAMP_EDEFAULT.equals(timestamp);
+				return timestamp != TIMESTAMP_EDEFAULT;
 			case StreamingPlatformPackage.USER_INTERACTION__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case StreamingPlatformPackage.USER_INTERACTION__USER:

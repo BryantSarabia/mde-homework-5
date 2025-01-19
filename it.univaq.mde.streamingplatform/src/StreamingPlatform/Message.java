@@ -27,7 +27,7 @@ public interface Message extends UserInteraction {
 	 * @return the value of the '<em>Message ID</em>' attribute.
 	 * @see #setMessageID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getMessage_MessageID()
-	 * @model id="true" dataType="StreamingPlatform.UUID" required="true"
+	 * @model id="true" required="true"
 	 * @generated
 	 */
 	String getMessageID();

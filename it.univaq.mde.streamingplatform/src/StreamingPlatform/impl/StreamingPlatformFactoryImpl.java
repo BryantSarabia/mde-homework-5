@@ -3,8 +3,6 @@
 package StreamingPlatform.impl;
 
 import StreamingPlatform.*;
-
-import java.sql.Timestamp;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -108,10 +106,6 @@ public class StreamingPlatformFactoryImpl extends EFactoryImpl implements Stream
 				return createTierFromString(eDataType, initialValue);
 			case StreamingPlatformPackage.UNLOCK_CONDITION:
 				return createUnlockConditionFromString(eDataType, initialValue);
-			case StreamingPlatformPackage.UUID:
-				return createUUIDFromString(eDataType, initialValue);
-			case StreamingPlatformPackage.TIMESTAMP:
-				return createTimestampFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -151,10 +145,6 @@ public class StreamingPlatformFactoryImpl extends EFactoryImpl implements Stream
 				return convertTierToString(eDataType, instanceValue);
 			case StreamingPlatformPackage.UNLOCK_CONDITION:
 				return convertUnlockConditionToString(eDataType, instanceValue);
-			case StreamingPlatformPackage.UUID:
-				return convertUUIDToString(eDataType, instanceValue);
-			case StreamingPlatformPackage.TIMESTAMP:
-				return convertTimestampToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -539,42 +529,6 @@ public class StreamingPlatformFactoryImpl extends EFactoryImpl implements Stream
 	 */
 	public String convertUnlockConditionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String createUUIDFromString(EDataType eDataType, String initialValue) {
-		return (String)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertUUIDToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Timestamp createTimestampFromString(EDataType eDataType, String initialValue) {
-		return (Timestamp)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertTimestampToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

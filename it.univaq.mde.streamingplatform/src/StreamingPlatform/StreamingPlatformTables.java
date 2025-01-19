@@ -90,9 +90,8 @@ public class StreamingPlatformTables extends AbstractTables
 	public static final /*@NonInvalid*/ DataTypeId DATAid_EDouble = StreamingPlatformTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getDataTypeId("EDouble", 0);
 	public static final /*@NonInvalid*/ DataTypeId DATAid_EFloat = StreamingPlatformTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getDataTypeId("EFloat", 0);
 	public static final /*@NonInvalid*/ DataTypeId DATAid_EInt = StreamingPlatformTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getDataTypeId("EInt", 0);
+	public static final /*@NonInvalid*/ DataTypeId DATAid_ELong = StreamingPlatformTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getDataTypeId("ELong", 0);
 	public static final /*@NonInvalid*/ DataTypeId DATAid_EShort = StreamingPlatformTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getDataTypeId("EShort", 0);
-	public static final /*@NonInvalid*/ DataTypeId DATAid_Timestamp = StreamingPlatformTables.PACKid_https_c_s_streaming_m_platform_com.getDataTypeId("Timestamp", 0);
-	public static final /*@NonInvalid*/ DataTypeId DATAid_UUID = StreamingPlatformTables.PACKid_https_c_s_streaming_m_platform_com.getDataTypeId("UUID", 0);
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_Category = StreamingPlatformTables.PACKid_https_c_s_streaming_m_platform_com.getEnumerationId("Category");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_Currency = StreamingPlatformTables.PACKid_https_c_s_streaming_m_platform_com.getEnumerationId("Currency");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_Device = StreamingPlatformTables.PACKid_https_c_s_streaming_m_platform_com.getEnumerationId("Device");
@@ -193,8 +192,6 @@ public class StreamingPlatformTables extends AbstractTables
 		public static final EcoreExecutorType _Subscription = new EcoreExecutorType(StreamingPlatformPackage.Literals.SUBSCRIPTION, PACKAGE, 0);
 		public static final EcoreExecutorEnumeration _SubscriptionDuration = new EcoreExecutorEnumeration(StreamingPlatformPackage.Literals.SUBSCRIPTION_DURATION, PACKAGE, 0);
 		public static final EcoreExecutorEnumeration _Tier = new EcoreExecutorEnumeration(StreamingPlatformPackage.Literals.TIER, PACKAGE, 0);
-		public static final EcoreExecutorType _Timestamp = new EcoreExecutorType("Timestamp", PACKAGE, 0);
-		public static final EcoreExecutorType _UUID = new EcoreExecutorType("UUID", PACKAGE, 0);
 		public static final EcoreExecutorEnumeration _UnlockCondition = new EcoreExecutorEnumeration(StreamingPlatformPackage.Literals.UNLOCK_CONDITION, PACKAGE, 0);
 		public static final EcoreExecutorType _User = new EcoreExecutorType(StreamingPlatformPackage.Literals.USER, PACKAGE, 0);
 		public static final EcoreExecutorType _UserInteraction = new EcoreExecutorType(StreamingPlatformPackage.Literals.USER_INTERACTION, PACKAGE, 0 | ExecutorType.ABSTRACT);
@@ -227,8 +224,6 @@ public class StreamingPlatformTables extends AbstractTables
 			_Subscription,
 			_SubscriptionDuration,
 			_Tier,
-			_Timestamp,
-			_UUID,
 			_UnlockCondition,
 			_User,
 			_UserInteraction
@@ -407,16 +402,6 @@ public class StreamingPlatformTables extends AbstractTables
 		private static final ExecutorFragment _Tier__OclType = new ExecutorFragment(Types._Tier, OCLstdlibTables.Types._OclType);
 		private static final ExecutorFragment _Tier__Tier = new ExecutorFragment(Types._Tier, StreamingPlatformTables.Types._Tier);
 
-		private static final ExecutorFragment _Timestamp__OclAny = new ExecutorFragment(Types._Timestamp, OCLstdlibTables.Types._OclAny);
-		private static final ExecutorFragment _Timestamp__OclComparable = new ExecutorFragment(Types._Timestamp, OCLstdlibTables.Types._OclComparable);
-		private static final ExecutorFragment _Timestamp__Timestamp = new ExecutorFragment(Types._Timestamp, StreamingPlatformTables.Types._Timestamp);
-
-		private static final ExecutorFragment _UUID__OclAny = new ExecutorFragment(Types._UUID, OCLstdlibTables.Types._OclAny);
-		private static final ExecutorFragment _UUID__OclComparable = new ExecutorFragment(Types._UUID, OCLstdlibTables.Types._OclComparable);
-		private static final ExecutorFragment _UUID__OclSummable = new ExecutorFragment(Types._UUID, OCLstdlibTables.Types._OclSummable);
-		private static final ExecutorFragment _UUID__String = new ExecutorFragment(Types._UUID, OCLstdlibTables.Types._String);
-		private static final ExecutorFragment _UUID__UUID = new ExecutorFragment(Types._UUID, StreamingPlatformTables.Types._UUID);
-
 		private static final ExecutorFragment _UnlockCondition__OclAny = new ExecutorFragment(Types._UnlockCondition, OCLstdlibTables.Types._OclAny);
 		private static final ExecutorFragment _UnlockCondition__OclElement = new ExecutorFragment(Types._UnlockCondition, OCLstdlibTables.Types._OclElement);
 		private static final ExecutorFragment _UnlockCondition__OclEnumeration = new ExecutorFragment(Types._UnlockCondition, OCLstdlibTables.Types._OclEnumeration);
@@ -457,7 +442,6 @@ public class StreamingPlatformTables extends AbstractTables
 		}
 
 		public static final ParameterTypes _Channel = TypeUtil.createParameterTypes(StreamingPlatformTables.Types._Channel);
-		public static final ParameterTypes _OclSelf = TypeUtil.createParameterTypes(OCLstdlibTables.Types._OclSelf);
 		public static final ParameterTypes _String = TypeUtil.createParameterTypes(OCLstdlibTables.Types._String);
 
 		static {
@@ -487,12 +471,6 @@ public class StreamingPlatformTables extends AbstractTables
 			0, TemplateParameters.EMPTY_LIST, null);
 		public static final ExecutorOperation _Platform__findChannelByName = new ExecutorOperation("findChannelByName", Parameters._String, Types._Platform,
 			1, TemplateParameters.EMPTY_LIST, null);
-
-		public static final ExecutorOperation _Timestamp__compareTo = new ExecutorOperation("compareTo", Parameters._OclSelf, Types._Timestamp,
-			0, TemplateParameters.EMPTY_LIST, null);
-
-		public static final ExecutorOperation _UUID__compareTo = new ExecutorOperation("compareTo", Parameters._OclSelf, Types._UUID,
-			0, TemplateParameters.EMPTY_LIST, null);
 
 		public static final ExecutorOperation _User__isFollowing = new ExecutorOperation("isFollowing", Parameters._Channel, Types._User,
 			0, TemplateParameters.EMPTY_LIST, null);
@@ -918,24 +896,6 @@ public class StreamingPlatformTables extends AbstractTables
 			};
 		private static final int /*@NonNull*/ [] __Tier = { 1,1,1,1,1 };
 
-		private static final ExecutorFragment /*@NonNull*/ [] _Timestamp =
-			{
-				Fragments._Timestamp__OclAny /* 0 */,
-				Fragments._Timestamp__OclComparable /* 1 */,
-				Fragments._Timestamp__Timestamp /* 2 */
-			};
-		private static final int /*@NonNull*/ [] __Timestamp = { 1,1,1 };
-
-		private static final ExecutorFragment /*@NonNull*/ [] _UUID =
-			{
-				Fragments._UUID__OclAny /* 0 */,
-				Fragments._UUID__OclComparable /* 1 */,
-				Fragments._UUID__OclSummable /* 1 */,
-				Fragments._UUID__String /* 2 */,
-				Fragments._UUID__UUID /* 3 */
-			};
-		private static final int /*@NonNull*/ [] __UUID = { 1,2,1,1 };
-
 		private static final ExecutorFragment /*@NonNull*/ [] _UnlockCondition =
 			{
 				Fragments._UnlockCondition__OclAny /* 0 */,
@@ -995,8 +955,6 @@ public class StreamingPlatformTables extends AbstractTables
 			Types._Subscription.initFragments(_Subscription, __Subscription);
 			Types._SubscriptionDuration.initFragments(_SubscriptionDuration, __SubscriptionDuration);
 			Types._Tier.initFragments(_Tier, __Tier);
-			Types._Timestamp.initFragments(_Timestamp, __Timestamp);
-			Types._UUID.initFragments(_UUID, __UUID);
 			Types._UnlockCondition.initFragments(_UnlockCondition, __UnlockCondition);
 			Types._User.initFragments(_User, __User);
 			Types._UserInteraction.initFragments(_UserInteraction, __UserInteraction);
@@ -2003,106 +1961,6 @@ public class StreamingPlatformTables extends AbstractTables
 			OCLstdlibTables.Operations._OclType__conformsTo /* conformsTo(OclType[?]) */
 		};
 
-		private static final ExecutorOperation /*@NonNull*/ [] _Timestamp__Timestamp = {
-			StreamingPlatformTables.Operations._Timestamp__compareTo /* compareTo(OclSelf[1]) */
-		};
-		private static final ExecutorOperation /*@NonNull*/ [] _Timestamp__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
-			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[1]) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[1]) */,
-			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[1]) */,
-			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
-			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[1]) */,
-			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
-			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
-			OCLstdlibTables.Operations._OclAny__toString /* toString() */
-		};
-		private static final ExecutorOperation /*@NonNull*/ [] _Timestamp__OclComparable = {
-			OCLstdlibTables.Operations._OclComparable___lt_ /* _'<'(OclSelf[1]) */,
-			OCLstdlibTables.Operations._OclComparable___lt__eq_ /* _'<='(OclSelf[1]) */,
-			OCLstdlibTables.Operations._OclComparable___gt_ /* _'>'(OclSelf[1]) */,
-			OCLstdlibTables.Operations._OclComparable___gt__eq_ /* _'>='(OclSelf[1]) */,
-			StreamingPlatformTables.Operations._Timestamp__compareTo /* compareTo(OclSelf[1]) */
-		};
-
-		private static final ExecutorOperation /*@NonNull*/ [] _UUID__UUID = {
-			StreamingPlatformTables.Operations._UUID__compareTo /* compareTo(OclSelf[1]) */
-		};
-		private static final ExecutorOperation /*@NonNull*/ [] _UUID__OclAny = {
-			OCLstdlibTables.Operations._String___lt__gt_ /* _'<>'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._String___eq_ /* _'='(OclSelf[?]) */,
-			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[1]) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[1]) */,
-			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[1]) */,
-			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
-			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[1]) */,
-			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
-			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
-			OCLstdlibTables.Operations._String__toString /* toString() */
-		};
-		private static final ExecutorOperation /*@NonNull*/ [] _UUID__OclComparable = {
-			OCLstdlibTables.Operations._String___lt_ /* _'<'(OclSelf[1]) */,
-			OCLstdlibTables.Operations._String___lt__eq_ /* _'<='(OclSelf[1]) */,
-			OCLstdlibTables.Operations._String___gt_ /* _'>'(OclSelf[1]) */,
-			OCLstdlibTables.Operations._String___gt__eq_ /* _'>='(OclSelf[1]) */,
-			StreamingPlatformTables.Operations._UUID__compareTo /* compareTo(OclSelf[1]) */
-		};
-		private static final ExecutorOperation /*@NonNull*/ [] _UUID__OclSummable = {
-			OCLstdlibTables.Operations._OclSummable__sum /* sum(OclSelf[1]) */,
-			OCLstdlibTables.Operations._OclSummable__zero /* zero() */
-		};
-		private static final ExecutorOperation /*@NonNull*/ [] _UUID__String = {
-			OCLstdlibTables.Operations._String___add_ /* _'+'(String[?]) */,
-			OCLstdlibTables.Operations._String___lt_ /* _'<'(OclSelf[1]) */,
-			OCLstdlibTables.Operations._String___lt__eq_ /* _'<='(OclSelf[1]) */,
-			OCLstdlibTables.Operations._String___lt__gt_ /* _'<>'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._String___eq_ /* _'='(OclSelf[?]) */,
-			OCLstdlibTables.Operations._String___gt_ /* _'>'(OclSelf[1]) */,
-			OCLstdlibTables.Operations._String___gt__eq_ /* _'>='(OclSelf[1]) */,
-			OCLstdlibTables.Operations._String__at /* at(Integer[1]) */,
-			OCLstdlibTables.Operations._String__characters /* characters() */,
-			StreamingPlatformTables.Operations._UUID__compareTo /* compareTo(OclSelf[1]) */,
-			OCLstdlibTables.Operations._String__concat /* concat(String[?]) */,
-			OCLstdlibTables.Operations._String__endsWith /* endsWith(String[1]) */,
-			OCLstdlibTables.Operations._String__equalsIgnoreCase /* equalsIgnoreCase(String[1]) */,
-			OCLstdlibTables.Operations._String__getSeverity /* getSeverity() */,
-			OCLstdlibTables.Operations._String__indexOf /* indexOf(String[1]) */,
-			OCLstdlibTables.Operations._String__lastIndexOf /* lastIndexOf(String[1]) */,
-			OCLstdlibTables.Operations._String__0_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],Integer[1],Boolean[?],Integer[1]) */,
-			OCLstdlibTables.Operations._String__1_logDiagnostic /* logDiagnostic(OclAny[1],OclAny[?],OclAny[?],OclAny[?],String[?],Integer[1],OclAny[?],Integer[1]) */,
-			OCLstdlibTables.Operations._String__matches /* matches(String[1]) */,
-			OCLstdlibTables.Operations._String__replaceAll /* replaceAll(String[1],String[1]) */,
-			OCLstdlibTables.Operations._String__replaceFirst /* replaceFirst(String[1],String[1]) */,
-			OCLstdlibTables.Operations._String__size /* size() */,
-			OCLstdlibTables.Operations._String__startsWith /* startsWith(String[1]) */,
-			OCLstdlibTables.Operations._String__substituteAll /* substituteAll(String[1],String[1]) */,
-			OCLstdlibTables.Operations._String__substituteFirst /* substituteFirst(String[1],String[1]) */,
-			OCLstdlibTables.Operations._String__substring /* substring(Integer[1],Integer[1]) */,
-			OCLstdlibTables.Operations._String__toBoolean /* toBoolean() */,
-			OCLstdlibTables.Operations._String__toInteger /* toInteger() */,
-			OCLstdlibTables.Operations._String__toLower /* toLower() */,
-			OCLstdlibTables.Operations._String__toLowerCase /* toLowerCase() */,
-			OCLstdlibTables.Operations._String__toReal /* toReal() */,
-			OCLstdlibTables.Operations._String__toString /* toString() */,
-			OCLstdlibTables.Operations._String__toUpper /* toUpper() */,
-			OCLstdlibTables.Operations._String__toUpperCase /* toUpperCase() */,
-			OCLstdlibTables.Operations._String__0_tokenize /* tokenize() */,
-			OCLstdlibTables.Operations._String__1_tokenize /* tokenize(String[1]) */,
-			OCLstdlibTables.Operations._String__2_tokenize /* tokenize(String[1],Boolean[1]) */,
-			OCLstdlibTables.Operations._String__trim /* trim() */
-		};
-
 		private static final ExecutorOperation /*@NonNull*/ [] _UnlockCondition__UnlockCondition = {};
 		private static final ExecutorOperation /*@NonNull*/ [] _UnlockCondition__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
@@ -2367,16 +2225,6 @@ public class StreamingPlatformTables extends AbstractTables
 			Fragments._Tier__OclEnumeration.initOperations(_Tier__OclEnumeration);
 			Fragments._Tier__OclType.initOperations(_Tier__OclType);
 			Fragments._Tier__Tier.initOperations(_Tier__Tier);
-
-			Fragments._Timestamp__OclAny.initOperations(_Timestamp__OclAny);
-			Fragments._Timestamp__OclComparable.initOperations(_Timestamp__OclComparable);
-			Fragments._Timestamp__Timestamp.initOperations(_Timestamp__Timestamp);
-
-			Fragments._UUID__OclAny.initOperations(_UUID__OclAny);
-			Fragments._UUID__OclComparable.initOperations(_UUID__OclComparable);
-			Fragments._UUID__OclSummable.initOperations(_UUID__OclSummable);
-			Fragments._UUID__String.initOperations(_UUID__String);
-			Fragments._UUID__UUID.initOperations(_UUID__UUID);
 
 			Fragments._UnlockCondition__OclAny.initOperations(_UnlockCondition__OclAny);
 			Fragments._UnlockCondition__OclElement.initOperations(_UnlockCondition__OclElement);
@@ -2673,10 +2521,6 @@ public class StreamingPlatformTables extends AbstractTables
 			OCLstdlibTables.Properties._OclElement__oclContents
 		};
 
-		private static final ExecutorProperty /*@NonNull*/ [] _Timestamp = {};
-
-		private static final ExecutorProperty /*@NonNull*/ [] _UUID = {};
-
 		private static final ExecutorProperty /*@NonNull*/ [] _UnlockCondition = {
 			OCLstdlibTables.Properties._OclElement__oclContainer,
 			OCLstdlibTables.Properties._OclElement__oclContents
@@ -2738,8 +2582,6 @@ public class StreamingPlatformTables extends AbstractTables
 			Fragments._Subscription__Subscription.initProperties(_Subscription);
 			Fragments._SubscriptionDuration__SubscriptionDuration.initProperties(_SubscriptionDuration);
 			Fragments._Tier__Tier.initProperties(_Tier);
-			Fragments._Timestamp__Timestamp.initProperties(_Timestamp);
-			Fragments._UUID__UUID.initProperties(_UUID);
 			Fragments._UnlockCondition__UnlockCondition.initProperties(_UnlockCondition);
 			Fragments._User__User.initProperties(_User);
 			Fragments._UserInteraction__UserInteraction.initProperties(_UserInteraction);

@@ -27,7 +27,7 @@ public interface Donation extends Monetization {
 	 * @return the value of the '<em>Donation ID</em>' attribute.
 	 * @see #setDonationID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getDonation_DonationID()
-	 * @model id="true" dataType="StreamingPlatform.UUID" required="true"
+	 * @model id="true" required="true"
 	 * @generated
 	 */
 	String getDonationID();

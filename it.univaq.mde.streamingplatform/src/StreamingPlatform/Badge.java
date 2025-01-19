@@ -26,7 +26,7 @@ public interface Badge extends Feature {
 	 * @return the value of the '<em>Badge ID</em>' attribute.
 	 * @see #setBadgeID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getBadge_BadgeID()
-	 * @model id="true" dataType="StreamingPlatform.UUID"
+	 * @model id="true"
 	 * @generated
 	 */
 	String getBadgeID();

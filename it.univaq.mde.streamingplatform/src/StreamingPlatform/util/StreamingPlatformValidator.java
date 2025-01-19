@@ -3,9 +3,6 @@
 package StreamingPlatform.util;
 
 import StreamingPlatform.*;
-
-import java.sql.Timestamp;
-
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -179,10 +176,6 @@ public class StreamingPlatformValidator extends EObjectValidator {
 				return validateTier((Tier)value, diagnostics, context);
 			case StreamingPlatformPackage.UNLOCK_CONDITION:
 				return validateUnlockCondition((UnlockCondition)value, diagnostics, context);
-			case StreamingPlatformPackage.UUID:
-				return validateUUID((String)value, diagnostics, context);
-			case StreamingPlatformPackage.TIMESTAMP:
-				return validateTimestamp((Timestamp)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -537,24 +530,6 @@ public class StreamingPlatformValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateUnlockCondition(UnlockCondition unlockCondition, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateUUID(String uuid, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateTimestamp(Timestamp timestamp, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

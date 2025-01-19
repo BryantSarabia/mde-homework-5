@@ -2,7 +2,6 @@
  */
 package StreamingPlatform;
 
-import java.sql.Timestamp;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -29,12 +28,12 @@ public interface UserInteraction extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Timestamp</em>' attribute.
-	 * @see #setTimestamp(Timestamp)
+	 * @see #setTimestamp(long)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getUserInteraction_Timestamp()
-	 * @model dataType="StreamingPlatform.Timestamp" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
-	Timestamp getTimestamp();
+	long getTimestamp();
 
 	/**
 	 * Sets the value of the '{@link StreamingPlatform.UserInteraction#getTimestamp <em>Timestamp</em>}' attribute.
@@ -44,7 +43,7 @@ public interface UserInteraction extends EObject {
 	 * @see #getTimestamp()
 	 * @generated
 	 */
-	void setTimestamp(Timestamp value);
+	void setTimestamp(long value);
 
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.

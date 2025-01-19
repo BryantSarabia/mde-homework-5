@@ -71,10 +71,9 @@
         eType="#//User"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="followers" upperBound="-1"
         eType="#//User" eOpposite="#//User/followedChannels"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tips" upperBound="-1" eType="#//Tip"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tips" upperBound="-1" eType="#//Tip"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subscriptions" upperBound="-1"
-        eType="#//Subscription" containment="true"/>
+        eType="#//Subscription"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
         eType="#//Feature" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//User"/>

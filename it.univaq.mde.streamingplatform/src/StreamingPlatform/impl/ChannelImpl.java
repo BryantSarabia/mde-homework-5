@@ -172,7 +172,7 @@ public class ChannelImpl extends AuditableImpl implements Channel {
 	protected EList<User> followers;
 
 	/**
-	 * The cached value of the '{@link #getDonations() <em>Donations</em>}' containment reference list.
+	 * The cached value of the '{@link #getDonations() <em>Donations</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDonations()
@@ -182,7 +182,7 @@ public class ChannelImpl extends AuditableImpl implements Channel {
 	protected EList<Donation> donations;
 
 	/**
-	 * The cached value of the '{@link #getSubscriptions() <em>Subscriptions</em>}' containment reference list.
+	 * The cached value of the '{@link #getSubscriptions() <em>Subscriptions</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getSubscriptions()
@@ -399,7 +399,7 @@ public class ChannelImpl extends AuditableImpl implements Channel {
 	@Override
 	public EList<Donation> getDonations() {
 		if (donations == null) {
-			donations = new EObjectContainmentEList<Donation>(Donation.class, this, StreamingPlatformPackage.CHANNEL__DONATIONS);
+			donations = new EObjectResolvingEList<Donation>(Donation.class, this, StreamingPlatformPackage.CHANNEL__DONATIONS);
 		}
 		return donations;
 	}
@@ -412,7 +412,7 @@ public class ChannelImpl extends AuditableImpl implements Channel {
 	@Override
 	public EList<Subscription> getSubscriptions() {
 		if (subscriptions == null) {
-			subscriptions = new EObjectContainmentEList<Subscription>(Subscription.class, this, StreamingPlatformPackage.CHANNEL__SUBSCRIPTIONS);
+			subscriptions = new EObjectResolvingEList<Subscription>(Subscription.class, this, StreamingPlatformPackage.CHANNEL__SUBSCRIPTIONS);
 		}
 		return subscriptions;
 	}
@@ -639,10 +639,6 @@ public class ChannelImpl extends AuditableImpl implements Channel {
 				return ((InternalEList<?>)getClips()).basicRemove(otherEnd, msgs);
 			case StreamingPlatformPackage.CHANNEL__FOLLOWERS:
 				return ((InternalEList<?>)getFollowers()).basicRemove(otherEnd, msgs);
-			case StreamingPlatformPackage.CHANNEL__DONATIONS:
-				return ((InternalEList<?>)getDonations()).basicRemove(otherEnd, msgs);
-			case StreamingPlatformPackage.CHANNEL__SUBSCRIPTIONS:
-				return ((InternalEList<?>)getSubscriptions()).basicRemove(otherEnd, msgs);
 			case StreamingPlatformPackage.CHANNEL__EMOTES:
 				return ((InternalEList<?>)getEmotes()).basicRemove(otherEnd, msgs);
 			case StreamingPlatformPackage.CHANNEL__BADGES:

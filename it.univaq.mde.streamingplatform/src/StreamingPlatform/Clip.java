@@ -27,7 +27,7 @@ public interface Clip extends MediaContent {
 	 * @return the value of the '<em>Clip ID</em>' attribute.
 	 * @see #setClipID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getClip_ClipID()
-	 * @model id="true" dataType="StreamingPlatform.UUID" required="true"
+	 * @model id="true" required="true"
 	 * @generated
 	 */
 	String getClipID();

@@ -33,7 +33,7 @@ public interface Stream extends MediaContent {
 	 * @return the value of the '<em>Stream ID</em>' attribute.
 	 * @see #setStreamID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getStream_StreamID()
-	 * @model id="true" dataType="StreamingPlatform.UUID" required="true"
+	 * @model id="true" required="true"
 	 * @generated
 	 */
 	String getStreamID();

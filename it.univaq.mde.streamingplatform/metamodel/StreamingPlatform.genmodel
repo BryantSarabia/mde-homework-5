@@ -73,8 +73,6 @@
       <genEnumLiterals ecoreEnumLiteral="StreamingPlatform.ecore#//UnlockCondition/DonationAmount"/>
       <genEnumLiterals ecoreEnumLiteral="StreamingPlatform.ecore#//UnlockCondition/Tenure"/>
     </genEnums>
-    <genDataTypes ecoreDataType="StreamingPlatform.ecore#//UUID"/>
-    <genDataTypes ecoreDataType="StreamingPlatform.ecore#//Timestamp"/>
     <genClasses image="false" ecoreClass="StreamingPlatform.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StreamingPlatform.ecore#//NamedElement/name"/>
     </genClasses>

@@ -5,9 +5,6 @@ package StreamingPlatform.provider;
 
 import StreamingPlatform.StreamingPlatformPackage;
 import StreamingPlatform.UserInteraction;
-
-import java.sql.Timestamp;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -86,7 +83,7 @@ public class UserInteractionItemProvider
 				 false,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -143,11 +140,8 @@ public class UserInteractionItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Timestamp labelValue = ((UserInteraction)object).getTimestamp();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_UserInteraction_type") :
-			getString("_UI_UserInteraction_type") + " " + label;
+		UserInteraction userInteraction = (UserInteraction)object;
+		return getString("_UI_UserInteraction_type") + " " + userInteraction.getTimestamp();
 	}
 
 

@@ -36,7 +36,7 @@ public interface User extends Auditable, NamedElement {
 	 * @return the value of the '<em>User ID</em>' attribute.
 	 * @see #setUserID(String)
 	 * @see StreamingPlatform.StreamingPlatformPackage#getUser_UserID()
-	 * @model id="true" dataType="StreamingPlatform.UUID" required="true"
+	 * @model id="true" required="true"
 	 * @generated
 	 */
 	String getUserID();
