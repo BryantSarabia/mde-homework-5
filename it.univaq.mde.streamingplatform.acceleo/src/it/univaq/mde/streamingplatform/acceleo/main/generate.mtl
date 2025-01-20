@@ -193,7 +193,7 @@
                           </div>
                           <div>
                             <h2 class="text-lg font-semibold text-gray-900">Channel Owner</h2>
-                            <a class="text-purple-600" href="user_[channel.owner.userID/].html">[channel.owner.nickname/]</a>
+                            <a class="text-purple-600 underline" href="user_[channel.owner.userID/].html">[channel.owner.nickname/]</a>
                           </div>
                         </div>
                       </div>
@@ -212,7 +212,7 @@
                                   <svg class="text-purple-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad"><line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><rect width="20" height="12" x="2" y="6" rx="2"/></svg>
                                 </div>
                                 <div class="flex-1 space-y-4">
-                                  <a class="font-medium text-gray-900" href="stream_[stream.mediaContentID/].html">[stream.title/]</a>
+                                  <a class="font-medium text-gray-900 underline" href="stream_[stream.mediaContentID/].html">[stream.title/]</a>
                                     <div class="flex items-center gap-2">
                                       [if stream.isLive]
                                         <span class="flex items-center gap-1 rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-600">
@@ -268,75 +268,143 @@
               <script src="https://cdn.tailwindcss.com"></script>
             </head>
                 <body>
-                    <h1>User: [user.nickname/]</h1>
-                    <table border="1">
-                        <tr>
-                            <th>User ID</th>
-                            <th>Nickname</th>
-                            <th>Role</th>
-                            <th>Online Status</th>
-                        </tr>
-                        <tr>
-                            <td>[user.userID/]</td>
-                            <td>[user.nickname/]</td>
-                            <td>[user.role.toString()/]</td>
-                            <td>[if user.isOnline]Online[else]Offline[/if]</td>
-                        </tr>
-                    </table>
-                    
-                    <h2>Followed Channels</h2>
-                    <table border="1">
-                        <tr>
-                            <th>Channel</th>
-                        </tr>
+                  <div class="min-h-screen bg-gray-50 p-4 md:p-6 lg:p-8">
+                    <div class="mx-auto max-w-4xl space-y-6">
+                      <div class="rounded-xl bg-white p-6 shadow-sm">
+                        <div class="flex items-center gap-4">
+                          <div class="rounded-full bg-purple-100 p-4">
+                            <svg class="h-6 w-6 text-purple-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                          </div>
+                          <div>
+                            <h1 class="text-2xl font-bold text-gray-900">[user.nickname/]</h1>
+                            <div class="flex items-center gap-2">
+                              <span class="text-sm text-gray-500">User ID: [user.userID/]</span>
+                              <span class="h-1 w-1 rounded-full bg-gray-300"></span>
+                              <span class="text-sm text-gray-500">[user.role.toString()/]</span>
+                              [if user.isOnline]
+                                <span class="flex items-center gap-1 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-600">
+                                  <span class="h-1.5 w-1.5 rounded-full bg-green-600"></span>
+                                  Online
+                                </span>
+                              [else]
+                                <span class="flex items-center gap-1 rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-600">
+                                  <span class="h-1.5 w-1.5 rounded-full bg-red-600"></span>
+                                  Offline
+                                </span>
+                              [/if]
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="rounded-xl bg-white p-6 shadow-sm">
+                        <div class="mb-4 flex items-center gap-2">
+                          <svg class="h-5 w-5 text-purple-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-play"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 8 6 4-6 4Z"/></svg>
+                          <h2 class="text-lg font-semibold text-gray-900">Followed Channels</h2>
+                        </div>
                         [for (channel : Channel | user.followedChannels)]
-                            <tr>
-                                <td><a href="channel_[channel.channelID/].html">[channel.name/]</a></td>
-                            </tr>
+                          <div class="rounded-lg border border-gray-100 p-4">
+                            <div class="flex items-center gap-3">
+                              <div class="rounded-lg bg-purple-100 p-2">
+                                <svg class="h-5 w-5 text-purple-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-play"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 8 6 4-6 4Z"/></svg>
+                              </div>
+                              <a href="channel_[channel.channelID /].html" class="font-medium text-gray-900 underline">[channel.name /]</a>
+                            </div>
+                          </div>
                         [/for]
-                    </table>
-                    
-                    <h2>Subscriptions</h2>
-                    <table border="1">
-                        <tr>
-                            <th>Tier</th>
-                            <th>Amount</th>
-                            <th>Currency</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                        </tr>
+                      </div>
+
+                      
+                      <div class="rounded-xl bg-white p-6 shadow-sm">
+                        <div class="mb-4 flex items-center gap-2">
+                          <CreditCard class="h-5 w-5 text-purple-600" />
+                          <h2 class="text-lg font-semibold text-gray-900">Subscriptions</h2>
+                        </div>
                         [for (subscription : Subscription | user.subscriptions)]
-                            <tr>
-                                <td>[subscription.tier.toString()/]</td>
-                                <td>[subscription.amount/]</td>
-                                <td>[subscription.currency.toString()/]</td>
-                                <td>[subscription.startDate/]</td>
-                                <td>[subscription.endDate/]</td>
-                            </tr>
+                          <div class="rounded-lg border border-gray-100 p-4">
+                            <div class="flex flex-col gap-4">
+                              <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                  <div class="rounded-lg bg-purple-100 p-2">
+                                    <svg class="h-5 w-5 text-purple-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+                                  </div>
+                                  <div>
+                                    <p class="font-medium text-gray-900">[subscription.tier.toString()/]</p>
+                                    <p class="text-sm text-gray-500">[subscription.amount/] [subscription.currency.toString()/]</p>
+                                  </div>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-gray-500">
+                                  <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                  <span>Valid until [subscription.endDate/]</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         [/for]
-                    </table>
-                    
-                    <h2>Donations</h2>
-                    <table border="1">
-                        <tr>
-                            <th>Amount</th>
-                            <th>Currency</th>
-                            <th>Message</th>
-                            <th>Payment Type</th>
-                            <th>Payment Status</th>
-                            <th>Transaction Date</th>
-                        </tr>
-                        [for (tip : Tip | user.tips)]
-                            <tr>
-                                <td>[tip.amount/]</td>
-                                <td>[tip.currency.toString()/]</td>
-                                <td>[tip.message/]</td>
-                                <td>[tip.paymentType/]</td>
-                                <td>[tip.paymentStatus/]</td>
-                                <td>[tip.transactionDate/]</td>
-                            </tr>
+                      </div>
+
+                      <div class="rounded-xl bg-white p-6 shadow-sm">
+                        <div class="mb-4 flex items-center gap-2">
+                          <Gift class="h-5 w-5 text-purple-600" />
+                          <h2 class="text-lg font-semibold text-gray-900">Donations</h2>
+                        </div>
+                        [for (tip: Tip | user.tips)]
+                          <div class="rounded-lg border border-gray-100 p-4">
+                            <div class="flex flex-col gap-4">
+                              <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                  <div class="rounded-lg bg-green-100 p-2">
+                                    [if tip.currency = Currency::EUR]
+                                      <svg class="text-green-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-euro"><path d="M4 10h12"/><path d="M4 14h9"/><path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"/></svg>
+                                    [elseif tip.currency = Currency::USD]
+                                      <svg class="text-green-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dollar-sign"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                    [elseif tip.currency = Currency::GBP]
+                                      <svg class="text-green-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-pound-sterling"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="M8 12h4"/><path d="M10 16V9.5a2.5 2.5 0 0 1 5 0"/><path d="M8 16h7"/></svg>
+                                    [/if]
+                                  </div>
+                                  <div>
+                                    <div class="flex items-center gap-2">
+                                      <p class="font-medium text-gray-900">50.0 [tip.currency.toString()/]</p>
+                                      <div class="flex items-center gap-1 rounded-full bg-purple-100 px-2 py-0.5 text-xs font-medium text-purple-600">
+                                        <svg class="h-3 w-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                        [tip.paymentMethod.toString()/]
+                                      </div>
+                                    </div>
+                                    <p class="text-sm text-gray-600">"[tip.message /]"</p>
+                                    <div class="mt-1 flex items-center gap-2 text-xs text-gray-500">
+                                      [if tip.paymentStatus = PaymentStatus::Completed]
+                                        <span class="flex items-center gap-1">
+                                          <svg class="h-3 w-3 text-green-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                          Completed
+                                        </span>
+                                      [elseif tip.paymentStatus = PaymentStatus::Pending]
+                                        <span class="flex items-center gap-1">
+                                          <svg class="h-3 w-3 text-yellow-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-hourglass"><path d="M5 22h14"/><path d="M5 2h14"/><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/></svg>
+                                          Pending
+                                        </span>
+                                      [elseif tip.paymentStatus = PaymentStatus::Rejected]
+                                        <span class="flex items-center gap-1">
+                                         <svg class="h-3 w-3 text-red-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+                                          Rejected
+                                        </span>
+									  [elseif tip.paymentStatus = PaymentStatus::Refunded]
+                                        <span class="flex items-center gap-1">
+                                          <svg class="h-3 w-3 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ticket-slash"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="m9.5 14.5 5-5"/></svg>
+                                          Refunded
+                                        </span>
+                                      [/if]
+                                      <span class="h-1 w-1 rounded-full bg-gray-300"></span>
+                                      <span>[tip.transactionDate/]</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         [/for]
-                    </table>
+                      </div>
+                    </div>
+                  </div>
                 </body>
             </html>
         [/file]

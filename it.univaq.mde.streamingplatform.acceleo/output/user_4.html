@@ -6,47 +6,50 @@
               <script src="https://cdn.tailwindcss.com"></script>
             </head>
                 <body>
-                    <h1>User: Ibai</h1>
-                    <table border="1">
-                        <tr>
-                            <th>User ID</th>
-                            <th>Nickname</th>
-                            <th>Role</th>
-                            <th>Online Status</th>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Ibai</td>
-                            <td>Streamer</td>
-                            <td>Online</td>
-                        </tr>
-                    </table>
-                    
-                    <h2>Followed Channels</h2>
-                    <table border="1">
-                        <tr>
-                            <th>Channel</th>
-                        </tr>
-                    </table>
-                    
-                    <h2>Subscriptions</h2>
-                    <table border="1">
-                        <tr>
-                            <th>Tier</th>
-                            <th>Price</th>
-                            <th>Currency</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                        </tr>
-                    </table>
-                    
-                    <h2>Donations</h2>
-                    <table border="1">
-                        <tr>
-                            <th>Amount</th>
-                            <th>Currency</th>
-                            <th>Message</th>
-                        </tr>
-                    </table>
+                  <div class="min-h-screen bg-gray-50 p-4 md:p-6 lg:p-8">
+                    <div class="mx-auto max-w-4xl space-y-6">
+                      <div class="rounded-xl bg-white p-6 shadow-sm">
+                        <div class="flex items-center gap-4">
+                          <div class="rounded-full bg-purple-100 p-4">
+                            <svg class="h-6 w-6 text-purple-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                          </div>
+                          <div>
+                            <h1 class="text-2xl font-bold text-gray-900">OtherJude</h1>
+                            <div class="flex items-center gap-2">
+                              <span class="text-sm text-gray-500">User ID: 4</span>
+                              <span class="h-1 w-1 rounded-full bg-gray-300"></span>
+                              <span class="text-sm text-gray-500">Streamer</span>
+                                <span class="flex items-center gap-1 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-600">
+                                  <span class="h-1.5 w-1.5 rounded-full bg-green-600"></span>
+                                  Online
+                                </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="rounded-xl bg-white p-6 shadow-sm">
+                        <div class="mb-4 flex items-center gap-2">
+                          <svg class="h-5 w-5 text-purple-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-play"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 8 6 4-6 4Z"/></svg>
+                          <h2 class="text-lg font-semibold text-gray-900">Followed Channels</h2>
+                        </div>
+                      </div>
+
+                      
+                      <div class="rounded-xl bg-white p-6 shadow-sm">
+                        <div class="mb-4 flex items-center gap-2">
+                          <CreditCard class="h-5 w-5 text-purple-600" />
+                          <h2 class="text-lg font-semibold text-gray-900">Subscriptions</h2>
+                        </div>
+                      </div>
+
+                      <div class="rounded-xl bg-white p-6 shadow-sm">
+                        <div class="mb-4 flex items-center gap-2">
+                          <Gift class="h-5 w-5 text-purple-600" />
+                          <h2 class="text-lg font-semibold text-gray-900">Donations</h2>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </body>
             </html>
