@@ -16,115 +16,116 @@
               <div class="mx-auto max-w-6xl space-y-8">
 
               [comment title /]
-                <div class="space-y-4">
-                  <h1 class="text-4xl font-bold tracking-tight">[aPlatform.name/]</h1>
-                  <p class="text-lg text-gray-600">
-                    Welcome to the [aPlatform.name/] Platform documentation. Below are the core components of the platform.
-                  </p>
-                </div>
+              <div class="space-y-4">
+                <h1 class="text-4xl font-bold tracking-tight text-purple-600">Twitch</h1>
+                <p class="text-lg text-gray-600">
+                  Welcome to the Twitch Platform documentation. Below are the core components of the platform.
+                </p>
+              </div>
 
               [comment overview /]
               <section class="space-y-4">
-                    <h2 class="text-2xl font-semibold">Platform Overview</h2>
-                    <div class="overflow-x-auto rounded-lg border border-gray-200">
-                      <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                          <tr>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Platform ID</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Name</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Revenue</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Version</th>
-                          </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200 bg-white">
-                          <tr>
-                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[aPlatform.platformID/]</td>
-                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[aPlatform.name/]</td>
-                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[aPlatform.revenue/]</td>
-                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[aPlatform.version/]</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                <h2 class="text-2xl font-semibold text-gray-800">Platform Overview</h2>
+                <div class="rounded-lg bg-white p-6 shadow-md">
+                  <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                    <div class="space-y-2">
+                      <p class="text-sm font-medium text-gray-500">Platform ID</p>
+                      <p class="text-lg font-semibold text-gray-900">[aPlatform.platformID/]</p>
                     </div>
-                </section>
-			      
-	
-
-                <section class="space-y-4">
-                  <h2 class="text-2xl font-semibold">Supported Regions</h2>
-                  <div class="flex gap-2">
-                    [for (region : Region | aPlatform.supportedRegions)]
-                    <span class="rounded-full bg-gray-100 px-3 py-1 text-sm font-medium text-gray-800">[region.toString()/]</span>
-                    [/for]
-                    <span class="rounded-full bg-gray-100 px-3 py-1 text-sm font-medium text-gray-800">Europe</span>
-                    <span class="rounded-full bg-gray-100 px-3 py-1 text-sm font-medium text-gray-800">America</span>
+                    <div class="space-y-2">
+                      <p class="text-sm font-medium text-gray-500">Name</p>
+                      <p class="text-lg font-semibold text-purple-600">[aPlatform.name/]</p>
+                    </div>
+                    <div class="space-y-2">
+                      <p class="text-sm font-medium text-gray-500">Revenue</p>
+                      <p class="text-lg font-semibold text-gray-900">[aPlatform.revenue/]</p>
+                    </div>
+                    <div class="space-y-2">
+                      <p class="text-sm font-medium text-gray-500">Version</p>
+                      <p class="text-lg font-semibold text-gray-900">[aPlatform.version/]</p>
+                    </div>
                   </div>
-                </section>
+                </div>
+              </section>
+			      
+              <section class="space-y-4">
+                <h2 class="text-2xl font-semibold">Supported Regions</h2>
+                <div class="flex gap-2">
+                  [for (region : Region | aPlatform.supportedRegions)]
+                  <span class="rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-800">[region.toString()/]</span>
+                  [/for]
+                </div>
+              </section>
               
 
-                <section class="space-y-4">
-                  <h2 class="text-2xl font-semibold">Channels</h2>
-                  <div class="overflow-x-auto rounded-lg border border-gray-200">
-                    <table class="min-w-full divide-y divide-gray-200">
-                      <thead class="bg-gray-50">
-                        <tr>
-                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Channel ID</th>
-                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Name</th>
-                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Total Tips</th>
-                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Total Followers</th>
-                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Total Views</th>
-                        </tr>
-                      </thead>
-                      <tbody class="divide-y divide-gray-200 bg-white">
-                        [for (channel : Channel | aPlatform.channels)]
-                            <tr>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900"><a href="channel_[channel.channelID/].html">[channel.channelID/]</a></td>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[channel.name/]</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[channel.totalTips/]</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[channel.totalFollowers/]</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[channel.totalViews/]</td>
-                            </tr>
-                        [/for]
-                      </tbody>
-                    </table>
-                  </div>
-                </section>  
+              <section class="space-y-4">
+                <h2 class="text-2xl font-semibold">Channels</h2>
+                <div class="overflow-x-auto rounded-lg border border-gray-200">
+                  <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                      <tr>
+                        <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Channel ID</th>
+                        <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Name</th>
+                        <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Total Tips</th>
+                        <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Total Followers</th>
+                        <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Total Views</th>
+                        <th class="px-6 py-3 text-left text-sm font-medium text-gray-500"></th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 bg-white">
+                      [for (channel : Channel | aPlatform.channels)]
+                          <tr>
+                              <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[channel.channelID/]</td>
+                              <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[channel.name/]</td>
+                              <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[channel.totalTips/]</td>
+                              <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[channel.totalFollowers/]</td>
+                              <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[channel.totalViews/]</td>
+                              <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900"><a class="p-2 bg-gray-100 rounded-md hover:bg-gray-200" href="channel_[channel.channelID/].html">Details</a></td>
+                          </tr>
+                      [/for]
+                    </tbody>
+                  </table>
+                </div>
+              </section>  
                 
-                <section class="space-y-4">
-                  <h2 class="text-2xl font-semibold">Users</h2>
-                  <div class="overflow-x-auto rounded-lg border border-gray-200">
-                    <table class="min-w-full divide-y divide-gray-200">
-                      <thead class="bg-gray-50">
-                        <tr>
-                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">User ID</th>
-                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Nickname</th>
-                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Role</th>
-                          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Status</th>
-                        </tr>
-                      </thead>
-                      <tbody class="divide-y divide-gray-200 bg-white">
-                        [for (user : User | aPlatform.users)]
-                            <tr>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900"><a href="user_[user.userID/].html">[user.userID/]</a></td>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[user.nickname/]</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[user.role.toString()/]</td>
-                          <td class="whitespace-nowrap px-6 py-4 text-sm">
-                      [if user.isOnline]
-                              <span class="rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800">
+              <section class="space-y-4">
+                <h2 class="text-2xl font-semibold">Users</h2>
+                <div class="overflow-x-auto rounded-lg border border-gray-200">
+                  <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                      <tr>
+                        <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">User ID</th>
+                        <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Nickname</th>
+                        <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Role</th>
+                        <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">Status</th>
+                        <th class="px-6 py-3 text-left text-sm font-medium text-gray-500"></th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 bg-white">
+                      [for (user : User | aPlatform.users)]
+                          <tr>
+                              <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[user.userID/]</td>
+                              <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[user.nickname/]</td>
+                              <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">[user.role.toString()/]</td>
+                              <td class="whitespace-nowrap px-6 py-4 text-sm">
+                                [if user.isOnline]
+                                  <span class="rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800">
                                     Online
                                   </span>
-                      [else]
-                        <span class="rounded-full bg-gray-100 px-3 py-1 text-sm font-medium text-gray-800">
+                                [else]
+                                  <span class="rounded-full bg-gray-100 px-3 py-1 text-sm font-medium text-gray-800">
                                     Offline
                                   </span>
-                      [/if]
-                    </td>
-                            </tr>
-                        [/for]
-                      </tbody>
-                    </table>
-                  </div>
-                </section>
+                                [/if]
+                              </td>
+                              <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900"><a class="p-2 bg-gray-100 rounded-md hover:bg-gray-200" href="user_[user.userID/].html">Details</a></td>
+                           </tr>
+                      [/for]
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
               </div>
             </div>
           </body>
@@ -141,40 +142,117 @@
 					<script src="https://cdn.tailwindcss.com"></script>
                 </head>
                 <body>
-                    <h1>Channel: [channel.name/]</h1>
-                    <table border="1">
-                        <tr>
-                            <th>Channel ID</th>
-                            <th>Name</th>
-                            <th>Total Tips</th>
-                            <th>Total Followers</th>
-                            <th>Total Views</th>
-                        </tr>
-                        <tr>
-                            <td>[channel.channelID/]</td>
-                            <td>[channel.name/]</td>
-                            <td>[channel.totalTips/]</td>
-                            <td>[channel.totalFollowers/]</td>
-                            <td>[channel.totalViews/]</td>
-                        </tr>
-                    </table>
-                    
-                    <h2>Streams</h2>
-                    <table border="1">
-                        <tr>
-                            <th>Stream Title</th>
-                            <th>View Count</th>
-                        </tr>
+                  <div class="min-h-screen bg-gray-50 p-4 md:p-6 lg:p-8">
+                    <div class="mx-auto max-w-6xl space-y-6">
+                      <div class="rounded-xl bg-gradient-to-r from-purple-600 to-purple-800 p-6 text-white shadow-lg">
+                        <h1 class="text-3xl font-bold">[channel.name/]</h1>
+                        <div class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
+                          <div class="flex items-center gap-2">
+                            <div class="rounded-lg bg-white/10 p-2">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            </div>
+                            <div>
+                              <p class="text-sm text-purple-200">Followers</p>
+                              <p class="font-semibold">[channel.totalFollowers/]</p>
+                            </div>
+                          </div>
+                          <div class="flex items-center gap-2">
+                            <div class="rounded-lg bg-white/10 p-2">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                            </div>
+                            <div>
+                              <p class="text-sm text-purple-200">Total Views</p>
+                              <p class="font-semibold">[channel.totalViews/]</p>
+                            </div>
+                          </div>
+                          <div class="flex items-center gap-2">
+                            <div class="rounded-lg bg-white/10 p-2">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dollar-sign"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            </div>
+                            <div>
+                              <p class="text-sm text-purple-200">Total Tips</p>
+                              <p class="font-semibold">[channel.totalTips/]</p>
+                            </div>
+                          </div>
+                          <div class="flex items-center gap-2">
+                            <div class="rounded-lg bg-white/10 p-2">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-crown"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>
+                            </div>
+                            <div>
+                              <p class="text-sm text-purple-200">Channel ID</p>
+                              <p class="font-semibold">#[channel.channelID/]</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="rounded-lg bg-white p-6 shadow-md">
+                        <div class="flex items-center gap-3">
+                          <div class="rounded-full bg-purple-100 p-3">
+                            <svg class="text-purple-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-crown"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>
+                          </div>
+                          <div>
+                            <h2 class="text-lg font-semibold text-gray-900">Channel Owner</h2>
+                            <a class="text-purple-600" href="user_[channel.owner.userID/].html">[channel.owner.nickname/]</a>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="rounded-lg bg-white p-6 shadow-md">
+                        <div class="mb-4 flex items-center gap-2">
+                          <svg class="text-purple-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad"><line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><rect width="20" height="12" x="2" y="6" rx="2"/></svg>
+                          <h2 class="text-lg font-semibold text-gray-900">Streams</h2>
+                        </div>
                         [for (stream : Stream | channel.streams)]
-                            <tr>
-                                <td>[stream.title/]</td>
-                                <td>[stream.viewCount/]</td>
-                            </tr>
+                          <div class="divide-y divide-gray-100">
+                            <div class="flex items-center justify-between py-4">
+                              <div class="flex items-center gap-4 w-full">
+                                <div class="h-12 w-12 rounded-lg bg-purple-100 p-3">
+                                  <svg class="text-purple-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad"><line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><rect width="20" height="12" x="2" y="6" rx="2"/></svg>
+                                </div>
+                                <div class="flex-1 space-y-4">
+                                  <a class="font-medium text-gray-900" href="stream_[stream.mediaContentID/].html">[stream.title/]</a>
+                                    <div class="flex items-center gap-2">
+                                      [if stream.isLive]
+                                        <span class="flex items-center gap-1 rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-600">
+                                          <span class="h-1.5 w-1.5 rounded-full bg-red-600"></span>
+                                          Live now
+                                        </span>
+                                      [else]
+                                        <span class="flex items-center gap-1 rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">
+                                          <span class="h-1.5 w-1.5 rounded-full bg-gray-600"></span>
+                                          Not live
+                                        </span>
+                                      [/if]
+
+                                      [for (quality : VideoQuality | stream.videoQualities)]
+                                        <div class="flex items-center gap-2">
+                                          <span class="text-xs text-gray-500">[quality.toString()/]</span>
+                                        </div>
+                                      [/for]
+                                    </div>
+                                  <div class="flex gap-2">
+                                  [for (tag : String | stream.tags)]
+                                    <div class="flex flex-wrap gap-2">
+                                      <span class="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">[tag/]</span>
+                                    </div>
+                                  [/for]
+                                  </div>
+                                </div>
+
+                                <div class="flex items-center gap-1 rounded-full bg-purple-100 px-3 py-1">
+                                  <svg class="text-purple-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                                  <span class="text-sm font-medium text-purple-600">[stream.viewCount/] [if stream.viewCount > 1]viewers [else] viewer [/if]</span>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
                         [/for]
-                    </table>
-                    
-                    <h2>Owner</h2>
-                    <p><a href="user_[channel.owner.userID/].html">[channel.owner.nickname/]</a></p>
+                      </div>
+                    </div>
+                  </div>
                 </body>
             </html>
         [/file]
@@ -222,7 +300,7 @@
                     <table border="1">
                         <tr>
                             <th>Tier</th>
-                            <th>Price</th>
+                            <th>Amount</th>
                             <th>Currency</th>
                             <th>Start Date</th>
                             <th>End Date</th>
@@ -230,7 +308,7 @@
                         [for (subscription : Subscription | user.subscriptions)]
                             <tr>
                                 <td>[subscription.tier.toString()/]</td>
-                                <td>[subscription.price/]</td>
+                                <td>[subscription.amount/]</td>
                                 <td>[subscription.currency.toString()/]</td>
                                 <td>[subscription.startDate/]</td>
                                 <td>[subscription.endDate/]</td>
@@ -244,12 +322,18 @@
                             <th>Amount</th>
                             <th>Currency</th>
                             <th>Message</th>
+                            <th>Payment Type</th>
+                            <th>Payment Status</th>
+                            <th>Transaction Date</th>
                         </tr>
                         [for (tip : Tip | user.tips)]
                             <tr>
                                 <td>[tip.amount/]</td>
                                 <td>[tip.currency.toString()/]</td>
                                 <td>[tip.message/]</td>
+                                <td>[tip.paymentType/]</td>
+                                <td>[tip.paymentStatus/]</td>
+                                <td>[tip.transactionDate/]</td>
                             </tr>
                         [/for]
                     </table>

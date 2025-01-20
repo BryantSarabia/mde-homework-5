@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<RSP:Platform xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:RSP="https:/refined-streaming-platform.com" createdAt="2025-01-19T00:00:00.000+0100" name="Twitch" platformID="1" revenue="157.87999725341797">
+  <supportedRegions>Europe</supportedRegions>
+  <supportedRegions>America</supportedRegions>
+  <supportedLanguages>Spanish</supportedLanguages>
+  <supportedLanguages>English</supportedLanguages>
+  <supportedDevices>iOS</supportedDevices>
+  <supportedDevices>Android</supportedDevices>
+  <supportedDevices>Web</supportedDevices>
+  <supportedVideoQualities>HD</supportedVideoQualities>
+  <supportedVideoQualities>FullHD</supportedVideoQualities>
+  <users createdAt="2025-01-19T00:00:00.000+0100" name="Otherlude" userID="3" role="Viewer" avatar="otherlude.png" isOnline="true" nickname="Otherlude" followedChannels="2">
+    <subscriptions monetizationID="15" amount="107.88" transactionDate="2025-01-19T00:00:00.000+0100" paymentStatus="Completed" tier="Premium" price="8.99" duration="Annual" startDate="2025-01-19T00:00:00.000+0100" endDate="2026-01-19T00:00:00.000+0100" features="9 10 7"/>
+    <tips monetizationID="14" amount="50.0" transactionDate="2025-01-19T00:00:00.000+0100" paymentStatus="Completed" message="Keep up the good work"/>
+  </users>
+  <users createdAt="2025-01-19T00:00:00.000+0100" name="Ibai" userID="4" role="Streamer" avatar="ibai.png" isOnline="true" nickname="Ibai"/>
+  <users createdAt="2025-01-19T00:00:00.000+0100" name="Admin" userID="5" avatar="admin.png" nickname="Admin"/>
+  <users createdAt="2025-01-19T00:00:00.000+0100" name="Gomita13" userID="6" avatar="Gomita13.png" isOnline="true" nickname="Gomita13" followedChannels="2"/>
+  <channels createdAt="2025-01-19T00:00:00.000+0100" name="Ibai channel" channelID="2" moderators="4" followers="3 6" tips="14" subscriptions="15" owner="4">
+    <streams mediaContentID="11" title="Playing League of Legends" viewCount="3" isLive="true" viewers="3 4 5 6">
+      <tags>gaming</tags>
+      <tags>Spanish</tags>
+      <tags>Fun</tags>
+      <tags>league of legends</tags>
+      <videoQualities>HD</videoQualities>
+      <videoQualities>FullHD</videoQualities>
+      <messages userInteractionID="16" timestamp="1737305006183" author="3" content="Hello i'm otherlude"/>
+      <reactions userInteractionID="17" timestamp="1737305006183" author="3" reactionType="ThumbsUp"/>
+    </streams>
+    <streams mediaContentID="12" title="Playing valorant" viewCount="1">
+      <tags>valorant</tags>
+      <tags>spanish</tags>
+      <videoQualities>HD</videoQualities>
+    </streams>
+    <clips mediaContentID="13" title="LMAO!" createdBy="6">
+      <tags>gaming</tags>
+      <tags>league of legends</tags>
+      <videoQualities>HD</videoQualities>
+      <videoQualities>FullHD</videoQualities>
+    </clips>
+    <features name="Kappa" featureID="9" type="Emote" tenure="1" unlockCondition="Tenure"/>
+    <features name="Tiger" featureID="10" type="Emote" donationAmount="5.0" unlockCondition="Tenure"/>
+    <features name="VIP" featureID="7" donationAmount="50.0"/>
+    <features name="Founder" featureID="8" tenure="1" donationAmount="5.0" unlockCondition="Tenure"/>
+  </channels>
+</RSP:Platform>

@@ -5,4 +5,5 @@
   <semanticResources>metamodel/StreamingPlatform.genmodel</semanticResources>
   <semanticResources>model/Platform.xmi</semanticResources>
   <semanticResources>metamodel/RefinedStreamingPlatform.genmodel</semanticResources>
+  <semanticResources>model/RefinedPlatform2.xmi</semanticResources>
 </viewpoint:DAnalysis>
